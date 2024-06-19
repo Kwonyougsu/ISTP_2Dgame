@@ -1,0 +1,66 @@
+using System.Collections;
+using System.Collections.Generic;
+using UnityEngine;
+
+public class EnemyMovement : MonoBehaviour
+{
+    private EnemyController _controller;
+    private Rigidbody2D _movementRigidbody;
+    private EnemyStatHandler characterStatHandler;
+    // πÊ«‚
+    private Vector2 _movementDirection = Vector2.zero;
+    // ≥ÀπÈ
+    private Vector2 knockback = Vector2.zero;
+    private float knockbackDuration = 0.0f;
+
+    private void Awake()
+    {       
+        _controller = GetComponent<EnemyController>();
+        _movementRigidbody = GetComponent<Rigidbody2D>();        
+        characterStatHandler = GetComponent<EnemyStatHandler>();
+    }
+
+    private void Start()
+    {        
+        _controller.OnMoveEvent += Move;
+    }
+
+    private void FixedUpdate()
+    {
+        
+        ApplyMovement(_movementDirection);
+      
+        // ≥ÀπÈ »ø∞˙
+        if (knockbackDuration > 0.0f)
+        {           
+            knockbackDuration -= Time.fixedDeltaTime;
+        }
+    }
+
+    private void Move(Vector2 direction)
+    {        
+        _movementDirection = direction;
+    }
+
+    private void ApplyMovement(Vector2 direction)
+    {       
+        direction = direction * characterStatHandler.CurrentStat.speed;
+
+        // ≥ÀπÈ
+        if (knockbackDuration > 0.0f)
+        {            
+            direction += knockback;
+        }
+
+        _movementRigidbody.velocity = direction;
+
+    }
+
+    // ≥ÀπÈ
+    public void ApplyKnockback(Transform other, float power, float duration)
+    {
+        knockbackDuration = duration;
+
+        knockback = -(other.position - transform.position).normalized * power;
+    }
+}

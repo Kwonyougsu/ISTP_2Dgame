@@ -1,35 +1,46 @@
+using System;
 using System.Collections;
 using System.Collections.Generic;
+using System.Xml.Serialization;
 using TMPro;
 using UnityEngine;
+using UnityEngine.UI;
 
 public class UIStore : MonoBehaviour
 {
-    public ItemSlot[] slots;
-
-    public GameObject StoreUI;
-    public Transform slotPanel;
+    public ItemData itemData;
+    public ItemSlot Itemindex;
 
     [Header("Select Item")]
     public TextMeshProUGUI itemName;
     public GameObject itemIcon;
     public TextMeshProUGUI itemDescription;
     public TextMeshProUGUI itemPrice;
-    public GameObject buyButton;
+    public GameObject itemInfo;
 
     void Start()
     {
-        slots = new ItemSlot[slotPanel.childCount];
+        Itemindex = GetComponent<ItemSlot>();
         ClearStore();
     }
 
     void ClearStore()
     {
-        itemName.text = string.Empty;
-        itemDescription.text = string.Empty;
-        itemPrice.text = string.Empty;
+        itemInfo.SetActive(false);
+    }
 
-        itemIcon.SetActive(false);
-        buyButton.SetActive(false);
+    public void OnClickButton()
+    {
+        SetStoreInfo(Itemindex.index);
+    }
+
+    public void SetStoreInfo(int index)
+    {
+        itemInfo.SetActive(true);
+        itemName.text = itemData.itemName[index];
+        itemIcon.TryGetComponent<Image>(out Image icon);
+        icon.sprite = itemData.itemIcon[index];
+        itemDescription.text = itemData.itemDescription[index];
+        itemPrice.text = itemData.itemprice[index];
     }
 }

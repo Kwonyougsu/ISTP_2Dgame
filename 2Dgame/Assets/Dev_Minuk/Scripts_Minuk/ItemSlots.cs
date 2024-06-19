@@ -4,15 +4,15 @@ using UnityEngine;
 
 public class ItemSlots : MonoBehaviour
 {
-    public ItemData[] itemData;
-    public GameObject[] slots;
-
-    Transform targetParent;
+    public ItemSlot[] slot;
+    public Transform slots;
     void Start()
     {
-        for(int i = 0; i < itemData.Length; i++)
+        slot = new ItemSlot[slots.childCount];
+        for(int i = 0; i < slot.Length; i++)
         {
-            slots[i].gameObject.SetActive(true);
+            slot[i] = slots.GetChild(i).GetComponent<ItemSlot>();
+            slot[i].index = i;
         }
     }
 

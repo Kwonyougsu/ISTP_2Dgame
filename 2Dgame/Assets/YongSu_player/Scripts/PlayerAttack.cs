@@ -42,19 +42,4 @@ public class PlayerAttack : MonoBehaviour
         Destroy(Attack);
     }
 
-    private void OnCollisionEnter2D(Collision2D collision)
-    {
-        GameObject attack = collision.gameObject;
-
-        if (attack.CompareTag("Enemy"))
-        {
-            EnemyStatHandler enemyHealth = attack.GetComponent<EnemyStatHandler>();
-            if (enemyHealth != null)
-            {
-                enemyHealth.CurrentStat.maxHealth -= (int)Stats.Power;
-                Debug.Log("체력 몬스터 체력" + enemyHealth.CurrentStat.maxHealth);
-            }
-
-        }
-    }
 }

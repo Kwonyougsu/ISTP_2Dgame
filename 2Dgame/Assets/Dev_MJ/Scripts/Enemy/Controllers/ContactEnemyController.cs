@@ -50,17 +50,17 @@ public class ContactEnemyController : EnemyController
     }
 
     // 적과 닿았을 때 처리 (근거리 공격)
-    private void OnCollisionEnter2D(Collision2D collision)
+    private void OnCollisionStay2D(Collision2D collision)
     {     
-        GameObject receiver = collision.gameObject;      
+        GameObject receiver = collision.gameObject;
 
-        if (1 <<receiver.layer == layerPlayer)
-        {
-            Debug.Log($"플레이어 근접 공격 성공");
-            // 플레이어 체력 감소
+        if (!(1 << receiver.layer == layerPlayer)) return;
+        
 
-        }
+        Debug.Log($"플레이어 근접 공격 성공");
+        // 플레이어 체력 감소
 
+        receiver.GetComponent<PlayerStats>().LowHp(stats.CurrentStat.attackSO.power);
 
         // 플레이어가 아닐경우 무시
 

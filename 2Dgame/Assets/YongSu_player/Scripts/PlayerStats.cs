@@ -19,10 +19,11 @@ public class PlayerStats : MonoBehaviour
         LowHp();
     }
 
-    private void LowHp()
+    public void LowHp(float damage = 0)
     {
-        HP -= Time.deltaTime;
-        if( HP <= 0)
+        HP -= damage;
+        
+        if (HP <= 0)
         {
             Time.timeScale = 0f;
             endpanel.SetActive(true);

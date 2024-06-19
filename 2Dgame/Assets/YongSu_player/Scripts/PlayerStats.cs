@@ -6,6 +6,7 @@ using UnityEngine;
 public class PlayerStats : MonoBehaviour
 {
     public float HP;
+    public float Power;
     public GameObject endpanel;
     public GameObject endpanelbg;
     private void Start()
@@ -13,6 +14,7 @@ public class PlayerStats : MonoBehaviour
         endpanel.SetActive(false);
         endpanelbg.SetActive(false);
         HP = 100f;
+        Power = 1.0f;
     }
     private void Update()
     {

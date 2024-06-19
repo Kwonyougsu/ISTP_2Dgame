@@ -1339,7 +1339,7 @@ GameObject:
   - component: {fileID: 1244441629}
   m_Layer: 6
   m_Name: Player
-  m_TagString: Untagged
+  m_TagString: Player
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
   m_StaticEditorFlags: 0
@@ -1565,6 +1565,7 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   HP: 5
+  Damage: 0
   endpanel: {fileID: 383747078}
   endpanelbg: {fileID: 349988660}
 --- !u!114 &1244441629
@@ -1727,7 +1728,7 @@ GameObject:
   - component: {fileID: 1703461997}
   m_Layer: 6
   m_Name: CloseAttackPos
-  m_TagString: Untagged
+  m_TagString: Player
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
   m_StaticEditorFlags: 0
@@ -1741,7 +1742,7 @@ Transform:
   m_GameObject: {fileID: 1703461996}
   serializedVersion: 2
   m_LocalRotation: {x: 0, y: 0, z: 0, w: 1}
-  m_LocalPosition: {x: 0, y: 0, z: 0}
+  m_LocalPosition: {x: -5.4, y: 0, z: 0}
   m_LocalScale: {x: 1, y: 1, z: 1}
   m_ConstrainProportionsScale: 0
   m_Children: []
@@ -1760,7 +1761,7 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   baseStats:
-    maxHealth: 3
+    maxHealth: 4
     speed: 3
     size: 1
     target:
@@ -1799,7 +1800,7 @@ GameObject:
   - component: {fileID: 8599100139351566009}
   m_Layer: 0
   m_Name: TempEnemyV2
-  m_TagString: Untagged
+  m_TagString: Enemy
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
   m_StaticEditorFlags: 0

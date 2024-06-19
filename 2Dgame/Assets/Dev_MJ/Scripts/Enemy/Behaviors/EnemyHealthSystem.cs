@@ -47,14 +47,16 @@ public class EnemyHealthSystem : MonoBehaviour
         if (CurrentHealth <= 0f)
         {
             CallDeath();
+            Debug.Log("죽었다");
             return;
+
         }      
         else
         {
      
             OnDamage?.Invoke();
             isAttacked = true;
-
+            Debug.Log("맞았다");
             // 피격 이펙트 사운드가 있다면 재생
             //if (DamageClip) SoundManager.PlayClip(DamageClip);
 

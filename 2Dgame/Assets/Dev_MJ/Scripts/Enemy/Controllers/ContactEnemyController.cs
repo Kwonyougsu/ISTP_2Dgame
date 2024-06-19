@@ -57,7 +57,7 @@ public class ContactEnemyController : EnemyController
         if (!(1 << receiver.layer == layerPlayer)) return;
         
 
-        Debug.Log($"플레이어 근접 공격 성공");
+        //Debug.Log($"플레이어 근접 공격 성공");
         // 플레이어 체력 감소
 
         receiver.GetComponent<PlayerStats>().LowHp(stats.CurrentStat.attackSO.power);

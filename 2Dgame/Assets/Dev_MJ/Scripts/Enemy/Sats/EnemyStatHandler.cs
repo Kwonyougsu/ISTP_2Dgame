@@ -35,4 +35,5 @@ public class EnemyStatHandler : MonoBehaviour
         transform.localScale = new Vector3(CurrentStat.size, CurrentStat.size, 1f);
         //transform.localScale = new Vector3(2f,1f,1f);
     }
+
 }

@@ -2541,9 +2541,9 @@ MonoBehaviour:
   curIndex: 0
   itemStack:
   - {fileID: 861708431}
-  - {fileID: 0}
-  - {fileID: 0}
-  - {fileID: 0}
+  - {fileID: 470602966163597425}
+  - {fileID: 470602966822069040}
+  - {fileID: 470602967508308532}
 --- !u!1 &1157525318
 GameObject:
   m_ObjectHideFlags: 0

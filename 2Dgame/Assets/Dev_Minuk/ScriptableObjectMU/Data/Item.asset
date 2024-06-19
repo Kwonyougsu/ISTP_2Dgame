@@ -27,8 +27,5 @@ MonoBehaviour:
   - MoveSpeedUp
   - HPMaxUp
   - BulletUp
-  itemprice:
-  - 400
-  - 500
-  - 400
-  - 1000
+  itemprice: 90010000f401000090010000e8030000
+  itemstack: 00000000000000000000000000000000

@@ -11,8 +11,6 @@ public class ItemSlot : MonoBehaviour
     public ItemData itemData;
     public int index;
     public GameObject itemIcon;
-
-    [SerializeField] Sprite sprite;
     private void Start()
     {
         GetSprite();
@@ -22,6 +20,20 @@ public class ItemSlot : MonoBehaviour
     {
         itemIcon.TryGetComponent<Image>(out Image icon);
         icon.sprite = itemData.itemIcon[index];
-        sprite = itemData.itemIcon[(index)];
+    }
+    public void OnClickButton()
+    {
+        SetStoreInfo(index);
+    }
+
+    public void SetStoreInfo(int index)
+    {
+        UIStore.instance.curIndex = index;
+        UIStore.instance.itemInfo.SetActive(true);
+        UIStore.instance.itemName.text = itemData.itemName[index];
+        UIStore.instance.itemIcon.TryGetComponent<Image>(out Image icon);
+        icon.sprite = itemData.itemIcon[index];
+        UIStore.instance.itemDescription.text = itemData.itemDescription[index];
+        UIStore.instance.itemPrice.text = $"{itemData.itemprice[index]}";
     }
 }

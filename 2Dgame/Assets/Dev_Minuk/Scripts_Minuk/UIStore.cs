@@ -8,6 +8,8 @@ using UnityEngine.UI;
 
 public class UIStore : MonoBehaviour
 {
+    public static UIStore instance;
+
     public ItemData itemData;
     public ItemSlot Itemindex;
 
@@ -17,6 +19,15 @@ public class UIStore : MonoBehaviour
     public TextMeshProUGUI itemDescription;
     public TextMeshProUGUI itemPrice;
     public GameObject itemInfo;
+    public int curIndex;
+
+
+    [Header("Item Stack")]
+    public GameObject[] itemStack;
+    private void Awake()
+    {
+        instance = this;
+    }
 
     void Start()
     {
@@ -29,18 +40,14 @@ public class UIStore : MonoBehaviour
         itemInfo.SetActive(false);
     }
 
-    public void OnClickButton()
+    public void SetStotore()
     {
-        SetStoreInfo(Itemindex.index);
+        for(int i = 0; i < itemStack.Length; i++)
+        {
+            itemStack[i].TryGetComponent<ItemStack>(out ItemStack stack);
+            stack.SetStack();
+        }
     }
 
-    public void SetStoreInfo(int index)
-    {
-        itemInfo.SetActive(true);
-        itemName.text = itemData.itemName[index];
-        itemIcon.TryGetComponent<Image>(out Image icon);
-        icon.sprite = itemData.itemIcon[index];
-        itemDescription.text = itemData.itemDescription[index];
-        itemPrice.text = itemData.itemprice[index];
-    }
+
 }

@@ -14,7 +14,7 @@ GameObject:
   - component: {fileID: 732743310196321471}
   - component: {fileID: 7624580830936044409}
   - component: {fileID: 2745961628613964709}
-  - component: {fileID: 7360059868497596690}
+  - component: {fileID: 3493832735569339832}
   m_Layer: 5
   m_Name: Slot
   m_TagString: Untagged
@@ -29,7 +29,7 @@ RectTransform:
   m_PrefabInstance: {fileID: 0}
   m_PrefabAsset: {fileID: 0}
   m_GameObject: {fileID: 470602967440551506}
-  m_LocalRotation: {x: -0, y: -0, z: -0, w: 1}
+  m_LocalRotation: {x: 0, y: 0, z: 0, w: 1}
   m_LocalPosition: {x: 0, y: 0, z: 0}
   m_LocalScale: {x: 1, y: 1, z: 1}
   m_ConstrainProportionsScale: 0
@@ -130,8 +130,8 @@ MonoBehaviour:
   m_OnClick:
     m_PersistentCalls:
       m_Calls:
-      - m_Target: {fileID: 7360059868497596690}
-        m_TargetAssemblyTypeName: UIStore, Assembly-CSharp
+      - m_Target: {fileID: 2745961628613964709}
+        m_TargetAssemblyTypeName: ItemSlot, Assembly-CSharp
         m_MethodName: OnClickButton
         m_Mode: 1
         m_Arguments:
@@ -172,7 +172,7 @@ MonoBehaviour:
   itemData: {fileID: 11400000, guid: bcc6d9806e8c93d40bd5a7de3c43448b, type: 2}
   index: 0
   itemIcon: {fileID: 8783500348056730053}
---- !u!114 &7360059868497596690
+--- !u!114 &3493832735569339832
 MonoBehaviour:
   m_ObjectHideFlags: 0
   m_CorrespondingSourceObject: {fileID: 0}
@@ -181,16 +181,15 @@ MonoBehaviour:
   m_GameObject: {fileID: 470602967440551506}
   m_Enabled: 1
   m_EditorHideFlags: 0
-  m_Script: {fileID: 11500000, guid: 59ead8a91f5a4ad4ab5e25a86cb4b947, type: 3}
+  m_Script: {fileID: 11500000, guid: cbcd35ed702fc9a4d922c64106da9405, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
   itemData: {fileID: 11400000, guid: bcc6d9806e8c93d40bd5a7de3c43448b, type: 2}
-  Itemindex: {fileID: 0}
-  itemName: {fileID: 0}
-  itemIcon: {fileID: 0}
-  itemDescription: {fileID: 0}
-  itemPrice: {fileID: 0}
-  itemInfo: {fileID: 0}
+  index: 0
+  stack:
+  - {fileID: 2255176914789897233}
+  - {fileID: 2523641981001933666}
+  - {fileID: 1640255636960396396}
 --- !u!1 &1640255636960396396
 GameObject:
   m_ObjectHideFlags: 0

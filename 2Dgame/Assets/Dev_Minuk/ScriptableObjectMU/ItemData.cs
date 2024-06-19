@@ -11,5 +11,6 @@ public class ItemData : ScriptableObject
     public Sprite[] itemIcon;
     public string[] itemName;
     public string[] itemDescription;
-    public string[] itemprice;
+    public int[] itemprice;
+    public int[] itemstack;
 }

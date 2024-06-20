@@ -1,13 +1,17 @@
-using System;
 using System.Collections;
-using Unity.VisualScripting.Antlr3.Runtime.Misc;
 using UnityEngine;
 
 public class PlayerAttack : MonoBehaviour
 {
     public GameObject AttackPrefab;
     public Transform CloseAttackPos;
-  
+    private SpriteRenderer characterRenderer;
+    private GameObject player;
+    private void Awake()
+    {
+        characterRenderer = GetComponent<SpriteRenderer>();
+        player = this.gameObject;
+    }
     private void Start()
     {
         StartCoroutine(CloseAttack());  
@@ -26,8 +30,17 @@ public class PlayerAttack : MonoBehaviour
     private void closeAttack()
     {
         GameObject Attack = Instantiate(AttackPrefab);
-        Attack.transform.position =new Vector3(CloseAttackPos.position.x, CloseAttackPos.position.y);
-        StartCoroutine(EndAttack(Attack, 0.15f)); //공격 유지시간
+
+        //오른쪽 1 => false, 왼쪽 -1 =>true
+        if (!characterRenderer.flipX)
+        {
+            Attack.transform.position = new Vector3(player.transform.position.x + 1.5f, player.transform.position.y);
+        }
+        else 
+        {
+            Attack.transform.position = new Vector3(player.transform.position.x - 1.5f, player.transform.position.y);
+        }
+        StartCoroutine(EndAttack(Attack, 0.05f)); //공격 유지시간
     }
 
     IEnumerator EndAttack(GameObject Attack,float delay)

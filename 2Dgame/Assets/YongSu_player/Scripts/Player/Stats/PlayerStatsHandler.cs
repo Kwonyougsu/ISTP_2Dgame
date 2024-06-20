@@ -1,7 +1,5 @@
 using UnityEngine;
 using System.Collections.Generic;
-using System.Linq;
-using System;
 
 public class PlayerStatsHandler : MonoBehaviour
 {
@@ -13,6 +11,7 @@ public class PlayerStatsHandler : MonoBehaviour
     public ItemData itemData;
     private readonly float MinSpeed = 5f;
     private readonly int MinMaxHealth = 10;
+
 
     private void Awake()
     {        
@@ -27,8 +26,6 @@ public class PlayerStatsHandler : MonoBehaviour
         CurrentStat.attackSO = Instantiate(baseStats.attackSO);
 
         ApplyStatModifiers(baseStats);
-       
-        Debug.Log("적용된 스피드" + CurrentStat.speed);
     }
 
     private void ApplyStatModifiers(PlayerStats modifier)

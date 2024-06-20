@@ -1479,7 +1479,7 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   baseStats:
-    maxHealth: 4
+    maxHealth: 40
     speed: 3
     size: 1
     target:
@@ -1634,9 +1634,14 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   baseStats:
     statsChangeType: 0
+    maxHealth: 5
+    speed: 10
+    attackSO: {fileID: 11400000, guid: 6d667653f9363c24cb978772462df115, type: 2}
+  <CurrentStat>k__BackingField:
+    statsChangeType: 0
     maxHealth: 0
     speed: 0
-    attackSO: {fileID: 11400000, guid: 6d667653f9363c24cb978772462df115, type: 2}
+    attackSO: {fileID: 0}
   statsModifiers: []
   itemData: {fileID: 11400000, guid: bcc6d9806e8c93d40bd5a7de3c43448b, type: 2}
 --- !u!114 &3202245783586037372
@@ -1653,6 +1658,7 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   AttackPrefab: {fileID: 824385591653717336, guid: 082205a7ed0bc81439bf23e2f0ece811, type: 3}
   CloseAttackPos: {fileID: 3756438250466687375}
+  Player: {fileID: 1638330764270826771}
 --- !u!114 &3438382458812845581
 MonoBehaviour:
   m_ObjectHideFlags: 0

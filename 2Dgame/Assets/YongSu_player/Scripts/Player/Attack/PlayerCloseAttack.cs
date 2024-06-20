@@ -10,7 +10,6 @@ public class PlayerCloseAttack : MonoBehaviour
     [SerializeField] private float duration;
 
 
-
     private void OnTriggerEnter2D(Collider2D collision)
     {
         GameObject attack = collision.gameObject;

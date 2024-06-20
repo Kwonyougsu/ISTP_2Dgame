@@ -6,6 +6,10 @@ using UnityEngine;
 public class PlayerCloseAttack : MonoBehaviour
 {
     [SerializeField] private float damege;
+    [SerializeField] private float knockbackPower;
+    [SerializeField] private float duration;
+
+
 
     private void OnTriggerEnter2D(Collider2D collision)
     {
@@ -15,7 +19,7 @@ public class PlayerCloseAttack : MonoBehaviour
         if (attack.CompareTag("Enemy"))
         {
             attack.GetComponent<EnemyHealthSystem>().ChangeHealth(-damege);
-            attack.GetComponent<EnemyMovement>().ApplyKnockback(transform, 2f, 0.3f);
+            attack.GetComponent<EnemyMovement>().ApplyKnockback(transform, knockbackPower, duration);
         }
     }
 }

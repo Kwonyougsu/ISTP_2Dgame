@@ -172,3 +172,5 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   damege: 1
+  knockbackPower: 2
+  duration: 0.3

@@ -7,12 +7,7 @@ public class PlayerAttack : MonoBehaviour
 {
     public GameObject AttackPrefab;
     public Transform CloseAttackPos;
-    public PlayerStats Stats;
   
-    private void Awake()
-    {
-        Stats = GetComponent<PlayerStats>();
-    }
     private void Start()
     {
         StartCoroutine(CloseAttack());  

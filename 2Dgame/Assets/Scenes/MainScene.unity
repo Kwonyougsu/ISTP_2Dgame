@@ -1498,7 +1498,6 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: f6f3346f5c643394f93af7d5200046a5, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  speed: 5
   characterRenderer: {fileID: 1244441617}
 --- !u!114 &1244441625
 MonoBehaviour:
@@ -1567,8 +1566,8 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   statsChangeType: 2
-  maxHealth: 6
-  speed: 3.3
+  maxHealth: 0
+  speed: 0
   attackSO: {fileID: 11400000, guid: 6d667653f9363c24cb978772462df115, type: 2}
 --- !u!114 &1244441629
 MonoBehaviour:
@@ -1598,6 +1597,8 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   healthChangeDelay: 0.1
+  endpanel: {fileID: 349988660}
+  endpanelbg: {fileID: 383747078}
 --- !u!114 &1244441631
 MonoBehaviour:
   m_ObjectHideFlags: 0

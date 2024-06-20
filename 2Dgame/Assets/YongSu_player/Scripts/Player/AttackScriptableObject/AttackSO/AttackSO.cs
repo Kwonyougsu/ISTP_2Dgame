@@ -7,6 +7,7 @@ public class AttackSO : ScriptableObject
     // SO로 들고 있으면 모두가 이 SO를 바라보게 되어 중복된 데이터가 여기저기 흘러다니지 않는 장점이 있어요!
     [Header("Attack Info")]
     public float size;
+    public float delay;
     public float power;
     public float speed;
     public LayerMask target;

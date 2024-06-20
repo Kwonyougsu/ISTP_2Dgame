@@ -8,22 +8,30 @@ public class ContactEnemyController : EnemyController
     //[SerializeField] private string targetTag = "Player";
     private bool isCollidingWithTarget;
     private int layerPlayer;
+    private float curDelay;
+
 
     // 캐릭터 위치에따라 이미지가 뒤집혀야한다
     //[SerializeField] private SpriteRenderer characterRenderer;//나중에 이미지 추가할것**
 
-  
 
     protected override void Start()
     {
         base.Start();
 
-        layerPlayer = stats.CurrentStat.target;       
+        layerPlayer = stats.CurrentStat.target;
+        curDelay = stats.CurrentStat.attackSO.delay;
+    }
+    private void Update()
+    {
+        if (isCollidingWithTarget)
+        {
+            curDelay -= Time.fixedDeltaTime;            
+        }
     }
 
     private void FixedUpdate()
     {
-             
         Vector2 direction = Vector2.zero;
 
         // 타겟 추격 가능
@@ -49,28 +57,46 @@ public class ContactEnemyController : EnemyController
         //characterRenderer.flipX = Mathf.Abs(rotZ) > 90f;//나중에 이미지 추가할것**
     }
 
+ 
+
     // 적과 닿았을 때 처리 (근거리 공격)
-    private void OnCollisionStay2D(Collision2D collision)
-    {     
+    private void OnTriggerEnter2D(Collider2D collision)
+    {
+        //Debug.Log($"ContactEnemyController.cs - OnTriggerEnter2D()");
         GameObject receiver = collision.gameObject;
 
-        if (!(1 << receiver.layer == layerPlayer)) return;
-        
+        if (1 << receiver.layer != layerPlayer) return;
+
+        isCollidingWithTarget = true;
 
         //Debug.Log($"플레이어 근접 공격 성공");
         // 플레이어 체력 감소
-
         receiver.GetComponent<PlayerStats>().LowHp(stats.CurrentStat.attackSO.power);
-
-        // 플레이어가 아닐경우 무시
-
-
-        // 플레이어일 경우 데미지
+        if (!stats.CurrentStat.attackSO.isOnKnockBack) return;
+        receiver.GetComponent<TopDownMovement>().ApplyKnockback(transform, stats.CurrentStat.attackSO.knockbackPower, stats.CurrentStat.attackSO.knockbackTime);
     }
 
-    private void OnCollisionExit2D(Collision2D collision)
+    private void OnTriggerStay2D(Collider2D collision)
     {
+        if (!isCollidingWithTarget) isCollidingWithTarget = true;
+        if (curDelay > 0f) return;
+
         GameObject receiver = collision.gameObject;
-       
+
+        if (1 << receiver.layer != layerPlayer) return;
+
+        receiver.GetComponent<PlayerStats>().LowHp(stats.CurrentStat.attackSO.power);
+        if (!stats.CurrentStat.attackSO.isOnKnockBack) return;
+        receiver.GetComponent<TopDownMovement>().ApplyKnockback(transform, stats.CurrentStat.attackSO.knockbackPower, stats.CurrentStat.attackSO.knockbackTime);
+        curDelay = stats.CurrentStat.attackSO.delay;
+
+    }
+
+    private void OnTriggerExit2D(Collider2D collision)
+    {
+        Debug.Log($"ContactEnemyController.cs - OnTriggerExit2D()");
+
+        GameObject receiver = collision.gameObject;
+        isCollidingWithTarget = false;
     }
 }

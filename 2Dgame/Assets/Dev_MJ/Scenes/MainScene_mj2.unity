@@ -1441,7 +1441,7 @@ BoxCollider2D:
   m_CallbackLayers:
     serializedVersion: 2
     m_Bits: 4294967295
-  m_IsTrigger: 0
+  m_IsTrigger: 1
   m_UsedByEffector: 0
   m_UsedByComposite: 0
   m_Offset: {x: 0, y: 0}
@@ -1564,8 +1564,8 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: def7abb381beae14fa868a0bc6f3a4a7, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  HP: 5
-  Damage: 0
+  HP: 0
+  Power: 0
   endpanel: {fileID: 383747078}
   endpanelbg: {fileID: 349988660}
 --- !u!114 &1244441629
@@ -1798,6 +1798,8 @@ GameObject:
   - component: {fileID: 903357133388444218}
   - component: {fileID: 8298594163730839170}
   - component: {fileID: 8599100139351566009}
+  - component: {fileID: 8599100139351566011}
+  - component: {fileID: 8599100139351566010}
   m_Layer: 0
   m_Name: TempEnemyV2
   m_TagString: Enemy
@@ -1886,7 +1888,7 @@ BoxCollider2D:
   m_CallbackLayers:
     serializedVersion: 2
     m_Bits: 4294967295
-  m_IsTrigger: 0
+  m_IsTrigger: 1
   m_UsedByEffector: 0
   m_UsedByComposite: 0
   m_Offset: {x: 0, y: 0}
@@ -1955,6 +1957,32 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: a4016d173474bbb4191e1daae3e48ec5, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
+--- !u!114 &8599100139351566010
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 2426806733913298739}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 1d7f1520ea6ebcd45843299e54a4c083, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+--- !u!114 &8599100139351566011
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 2426806733913298739}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: aba7ef91e99dec14f84fb3b1b97badb5, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  DamageClip: {fileID: 0}
+  healthChangeDelay: 0.3
 --- !u!1660057539 &9223372036854775807
 SceneRoots:
   m_ObjectHideFlags: 0

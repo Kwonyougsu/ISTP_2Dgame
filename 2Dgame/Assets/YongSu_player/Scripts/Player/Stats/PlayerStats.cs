@@ -1,12 +1,20 @@
-using System;
-using System.Collections;
-using System.Collections.Generic;
 using UnityEngine;
 
+public enum StatsChangeType
+{
+    Add, // 0
+    Multiple, // 1
+    Override, // 2
+}
 public class PlayerStats : MonoBehaviour
 {
+
+    public StatsChangeType statsChangeType;
+    [Range(0, 100)] public int maxHealth;
+    [Range(0f, 20f)] public float speed;
+    public AttackSO attackSO;
+
     public float HP;
-    public float Power;
     public GameObject endpanel;
     public GameObject endpanelbg;
     private void Start()
@@ -14,7 +22,6 @@ public class PlayerStats : MonoBehaviour
         endpanel.SetActive(false);
         endpanelbg.SetActive(false);
         HP = 100f;
-        Power = 1.0f;
     }
     private void Update()
     {

@@ -174,3 +174,4 @@ MonoBehaviour:
   damege: 1
   knockbackPower: 2
   duration: 0.3
+  itemdata: {fileID: 11400000, guid: bcc6d9806e8c93d40bd5a7de3c43448b, type: 2}

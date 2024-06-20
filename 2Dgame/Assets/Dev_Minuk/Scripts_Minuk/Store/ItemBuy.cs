@@ -8,14 +8,15 @@ using UnityEngine.UI;
 public class ItemBuy : MonoBehaviour
 {
     public ItemData itemData;
+
     public void OnBuyButton()
     {
-        if (itemData.itemprice[UIStore.instance.curIndex] < 600/*¼ÒÁö±Ý¾×*/)
+        if (itemData.itemprice[UIStore.instance.curIndex] < 600/*ï¿½ï¿½ï¿½ï¿½ï¿½Ý¾ï¿½*/)
         {
-            // ¼ÒÁö±Ý¾×¿¡¼­ itemData.itemprice[UIStore.instance.curIndex] »©ÁÖ±â
+            // ï¿½ï¿½ï¿½ï¿½ï¿½Ý¾×¿ï¿½ï¿½ï¿½ itemData.itemprice[UIStore.instance.curIndex] ï¿½ï¿½ï¿½Ö±ï¿½
             if (itemData.itemstack[UIStore.instance.curIndex] < 3)
             itemData.itemstack[UIStore.instance.curIndex]++;
         }
-        UIStore.instance.SetStotore();
+        UIStore.instance.SetStore();
     }
 }

@@ -71,7 +71,7 @@ public class EnemyHealthSystem : MonoBehaviour
 
             OnDamage?.Invoke();
             isAttacked = true;
-            Debug.Log("맞았다");
+            Debug.Log("맞았다" );
             // 피격 이펙트 사운드가 있다면 재생
             //if (DamageClip) SoundManager.PlayClip(DamageClip);
         }

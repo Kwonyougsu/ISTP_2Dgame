@@ -5,7 +5,7 @@ using UnityEngine.UIElements;
 public class PlayerInputController : TopDownController
 {
     private Camera camera;
-    private void Awake()
+    protected override void Awake()
     {
         //mainCamera태그의 카메라를 가져옴
         camera = Camera.main;

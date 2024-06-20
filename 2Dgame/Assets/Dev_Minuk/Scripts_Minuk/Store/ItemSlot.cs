@@ -8,19 +8,38 @@ using UnityEngine.UI;
 
 public class ItemSlot : MonoBehaviour
 {
+    [Header("Need Connection")]
     public ItemData itemData;
+
+    [Header("Slot")]
     public int index;
     public GameObject itemIcon;
+    public ItemStack itemStack;
+
+    public Transform slot;
     private void Start()
     {
-        GetSprite();
+        slot = this.transform;
+        itemIcon = slot.GetChild(0).gameObject;
+        itemStack = GetComponent<ItemStack>();
+        itemStack.itemData = itemData;
+        itemStack.slot = slot;
+        StartCoroutine("GetSprite");
     }
 
-    private void GetSprite()
+    IEnumerator GetSprite()
+    {
+        yield return null;
+        itemIcon.TryGetComponent<Image>(out Image icon);
+        icon.sprite = itemData.itemIcon[index];
+    }
+    /*
+    private void GetSprites()
     {
         itemIcon.TryGetComponent<Image>(out Image icon);
         icon.sprite = itemData.itemIcon[index];
     }
+    */
     public void OnClickButton()
     {
         SetStoreInfo(index);
@@ -34,6 +53,6 @@ public class ItemSlot : MonoBehaviour
         UIStore.instance.itemIcon.TryGetComponent<Image>(out Image icon);
         icon.sprite = itemData.itemIcon[index];
         UIStore.instance.itemDescription.text = itemData.itemDescription[index];
-        UIStore.instance.itemPrice.text = $"{itemData.itemprice[index]}";
+        UIStore.instance.itemPrice.text = $"{itemData.itemprice[index]} G";
     }
 }

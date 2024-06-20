@@ -171,7 +171,9 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   itemData: {fileID: 11400000, guid: bcc6d9806e8c93d40bd5a7de3c43448b, type: 2}
   index: 0
-  itemIcon: {fileID: 8783500348056730053}
+  itemIcon: {fileID: 0}
+  itemStack: {fileID: 0}
+  slot: {fileID: 0}
 --- !u!114 &3493832735569339832
 MonoBehaviour:
   m_ObjectHideFlags: 0
@@ -184,12 +186,10 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: cbcd35ed702fc9a4d922c64106da9405, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  itemData: {fileID: 11400000, guid: bcc6d9806e8c93d40bd5a7de3c43448b, type: 2}
+  itemData: {fileID: 0}
   index: 0
-  stack:
-  - {fileID: 2255176914789897233}
-  - {fileID: 2523641981001933666}
-  - {fileID: 1640255636960396396}
+  slot: {fileID: 0}
+  stack: []
 --- !u!1 &1640255636960396396
 GameObject:
   m_ObjectHideFlags: 0

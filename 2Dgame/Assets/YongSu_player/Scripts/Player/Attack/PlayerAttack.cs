@@ -1,17 +1,16 @@
-using System;
 using System.Collections;
-using Unity.VisualScripting.Antlr3.Runtime.Misc;
 using UnityEngine;
 
 public class PlayerAttack : MonoBehaviour
 {
     public GameObject AttackPrefab;
     public Transform CloseAttackPos;
-    public PlayerStats Stats;
-  
+    private SpriteRenderer characterRenderer;
+    private GameObject player;
     private void Awake()
     {
-        Stats = GetComponent<PlayerStats>();
+        characterRenderer = GetComponent<SpriteRenderer>();
+        player = this.gameObject;
     }
     private void Start()
     {
@@ -20,20 +19,28 @@ public class PlayerAttack : MonoBehaviour
         
     IEnumerator CloseAttack()
     {
-        while (Stats.HP > 0)
+        while (true)
         {
             closeAttack();
             yield return new WaitForSeconds(1f);//공격 주기
         }
-        Debug.Log("끝남");
     }
 
 
     private void closeAttack()
     {
         GameObject Attack = Instantiate(AttackPrefab);
-        Attack.transform.position =new Vector3(CloseAttackPos.position.x, CloseAttackPos.position.y);
-        StartCoroutine(EndAttack(Attack, 0.5f)); //공격 유지시간
+
+        //오른쪽 1 => false, 왼쪽 -1 =>true
+        if (!characterRenderer.flipX)
+        {
+            Attack.transform.position = new Vector3(player.transform.position.x + 1.5f, player.transform.position.y);
+        }
+        else 
+        {
+            Attack.transform.position = new Vector3(player.transform.position.x - 1.5f, player.transform.position.y);
+        }
+        StartCoroutine(EndAttack(Attack, 0.05f)); //공격 유지시간
     }
 
     IEnumerator EndAttack(GameObject Attack,float delay)

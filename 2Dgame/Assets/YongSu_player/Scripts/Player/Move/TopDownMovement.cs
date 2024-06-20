@@ -4,17 +4,18 @@ public class TopDownMovement : MonoBehaviour
 {
     private TopDownController controller;
     private Rigidbody2D movementRigidbody;
+    private PlayerStatsHandler playerStatsHandler;
     private Vector2 movementDirection;   
     private Vector2 knockback = Vector2.zero;
     private float knockbackDuration = 0.0f;
 
-    [SerializeField] private int speed = 5;
     [SerializeField] private SpriteRenderer characterRenderer;
 
     private void Awake()
     {
         controller = GetComponent<TopDownController>();
         movementRigidbody = GetComponent<Rigidbody2D>();
+        playerStatsHandler = GetComponent<PlayerStatsHandler>();
     }
 
     private void Start()
@@ -48,8 +49,9 @@ public class TopDownMovement : MonoBehaviour
     }
     private void AppiyMovemant(Vector2 dire)
     {
-        dire = dire * speed;
-       
+        dire = dire * playerStatsHandler.CurrentStat.speed;
+
+
         if (knockbackDuration > 0.0f)
         {
             dire += knockback;

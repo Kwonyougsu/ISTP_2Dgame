@@ -31,11 +31,20 @@ public class ItemStack : MonoBehaviour
             itemData.itemstack[index] = 2;
             stack[0].SetActive(true);
             stack[1].SetActive(true);
+            stack[2].SetActive(false);
         }
         else if (itemData.itemstack[index] >= 1)
         {
             itemData.itemstack[index] = 1;
             stack[0].SetActive(true);
+            stack[1].SetActive(false);
+            stack[2].SetActive(false);
+        }
+        else if (itemData.itemstack[index] == 0)
+        {
+            stack[0].SetActive(false);
+            stack[1].SetActive(false);
+            stack[2].SetActive(false);
         }
     }
 }

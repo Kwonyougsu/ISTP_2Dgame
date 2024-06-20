@@ -16,6 +16,6 @@ public class ItemBuy : MonoBehaviour
             if (itemData.itemstack[UIStore.instance.curIndex] < 3)
             itemData.itemstack[UIStore.instance.curIndex]++;
         }
-        UIStore.instance.SetStotore();
+        UIStore.instance.SetStore();
     }
 }

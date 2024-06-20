@@ -40,7 +40,7 @@ public class UIStore : MonoBehaviour
         itemInfo.SetActive(false);
     }
 
-    public void SetStotore()
+    public void SetStore()
     {
         for(int i = 0; i < itemStack.Length; i++)
         {

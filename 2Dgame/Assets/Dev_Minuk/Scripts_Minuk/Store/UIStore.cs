@@ -45,6 +45,8 @@ public class UIStore : MonoBehaviour
         itemPrice = itemInfoPos.GetChild(4).GetComponent<TextMeshProUGUI>();
         itemInfo = itemInfoPos.gameObject;
         ClearStore();
+        
+        this.gameObject.SetActive(false);
     }
 
     void ClearStore()

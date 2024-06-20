@@ -12,7 +12,7 @@ public enum StatsChangeType
 public class PlayerStats 
 {
     public StatsChangeType statsChangeType;
-    [Range(0, 100)] public int maxHealth;
-    [Range(0f, 50f)] public float speed;
+    public int maxHealth;
+    public float speed;
     public AttackSO attackSO;
 }

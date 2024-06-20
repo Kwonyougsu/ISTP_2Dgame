@@ -14,29 +14,29 @@ public class PlayerStats : MonoBehaviour
     [Range(0f, 20f)] public float speed;
     public AttackSO attackSO;
 
-    public float HP;
-    public GameObject endpanel;
-    public GameObject endpanelbg;
-    private void Start()
-    {
-        endpanel.SetActive(false);
-        endpanelbg.SetActive(false);
-        HP = 100f;
-    }
-    private void Update()
-    {
-        LowHp();
-    }
+    //public float HP;
+    //public GameObject endpanel;
+    //public GameObject endpanelbg;
+    //private void Start()
+    //{
+    //    endpanel.SetActive(false);
+    //    endpanelbg.SetActive(false);
+    //    HP = 100f;
+    //}
+    //private void Update()
+    //{
+    //    LowHp();
+    //}
 
-    public void LowHp(float damage = 0)
-    {
-        HP -= damage;
+    //public void LowHp(float damage = 0)
+    //{
+    //    HP -= damage;
         
-        if (HP <= 0)
-        {
-            Time.timeScale = 0f;
-            endpanel.SetActive(true);
-            endpanelbg.SetActive(true);
-        }
-    }
+    //    if (HP <= 0)
+    //    {
+    //        Time.timeScale = 0f;
+    //        endpanel.SetActive(true);
+    //        endpanelbg.SetActive(true);
+    //    }
+    //}
 }

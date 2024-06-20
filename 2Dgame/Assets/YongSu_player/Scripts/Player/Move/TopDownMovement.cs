@@ -9,7 +9,6 @@ public class TopDownMovement : MonoBehaviour
     private Vector2 knockback = Vector2.zero;
     private float knockbackDuration = 0.0f;
 
-    [SerializeField] private int speed = 5;
     [SerializeField] private SpriteRenderer characterRenderer;
 
     private void Awake()

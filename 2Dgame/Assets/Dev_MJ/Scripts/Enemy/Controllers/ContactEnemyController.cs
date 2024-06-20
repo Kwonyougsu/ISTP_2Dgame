@@ -71,7 +71,8 @@ public class ContactEnemyController : EnemyController
 
         //Debug.Log($"플레이어 근접 공격 성공");
         // 플레이어 체력 감소
-        receiver.GetComponent<PlayerStats>().LowHp(stats.CurrentStat.attackSO.power);
+        receiver.GetComponent<PlayerHealthSystem>().PlayerChangeHealth(stats.CurrentStat.attackSO.power);
+        Debug.Log("몬스터 데미지 " + stats.CurrentStat.attackSO.power);
         if (!stats.CurrentStat.attackSO.isOnKnockBack) return;
         receiver.GetComponent<TopDownMovement>().ApplyKnockback(transform, stats.CurrentStat.attackSO.knockbackPower, stats.CurrentStat.attackSO.knockbackTime);
     }
@@ -85,7 +86,7 @@ public class ContactEnemyController : EnemyController
 
         if (1 << receiver.layer != layerPlayer) return;
 
-        receiver.GetComponent<PlayerStats>().LowHp(stats.CurrentStat.attackSO.power);
+        receiver.GetComponent<PlayerHealthSystem>().PlayerChangeHealth(stats.CurrentStat.attackSO.power);
         if (!stats.CurrentStat.attackSO.isOnKnockBack) return;
         receiver.GetComponent<TopDownMovement>().ApplyKnockback(transform, stats.CurrentStat.attackSO.knockbackPower, stats.CurrentStat.attackSO.knockbackTime);
         curDelay = stats.CurrentStat.attackSO.delay;
@@ -94,7 +95,7 @@ public class ContactEnemyController : EnemyController
 
     private void OnTriggerExit2D(Collider2D collision)
     {
-        Debug.Log($"ContactEnemyController.cs - OnTriggerExit2D()");
+        //Debug.Log($"ContactEnemyController.cs - OnTriggerExit2D()");
 
         GameObject receiver = collision.gameObject;
         isCollidingWithTarget = false;

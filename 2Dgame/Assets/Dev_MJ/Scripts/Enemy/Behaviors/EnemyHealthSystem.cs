@@ -67,11 +67,11 @@ public class EnemyHealthSystem : MonoBehaviour
             // [최솟값을 0, 최댓값을 MaxHealth로 하는 구문]
             CurrentHealth = Mathf.Clamp(CurrentHealth, 0, MaxHealth);
 
-            Debug.Log($"CurrentHealth: {CurrentHealth}");
+            Debug.Log($"몬스터 체력 CurrentHealth: {CurrentHealth}, MaxHealth: {MaxHealth}");
 
             OnDamage?.Invoke();
             isAttacked = true;
-            Debug.Log("맞았다" );
+            //Debug.Log("맞았다" );
             // 피격 이펙트 사운드가 있다면 재생
             //if (DamageClip) SoundManager.PlayClip(DamageClip);
         }
@@ -79,7 +79,7 @@ public class EnemyHealthSystem : MonoBehaviour
         if (CurrentHealth <= 0f)
         {
             CallDeath();
-            Debug.Log("죽었다");
+            Debug.Log("몬스터 죽었다");
             return true;
 
         }              

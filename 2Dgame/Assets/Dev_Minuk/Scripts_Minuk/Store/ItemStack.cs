@@ -2,6 +2,7 @@ using System;
 using System.Collections;
 using System.Collections.Generic;
 using Unity.VisualScripting;
+using Unity.VisualScripting.Antlr3.Runtime.Misc;
 using UnityEngine;
 using static UnityEngine.ParticleSystem;
 
@@ -9,11 +10,28 @@ public class ItemStack : MonoBehaviour
 {
     public ItemData itemData;
     public int index;
+    public Transform slot;
 
     public GameObject[] stack;
 
     private void Start()
     {
+        StartCoroutine("GetStackCilde");
+    }
+    IEnumerator GetStackCilde()
+    {
+        yield return null;
+        stack = new GameObject[slot.childCount - 4];
+        for (int i = 4; i < slot.childCount; i++)
+        {
+            stack[i - 4] = slot.GetChild(i).gameObject;
+        }
+        StartCoroutine("SetStacks");
+    }
+
+    IEnumerator SetStacks()
+    {
+        yield return null;
         SetStack();
     }
 

@@ -11,9 +11,9 @@ public class ItemBuy : MonoBehaviour
 
     public void OnBuyButton()
     {
-        if (itemData.itemprice[UIStore.instance.curIndex] < 600/*�����ݾ�*/)
+        if (itemData.itemprice[UIStore.instance.curIndex] <= 600)
         {
-            // �����ݾ׿��� itemData.itemprice[UIStore.instance.curIndex] ���ֱ�
+            // player Gold - itemData.itemprice[UIStore.instance.curIndex]
             if (itemData.itemstack[UIStore.instance.curIndex] < 3)
             itemData.itemstack[UIStore.instance.curIndex]++;
         }

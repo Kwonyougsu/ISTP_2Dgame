@@ -33,13 +33,7 @@ public class ItemSlot : MonoBehaviour
         itemIcon.TryGetComponent<Image>(out Image icon);
         icon.sprite = itemData.itemIcon[index];
     }
-    /*
-    private void GetSprites()
-    {
-        itemIcon.TryGetComponent<Image>(out Image icon);
-        icon.sprite = itemData.itemIcon[index];
-    }
-    */
+
     public void OnClickButton()
     {
         SetStoreInfo(index);

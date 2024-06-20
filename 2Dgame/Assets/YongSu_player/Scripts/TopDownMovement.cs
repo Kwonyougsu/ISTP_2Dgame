@@ -4,7 +4,9 @@ public class TopDownMovement : MonoBehaviour
 {
     private TopDownController controller;
     private Rigidbody2D movementRigidbody;
-    private Vector2 movementDirection;
+    private Vector2 movementDirection;   
+    private Vector2 knockback = Vector2.zero;
+    private float knockbackDuration = 0.0f;
 
     [SerializeField] private int speed = 5;
     [SerializeField] private SpriteRenderer characterRenderer;
@@ -37,11 +39,31 @@ public class TopDownMovement : MonoBehaviour
     private void FixedUpdate()
     {
         AppiyMovemant(movementDirection);
+
+        // ³Ë¹é È¿°ú
+        if (knockbackDuration > 0.0f)
+        {
+            knockbackDuration -= Time.fixedDeltaTime;
+        }
     }
     private void AppiyMovemant(Vector2 dire)
     {
         dire = dire * speed;
+       
+        if (knockbackDuration > 0.0f)
+        {
+            dire += knockback;
+        }
+
         movementRigidbody.velocity = dire;
+
+    }
+    
+    public void ApplyKnockback(Transform other, float power, float duration)
+    {
+        knockbackDuration = duration;
+
+        knockback = -(other.position - transform.position).normalized * power;
     }
 
 

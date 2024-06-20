@@ -13,12 +13,12 @@ MonoBehaviour:
   m_Name: EnemyAttackSO
   m_EditorClassIdentifier: 
   size: 1
-  delay: 0.5
+  delay: 1
   power: 1
-  speed: 3
+  speed: 1.5
   target:
     serializedVersion: 2
     m_Bits: 64
-  isOnKnockBack: 0
-  knockbackPower: 0
-  knockbackTime: 0
+  isOnKnockBack: 1
+  knockbackPower: 3
+  knockbackTime: 0.5

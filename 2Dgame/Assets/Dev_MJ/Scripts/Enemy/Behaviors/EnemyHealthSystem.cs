@@ -9,7 +9,8 @@ public class EnemyHealthSystem : MonoBehaviour
     [SerializeField] private AudioClip DamageClip;
 
     // 무적시간을 위한 필드 (체력 변화까지의 딜레이)
-    [SerializeField] private float healthChangeDelay = 0.3f;
+    [SerializeField] private float healthChangeDelay = 0.5f;     
+
     private float timeSinceLastChange = float.MaxValue;
 
     // enemy 능력치 캐싱
@@ -36,31 +37,54 @@ public class EnemyHealthSystem : MonoBehaviour
 
     }
 
+    private void Update()
+   {      
+        if (isAttacked && timeSinceLastChange < healthChangeDelay)
+        {
+            timeSinceLastChange += Time.deltaTime;
+            
+            if (timeSinceLastChange >= healthChangeDelay)
+            {     
+                OnInvincibilityEnd?.Invoke();                
+                isAttacked = false;
+            }
+        }
+    }
+
     // 공격을 받았을 때
-    public void ChangeHealth(float change)
+    public bool ChangeHealth(float change)
     {
 
-        CurrentHealth += change;
-        // [최솟값을 0, 최댓값을 MaxHealth로 하는 구문]
-        CurrentHealth = Mathf.Clamp(CurrentHealth, 0, MaxHealth);      
+        if (change < 0)
+        {            
+            if (timeSinceLastChange < healthChangeDelay)
+            {
+                return false;
+            }            
+            timeSinceLastChange = 0f;
 
-        if (CurrentHealth <= 0f)
-        {
-            CallDeath();
-            Debug.Log("죽었다");
-            return;
+            CurrentHealth += change;
+            // [최솟값을 0, 최댓값을 MaxHealth로 하는 구문]
+            CurrentHealth = Mathf.Clamp(CurrentHealth, 0, MaxHealth);
 
-        }      
-        else
-        {
-     
+            Debug.Log($"CurrentHealth: {CurrentHealth}");
+
             OnDamage?.Invoke();
             isAttacked = true;
             Debug.Log("맞았다");
             // 피격 이펙트 사운드가 있다면 재생
             //if (DamageClip) SoundManager.PlayClip(DamageClip);
-
         }
+        
+        if (CurrentHealth <= 0f)
+        {
+            CallDeath();
+            Debug.Log("죽었다");
+            return true;
+
+        }              
+      
+        return true;
     }
 
     private void CallDeath()

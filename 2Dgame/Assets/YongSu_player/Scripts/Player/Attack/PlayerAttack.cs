@@ -20,12 +20,11 @@ public class PlayerAttack : MonoBehaviour
         
     IEnumerator CloseAttack()
     {
-        while (Stats.HP > 0)
+        while (true)
         {
             closeAttack();
             yield return new WaitForSeconds(1f);//공격 주기
         }
-        Debug.Log("끝남");
     }
 
 
@@ -33,7 +32,7 @@ public class PlayerAttack : MonoBehaviour
     {
         GameObject Attack = Instantiate(AttackPrefab);
         Attack.transform.position =new Vector3(CloseAttackPos.position.x, CloseAttackPos.position.y);
-        StartCoroutine(EndAttack(Attack, 0.5f)); //공격 유지시간
+        StartCoroutine(EndAttack(Attack, 0.15f)); //공격 유지시간
     }
 
     IEnumerator EndAttack(GameObject Attack,float delay)

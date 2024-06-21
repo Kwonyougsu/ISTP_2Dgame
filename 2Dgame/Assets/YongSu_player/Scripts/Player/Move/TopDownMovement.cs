@@ -5,7 +5,7 @@ public class TopDownMovement : MonoBehaviour
     private TopDownController controller;
     private Rigidbody2D movementRigidbody;
     private PlayerStatsHandler playerStatsHandler;
-    private Vector2 movementDirection;   
+    public Vector2 movementDirection;   
     private Vector2 knockback = Vector2.zero;
     private float knockbackDuration = 0.0f;
 

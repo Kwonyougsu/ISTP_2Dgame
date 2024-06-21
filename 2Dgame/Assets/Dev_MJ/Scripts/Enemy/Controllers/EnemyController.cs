@@ -26,8 +26,8 @@ public class EnemyController : MonoBehaviour
     protected virtual void Start()
     {
         // 플레이어 위치 캐싱
-        ClosestTarget = closerTarget;//임시
-        //ClosestTarget = GameManager.Instance.Player;
+        //ClosestTarget = closerTarget;//임시
+        ClosestTarget = GameManagerTemp.Instance.Player;//임시***
     }
 
     // 타겟 까지와의 거리

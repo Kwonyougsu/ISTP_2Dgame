@@ -4,6 +4,8 @@ using UnityEngine;
 
 public class ObjectPool : MonoBehaviour
 {
+    public static ObjectPool Instance;
+
     [System.Serializable]
     public class Pool
     {   
@@ -18,6 +20,8 @@ public class ObjectPool : MonoBehaviour
 
     private void Awake()
     {
+        if(Instance == null) Instance = this;
+
         PoolDictionary = new Dictionary<string, Queue<GameObject>>();
         foreach (var pool in Pools)
         {

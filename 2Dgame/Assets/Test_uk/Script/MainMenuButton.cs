@@ -24,6 +24,7 @@ public class MainMenuButton : MonoBehaviour
     {
         mainMenu.SetActive(false);
         storeMenu.SetActive(true);
+        UIStore.instance.ClearStore();
     }
 
     public void GameExit()

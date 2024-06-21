@@ -24,6 +24,7 @@ public class PlayerSelect : MonoBehaviour
 
     public void OnGameStartClick()
     {
+        GameManager.Instance.StageDataReset();
         SceneManager.LoadScene("MainScene"); // 변경할 씬 이름
     }
 }

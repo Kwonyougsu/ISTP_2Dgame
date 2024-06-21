@@ -18,7 +18,7 @@ public class PlayerSelect : MonoBehaviour
 
     void SelectButton(int playerid)
     {
-        GameManager.Instance.SetCharacterId(playerid);
+        PlayerGameManager.Instance.SetCharacterId(playerid);
         Debug.Log("Selected Button: " + playerid);
     }
 

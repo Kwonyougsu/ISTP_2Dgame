@@ -1813,7 +1813,11 @@ MonoBehaviour:
   AttackPrefab:
   - {fileID: 824385591653717336, guid: 082205a7ed0bc81439bf23e2f0ece811, type: 3}
   - {fileID: 840133569805233725, guid: f49b9bd75f4e7274da20d72b2d9737a6, type: 3}
-  speed: 10
+  RangedAttackspeed: 100
+  detectionRange: 50
+  characer:
+  - {fileID: 21300000, guid: 7c7fbc259252fd44c83d9475e91ef24a, type: 3}
+  - {fileID: 21300000, guid: 1b94369e07b443447ad04b5488091889, type: 3}
 --- !u!114 &1244441630
 MonoBehaviour:
   m_ObjectHideFlags: 0

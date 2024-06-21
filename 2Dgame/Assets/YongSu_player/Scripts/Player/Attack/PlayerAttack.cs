@@ -10,7 +10,8 @@ public class PlayerAttack : MonoBehaviour
 
     public float RangedAttackspeed = 100f;
     public float detectionRange = 50f;
-
+    public Sprite[] characer;
+    private int playerid;
 
     private void Awake()
     {
@@ -19,20 +20,29 @@ public class PlayerAttack : MonoBehaviour
     }
     private void Start()
     {
-        StartCoroutine(Attack());  
+        playerid = PlayerGameManager.Instance.PlayerId;
+        if (playerid == 0)
+        {
+            characterRenderer.sprite = characer[playerid];
+        }
+        if (playerid == 1)
+        {
+            characterRenderer.sprite = characer[playerid];
+        }
+        StartCoroutine(Attack(PlayerGameManager.Instance.PlayerId));  
     }
 
-    IEnumerator Attack()
+    IEnumerator Attack(int id)
     {
         
         while (true)
         {
-            if(GameManager.Instance.PlayerId == 0)
+            if(id == 0)
             {
                 closeAttack();
                 yield return new WaitForSeconds(0.5f);
             }
-            else if (GameManager.Instance.PlayerId == 1) //원거리는 탐지 먼저 해야함
+            else if (id == 1) //원거리는 탐지 먼저 해야함
             {
                 Detected();
                 yield return new WaitForSeconds(0.5f);

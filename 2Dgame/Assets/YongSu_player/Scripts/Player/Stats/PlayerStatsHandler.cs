@@ -12,7 +12,6 @@ public class PlayerStatsHandler : MonoBehaviour
     private readonly float MinSpeed = 5f;
     private readonly int MinMaxHealth = 10;
 
-
     private void Awake()
     {        
         UpdateCharacterStat();

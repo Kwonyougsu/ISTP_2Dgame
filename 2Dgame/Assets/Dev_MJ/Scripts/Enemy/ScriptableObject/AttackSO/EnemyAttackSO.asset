@@ -20,5 +20,5 @@ MonoBehaviour:
     serializedVersion: 2
     m_Bits: 64
   isOnKnockBack: 1
-  knockbackPower: 3
-  knockbackTime: 0.5
+  knockbackPower: 0.0001
+  knockbackTime: 0.2

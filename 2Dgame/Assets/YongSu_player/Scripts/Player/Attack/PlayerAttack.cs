@@ -9,7 +9,7 @@ public class PlayerAttack : MonoBehaviour
     private GameObject player;
 
     public float RangedAttackspeed = 100f;
-    public float detectionRange = 100f;
+    public float detectionRange = 50f;
 
 
     private void Awake()
@@ -24,12 +24,21 @@ public class PlayerAttack : MonoBehaviour
 
     IEnumerator Attack()
     {
-        // if Characterselect -> close 
+        
         while (true)
         {
-            //closeAttack();
-            Detected();
-            yield return new WaitForSeconds(1f);//공격 주기
+            if(GameManager.Instance.PlayerId == 0)
+            {
+                closeAttack();
+                yield return new WaitForSeconds(0.5f);
+            }
+            else if (GameManager.Instance.PlayerId == 1) //원거리는 탐지 먼저 해야함
+            {
+                Detected();
+                yield return new WaitForSeconds(0.5f);
+            }
+            
+            yield return new WaitForSeconds(0.5f);//공격 주기 / 아이템으로 값 줄이면 주기 단축가능
         }
     }
 
@@ -59,7 +68,7 @@ public class PlayerAttack : MonoBehaviour
 
     #region 원거리 공격
 
-    private void Detected()
+    private void Detected() // 원거리 적 감지
     {
         Collider2D[] hitColliders = Physics2D.OverlapCircleAll(player.transform.position, detectionRange);
         foreach (var hitCollider in hitColliders)
@@ -70,7 +79,7 @@ public class PlayerAttack : MonoBehaviour
             }
         }
     }
-    private void RangedAttack(Transform target)
+    private void RangedAttack(Transform target) // 원거리 공격 
     {
         GameObject Attack = Instantiate(AttackPrefab[1]);
 

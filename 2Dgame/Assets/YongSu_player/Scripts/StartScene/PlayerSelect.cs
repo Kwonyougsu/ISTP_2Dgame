@@ -7,33 +7,23 @@ public class PlayerSelect : MonoBehaviour
     public Button closeButton;
     public Button rangedButton;
     public Button startButton;
-    private string selectedButtonName;
+  
 
     void Start()
     {
-        closeButton.onClick.AddListener(() => SelectButton("Close"));
-        rangedButton.onClick.AddListener(() => SelectButton("Ranged"));
+        closeButton.onClick.AddListener(() => SelectButton(0));
+        rangedButton.onClick.AddListener(() => SelectButton(1));
         startButton.onClick.AddListener(OnGameStartClick);
     }
 
-    void SelectButton(string buttonName)
+    void SelectButton(int playerid)
     {
-        selectedButtonName = buttonName;
-        Debug.Log("Selected Button: " + selectedButtonName);
+        GameManager.Instance.SetCharacterId(playerid);
+        Debug.Log("Selected Button: " + playerid);
     }
 
-    void OnGameStartClick()
+    public void OnGameStartClick()
     {
-        if (!string.IsNullOrEmpty(selectedButtonName))
-        {
-            PlayerPrefs.SetString("SelectedButton", selectedButtonName);
-            PlayerPrefs.Save();
-            Debug.Log("Game Started with selected button: " + selectedButtonName);
-            SceneManager.LoadScene("MainScene_yong"); // 변경할 씬 이름
-        }
-        else
-        {
-            Debug.Log("No button selected");
-        }
+        SceneManager.LoadScene("MainScene_yong"); // 변경할 씬 이름
     }
 }

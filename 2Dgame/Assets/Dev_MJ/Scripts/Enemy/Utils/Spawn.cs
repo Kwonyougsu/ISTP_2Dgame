@@ -29,7 +29,7 @@ public class Spawn : MonoBehaviour
     {
         //UpgradeStatInit();       
         StartCoroutine(StartNextWave());
-        playerPos = GameManagerTemp.Instance.player;
+        playerPos = GameManager.Instance.player;
 
     }
 

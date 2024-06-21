@@ -7,6 +7,14 @@ public class GameManager : MonoBehaviour
 {
     private static GameManager _instance;
     public TopDownMovement playerDirection;
+    public Transform player;
+
+    public Transform Player
+    {
+        get { return player; }
+        private set { player = value; }
+    }
+
     public static GameManager Instance
     {
         get

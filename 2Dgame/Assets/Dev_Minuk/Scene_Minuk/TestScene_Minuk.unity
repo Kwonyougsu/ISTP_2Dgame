@@ -3158,8 +3158,8 @@ MonoBehaviour:
   Lv: 0
   maxExp: 0
   curExp: 0
-  playerCoin: 0
-  stageCoin: 0
+  playerGold: 0
+  stageGold: 0
 --- !u!4 &1377522130
 Transform:
   m_ObjectHideFlags: 0

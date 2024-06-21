@@ -14,7 +14,7 @@ public class Level_UI : MonoBehaviour
 
     private void Update()
     {
-        expBar.fillAmount = GetPercentage();
+        //expBar.fillAmount = GetPercentage();
     }
 
     public float GetPercentage()

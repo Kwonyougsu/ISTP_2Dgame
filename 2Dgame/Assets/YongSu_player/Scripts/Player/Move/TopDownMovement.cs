@@ -16,6 +16,7 @@ public class TopDownMovement : MonoBehaviour
         controller = GetComponent<TopDownController>();
         movementRigidbody = GetComponent<Rigidbody2D>();
         playerStatsHandler = GetComponent<PlayerStatsHandler>();
+        GameManager.Instance.playerDirection = this;
     }
 
     private void Start()

@@ -54,10 +54,9 @@ public class ContactEnemyController : EnemyController
         //characterRenderer.flipX = Mathf.Abs(rotZ) > 90f;//나중에 이미지 추가할것**
     }
 
- 
 
     // 적과 닿았을 때 처리 (근거리 공격)
-    private void OnTriggerEnter2D(Collider2D collision)
+    private void OnCollisionEnter2D(Collision2D collision)
     {
         //Debug.Log($"ContactEnemyController.cs - OnTriggerEnter2D()");
         GameObject receiver = collision.gameObject;
@@ -74,23 +73,23 @@ public class ContactEnemyController : EnemyController
         receiver.GetComponent<TopDownMovement>().ApplyKnockback(transform, stats.CurrentStat.attackSO.knockbackPower, stats.CurrentStat.attackSO.knockbackTime);
     }
 
-    private void OnTriggerStay2D(Collider2D collision)
-    {
-        if (!isCollidingWithTarget) isCollidingWithTarget = true;
-        if (curDelay > 0f) return;
+    //private void OnTriggerStay2D(Collision2D collision)
+    //{
+    //    if (!isCollidingWithTarget) isCollidingWithTarget = true;
+    //    if (curDelay > 0f) return;
 
-        GameObject receiver = collision.gameObject;
+    //    GameObject receiver = collision.gameObject;
 
-        if (1 << receiver.layer != layerPlayer) return;
+    //    if (1 << receiver.layer != layerPlayer) return;
 
-        receiver.GetComponent<PlayerHealthSystem>().PlayerChangeHealth(stats.CurrentStat.attackSO.power);
-        if (!stats.CurrentStat.attackSO.isOnKnockBack) return;
-        receiver.GetComponent<TopDownMovement>().ApplyKnockback(transform, stats.CurrentStat.attackSO.knockbackPower, stats.CurrentStat.attackSO.knockbackTime);
-        curDelay = stats.CurrentStat.attackSO.delay;
+    //    receiver.GetComponent<PlayerHealthSystem>().PlayerChangeHealth(stats.CurrentStat.attackSO.power);
+    //    if (!stats.CurrentStat.attackSO.isOnKnockBack) return;
+    //    receiver.GetComponent<TopDownMovement>().ApplyKnockback(transform, stats.CurrentStat.attackSO.knockbackPower, stats.CurrentStat.attackSO.knockbackTime);
+    //    curDelay = stats.CurrentStat.attackSO.delay;
 
-    }
+    //}
 
-    private void OnTriggerExit2D(Collider2D collision)
+    private void OnCollisionExit2D(Collision2D collision)
     {
         //Debug.Log($"ContactEnemyController.cs - OnTriggerExit2D()");
 

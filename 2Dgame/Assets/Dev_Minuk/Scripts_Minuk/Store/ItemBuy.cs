@@ -14,10 +14,13 @@ public class ItemBuy : MonoBehaviour
     }
     public void OnBuyButton()
     {
-        if (itemData.itemprice[UIStore.instance.curIndex] <= GameManager.Instance.playerGold && itemData.itemstack[UIStore.instance.curIndex] < 3)
+        if(UIStore.instance.curIndex != null)
         {
-            GameManager.Instance.playerGold -= itemData.itemprice[UIStore.instance.curIndex];
-            itemData.itemstack[UIStore.instance.curIndex]++;
+            if (itemData.itemprice[(int)UIStore.instance.curIndex] <= GameManager.Instance.playerGold && itemData.itemstack[(int)UIStore.instance.curIndex] < 3)
+            {
+                GameManager.Instance.playerGold -= itemData.itemprice[(int)UIStore.instance.curIndex];
+                itemData.itemstack[(int)UIStore.instance.curIndex]++;
+            }
         }
         UIStore.instance.SetStore();
     }

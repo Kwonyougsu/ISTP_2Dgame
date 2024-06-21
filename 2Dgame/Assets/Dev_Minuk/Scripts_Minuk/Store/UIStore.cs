@@ -22,14 +22,24 @@ public class UIStore : MonoBehaviour
     public TextMeshProUGUI itemDescription;
     public TextMeshProUGUI itemPrice;
     public GameObject itemInfo;
-    public int curIndex;
+    public int? curIndex;
 
 
     [Header("Item Stack")]
     public GameObject[] itemStack;
+
+    [Header("Player Gold")]
+    public TextMeshProUGUI playerGoldTxt;
+    public Transform storeMenu;
+    public Transform playerGold;
+
     private void Awake()
     {
+        curIndex = null;
         instance = this;
+        storeMenu = this.transform;
+        playerGold = storeMenu.GetChild(5).transform;
+        playerGoldTxt = playerGold.GetChild(1).GetComponent<TextMeshProUGUI>();
         itemData = GameManager.Instance.itemData;
         itemStack = new GameObject[slots.childCount];
         for (int i = 0; i < slots.childCount; i++)
@@ -48,14 +58,16 @@ public class UIStore : MonoBehaviour
         ClearStore();
     }
 
-    void ClearStore()
+    public void ClearStore()
     {
+        playerGoldTxt.text = $"{GameManager.Instance.playerGold} G";
         itemInfo.SetActive(false);
     }
 
     public void SetStore()
     {
-        for(int i = 0; i < itemStack.Length; i++)
+        playerGoldTxt.text = $"{GameManager.Instance.playerGold} G";
+        for (int i = 0; i < itemStack.Length; i++)
         {
             itemStack[i].TryGetComponent<ItemStack>(out ItemStack stack);
             stack.SetStack();

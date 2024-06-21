@@ -18,5 +18,7 @@ public class ItemStackReset : MonoBehaviour
             itemData.itemstack[i] = 0;
         }
         UIStore.instance.SetStore();
+        UIStore.instance.ClearStore();
+        UIStore.instance.curIndex = null;
     }
 }

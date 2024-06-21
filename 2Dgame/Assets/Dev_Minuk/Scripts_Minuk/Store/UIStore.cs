@@ -11,12 +11,12 @@ public class UIStore : MonoBehaviour
     public static UIStore instance;
 
     [Header("Need Connection")]
-    public ItemData itemData;
     public Transform slots;
     public Transform itemInfoPos;
 
 
     [Header("Select Item")]
+    public ItemData itemData;
     public TextMeshProUGUI itemName;
     public GameObject itemIcon;
     public TextMeshProUGUI itemDescription;
@@ -30,12 +30,9 @@ public class UIStore : MonoBehaviour
     private void Awake()
     {
         instance = this;
-    }
-
-    void Start()
-    {
+        itemData = GameManager.Instance.itemData;
         itemStack = new GameObject[slots.childCount];
-        for(int i = 0; i < slots.childCount; i++)
+        for (int i = 0; i < slots.childCount; i++)
         {
             itemStack[i] = slots.GetChild(i).gameObject;
         }
@@ -44,6 +41,10 @@ public class UIStore : MonoBehaviour
         itemDescription = itemInfoPos.GetChild(3).GetComponent<TextMeshProUGUI>();
         itemPrice = itemInfoPos.GetChild(4).GetComponent<TextMeshProUGUI>();
         itemInfo = itemInfoPos.gameObject;
+    }
+
+    void Start()
+    {
         ClearStore();
     }
 

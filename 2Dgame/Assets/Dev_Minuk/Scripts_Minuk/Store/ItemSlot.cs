@@ -8,28 +8,24 @@ using UnityEngine.UI;
 
 public class ItemSlot : MonoBehaviour
 {
-    [Header("Need Connection")]
-    public ItemData itemData;
-
     [Header("Slot")]
+    public ItemData itemData;
     public int index;
     public GameObject itemIcon;
     public ItemStack itemStack;
 
     public Transform slot;
+
+    private void Awake()
+    {
+        itemData = GameManager.Instance.itemData;
+        slot = this.transform;
+        itemStack = GetComponent<ItemStack>();
+        itemStack.slot = slot;
+        itemIcon = slot.GetChild(0).gameObject;
+    }
     private void Start()
     {
-        slot = this.transform;
-        itemIcon = slot.GetChild(0).gameObject;
-        itemStack = GetComponent<ItemStack>();
-        itemStack.itemData = itemData;
-        itemStack.slot = slot;
-        StartCoroutine("GetSprite");
-    }
-
-    IEnumerator GetSprite()
-    {
-        yield return null;
         itemIcon.TryGetComponent<Image>(out Image icon);
         icon.sprite = itemData.itemIcon[index];
     }

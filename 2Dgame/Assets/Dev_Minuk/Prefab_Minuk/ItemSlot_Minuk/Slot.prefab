@@ -169,7 +169,7 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: ca2a14012fe079646badd7fac60f3229, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  itemData: {fileID: 11400000, guid: bcc6d9806e8c93d40bd5a7de3c43448b, type: 2}
+  itemData: {fileID: 0}
   index: 0
   itemIcon: {fileID: 0}
   itemStack: {fileID: 0}

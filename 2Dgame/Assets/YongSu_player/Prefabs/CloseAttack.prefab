@@ -12,6 +12,7 @@ GameObject:
   - component: {fileID: 1498611006487685009}
   - component: {fileID: 2692189671935625560}
   - component: {fileID: 2702878943172346890}
+  - component: {fileID: 5830609545790066393}
   m_Layer: 0
   m_Name: CloseAttack
   m_TagString: Untagged
@@ -147,3 +148,30 @@ MonoBehaviour:
   knockbackPower: 2
   duration: 0.3
   itemdata: {fileID: 11400000, guid: bcc6d9806e8c93d40bd5a7de3c43448b, type: 2}
+--- !u!50 &5830609545790066393
+Rigidbody2D:
+  serializedVersion: 4
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 824385591653717336}
+  m_BodyType: 0
+  m_Simulated: 1
+  m_UseFullKinematicContacts: 0
+  m_UseAutoMass: 0
+  m_Mass: 1
+  m_LinearDrag: 0
+  m_AngularDrag: 0.05
+  m_GravityScale: 0
+  m_Material: {fileID: 0}
+  m_IncludeLayers:
+    serializedVersion: 2
+    m_Bits: 0
+  m_ExcludeLayers:
+    serializedVersion: 2
+    m_Bits: 0
+  m_Interpolate: 0
+  m_SleepingMode: 1
+  m_CollisionDetection: 0
+  m_Constraints: 0

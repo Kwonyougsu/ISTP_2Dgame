@@ -14,24 +14,17 @@ public class ItemStack : MonoBehaviour
 
     public GameObject[] stack;
 
+    private void Awake()
+    {
+        itemData = GameManager.Instance.itemData;
+        stack = new GameObject[slot.childCount - 4];
+    }
     private void Start()
     {
-        StartCoroutine("GetStackCilde");
-    }
-    IEnumerator GetStackCilde()
-    {
-        yield return null;
-        stack = new GameObject[slot.childCount - 4];
         for (int i = 4; i < slot.childCount; i++)
         {
             stack[i - 4] = slot.GetChild(i).gameObject;
         }
-        StartCoroutine("SetStacks");
-    }
-
-    IEnumerator SetStacks()
-    {
-        yield return null;
         SetStack();
     }
 

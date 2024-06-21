@@ -18,12 +18,12 @@ public class PlayerSelect : MonoBehaviour
 
     void SelectButton(int playerid)
     {
-        PlayerGameManager.Instance.SetCharacterId(playerid);
+        GameManager.Instance.SetCharacterId(playerid);
         Debug.Log("Selected Button: " + playerid);
     }
 
     public void OnGameStartClick()
     {
-        SceneManager.LoadScene("MainScene_yong"); // 변경할 씬 이름
+        SceneManager.LoadScene("MainScene"); // 변경할 씬 이름
     }
 }

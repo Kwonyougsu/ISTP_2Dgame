@@ -17,6 +17,8 @@ public class GameManager : MonoBehaviour
             return _instance;
         }
     }
+    public int PlayerId;
+
 
     private void Awake()
     {
@@ -64,5 +66,9 @@ public class GameManager : MonoBehaviour
     {
         if(curExp >= maxExp) curExp -= maxExp; // exp아이템을 한번에 먹었을 때 정상적으로 동작하지 않을 것 같아서
         Lv++;
+    }
+    public void SetCharacterId(int id)
+    {
+        PlayerId = id;
     }
 }

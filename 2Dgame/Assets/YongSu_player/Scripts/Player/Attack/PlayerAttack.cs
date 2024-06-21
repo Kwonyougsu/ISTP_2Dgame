@@ -21,35 +21,34 @@ public class PlayerAttack : MonoBehaviour
     }
     private void Start()
     {
-        //playerid = PlayerGameManager.Instance.PlayerId;
-        //if (playerid == 0)
-        //{
-        //    characterRenderer.sprite = characer[playerid];
-        //}
-        //if (playerid == 1)
-        //{
-        //    characterRenderer.sprite = characer[playerid];
-        //}
-        //StartCoroutine(Attack(PlayerGameManager.Instance.PlayerId));
-        StartCoroutine(Attack());
+        playerid = GameManager.Instance.PlayerId;
+        if (playerid == 0)
+        {
+            characterRenderer.sprite = characer[playerid];
+        }
+        if (playerid == 1)
+        {
+            characterRenderer.sprite = characer[playerid];
+        }
+        StartCoroutine(Attack(GameManager.Instance.PlayerId));
+        //StartCoroutine(Attack());
     }
 
-    IEnumerator Attack()
+    IEnumerator Attack(int id)
     {
         
         while (true)
         {
-            //if(id == 0)
-            //{
-            //    closeAttack();
-            //    yield return new WaitForSeconds(0.5f);
-            //}
-            //else if (id == 1) //원거리는 탐지 먼저 해야함
-            //{
-            //    Detected();
-            //    yield return new WaitForSeconds(0.5f);
-            //}
-            closeAttack();
+            if (id == 0)
+            {
+                closeAttack();
+                yield return new WaitForSeconds(0.5f);
+            }
+            else if (id == 1) //원거리는 탐지 먼저 해야함
+            {
+                Detected();
+                yield return new WaitForSeconds(0.5f);
+            }
             yield return new WaitForSeconds(0.5f);//공격 주기 / 아이템으로 값 줄이면 주기 단축가능
         }
     }

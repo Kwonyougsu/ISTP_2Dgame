@@ -4,6 +4,7 @@ using UnityEngine;
 
 public class Spawn : MonoBehaviour
 {
+
     [SerializeField] private int currentWaveIndex = 0;
     [SerializeField] private int currentSpawnCount = 0;
     [SerializeField] private int waveSpawnCount = 0;
@@ -14,7 +15,7 @@ public class Spawn : MonoBehaviour
     private List<Transform> spawnPositions = new List<Transform>();
     //private ObjectPool objectPool = ObjectPool.Instance;
     //임시 플레이어 위치
-    [SerializeField] private Transform playerPos;
+    private Transform playerPos;
 
     private void Awake()
     {
@@ -28,6 +29,17 @@ public class Spawn : MonoBehaviour
     {
         //UpgradeStatInit();       
         StartCoroutine(StartNextWave());
+        playerPos = GameManagerTemp.Instance.player;
+
+    }
+
+    public void UpdatePosition()
+    {
+        for (int i = 0; i < spawnPositions.Count; i++)
+        {
+            Vector3 distans = playerPos.position - spawnPositions[i].position;
+            spawnPositions[i].position = playerPos.position + distans;
+        }        
     }
 
     IEnumerator StartNextWave()
@@ -39,7 +51,7 @@ public class Spawn : MonoBehaviour
                 yield return new WaitForSeconds(2f);
 
                 ProcessWaveConditions();
-                Debug.Log($"GameManager.cs - StartNextWave() - ProcessWaveConditions()실행 이후 currentWaveIndex: {currentWaveIndex}, waveSpawnPosCount: {waveSpawnPosCount}, waveSpawnCount: {waveSpawnCount}");
+                //Debug.Log($"GameManager.cs - StartNextWave() - ProcessWaveConditions()실행 이후 currentWaveIndex: {currentWaveIndex}, waveSpawnPosCount: {waveSpawnPosCount}, waveSpawnCount: {waveSpawnCount}");
 
                 yield return StartCoroutine(SpawnEnemiesInWave());
                
@@ -75,27 +87,27 @@ public class Spawn : MonoBehaviour
     private void IncreaseWaveSpawnCount()
     {
         waveSpawnCount += 1;
-        Debug.Log($"GameManager.cs - IncreaseWaveSpawnCount() - 종료 currentWaveIndex: {currentWaveIndex}, waveSpawnPosCount: {waveSpawnPosCount}, waveSpawnCount: {waveSpawnCount}");
+        //Debug.Log($"GameManager.cs - IncreaseWaveSpawnCount() - 종료 currentWaveIndex: {currentWaveIndex}, waveSpawnPosCount: {waveSpawnPosCount}, waveSpawnCount: {waveSpawnCount}");
     }
     private void CreateReward()
     {
-        Debug.Log("CreateReward 호출");
+        //Debug.Log("CreateReward 호출");
     }
 
     private void RandomUpgrade()
     {
-        Debug.Log("RandomUpgrade 호출");
+        //Debug.Log("RandomUpgrade 호출");
 
     }
 
     void IncreaseSpawnPositions()
     {
-        Debug.Log($"GameManager.cs - IncreaseSpawnPositions() - 진입 currentWaveIndex: {currentWaveIndex}, waveSpawnPosCount: {waveSpawnPosCount}, waveSpawnCount: {waveSpawnCount},  spawnPositions.Count: {spawnPositions.Count}, is: {waveSpawnPosCount + 1 > spawnPositions.Count}");
+        //Debug.Log($"GameManager.cs - IncreaseSpawnPositions() - 진입 currentWaveIndex: {currentWaveIndex}, waveSpawnPosCount: {waveSpawnPosCount}, waveSpawnCount: {waveSpawnCount},  spawnPositions.Count: {spawnPositions.Count}, is: {waveSpawnPosCount + 1 > spawnPositions.Count}");
 
         waveSpawnPosCount = waveSpawnPosCount + 1 > spawnPositions.Count ? waveSpawnPosCount : waveSpawnPosCount + 1;
         if (currentWaveIndex == 0) waveSpawnCount = 0;
         else waveSpawnCount = 1;
-        Debug.Log($"GameManager.cs - IncreaseSpawnPositions() - 종료 currentWaveIndex: {currentWaveIndex}, waveSpawnPosCount: {waveSpawnPosCount}, waveSpawnCount: {waveSpawnCount}");
+        //Debug.Log($"GameManager.cs - IncreaseSpawnPositions() - 종료 currentWaveIndex: {currentWaveIndex}, waveSpawnPosCount: {waveSpawnPosCount}, waveSpawnCount: {waveSpawnCount}");
     }
     IEnumerator SpawnEnemiesInWave()
     {

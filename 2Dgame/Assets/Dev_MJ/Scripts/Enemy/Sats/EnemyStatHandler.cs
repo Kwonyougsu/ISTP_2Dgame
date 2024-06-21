@@ -25,8 +25,11 @@ public class EnemyStatHandler : MonoBehaviour
         //기본 능력치 세팅        
         CurrentStat.maxHealth = baseStats.maxHealth;
         CurrentStat.speed = baseStats.speed;
-        CurrentStat.target = baseStats.target;        
+        CurrentStat.target = baseStats.target;
+        baseStats.isChase = true;
+        CurrentStat.isChase = baseStats.isChase;
         UpdateSize();
+        //Debug.Log(CurrentStat.isChase);
     }
 
     private void UpdateSize()

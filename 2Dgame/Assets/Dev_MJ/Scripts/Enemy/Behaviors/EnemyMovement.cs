@@ -6,10 +6,8 @@ public class EnemyMovement : MonoBehaviour
 {
     private EnemyController _controller;
     private Rigidbody2D _movementRigidbody;
-    private EnemyStatHandler characterStatHandler;
-    // πÊ«‚
+    private EnemyStatHandler stats;
     private Vector2 _movementDirection = Vector2.zero;
-    // ≥ÀπÈ
     private Vector2 knockback = Vector2.zero;
     private float knockbackDuration = 0.0f;
 
@@ -17,7 +15,7 @@ public class EnemyMovement : MonoBehaviour
     {       
         _controller = GetComponent<EnemyController>();
         _movementRigidbody = GetComponent<Rigidbody2D>();        
-        characterStatHandler = GetComponent<EnemyStatHandler>();
+        stats = GetComponent<EnemyStatHandler>();
     }
 
     private void Start()
@@ -27,10 +25,8 @@ public class EnemyMovement : MonoBehaviour
 
     private void FixedUpdate()
     {
-        
         ApplyMovement(_movementDirection);
       
-        // ≥ÀπÈ »ø∞˙
         if (knockbackDuration > 0.0f)
         {           
             knockbackDuration -= Time.fixedDeltaTime;
@@ -39,28 +35,27 @@ public class EnemyMovement : MonoBehaviour
 
     private void Move(Vector2 direction)
     {        
-        _movementDirection = direction;
+        if (stats.CurrentStat.isChase) _movementDirection = direction;
+        else _movementDirection = Vector2.zero;
     }
 
     private void ApplyMovement(Vector2 direction)
     {       
-        direction = direction * characterStatHandler.CurrentStat.speed;
+        direction = direction * stats.CurrentStat.speed;
 
-        // ≥ÀπÈ
         if (knockbackDuration > 0.0f)
         {            
             direction += knockback;
-        }
-
+        }        
+        
         _movementRigidbody.velocity = direction;
-
     }
 
-    // ≥ÀπÈ
     public void ApplyKnockback(Transform other, float power, float duration)
     {
         knockbackDuration = duration;
 
         knockback = -(other.position - transform.position).normalized * power;
     }
+    
 }

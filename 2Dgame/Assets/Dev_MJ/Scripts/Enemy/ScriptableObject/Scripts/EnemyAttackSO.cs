@@ -7,7 +7,7 @@ public class EnemyAttackSO : ScriptableObject
     public float size;
     public float delay;
     public float power;
-    public float speed;
+    public float speed;    
     public LayerMask target;
 
     [Header("Knock Back Info")]

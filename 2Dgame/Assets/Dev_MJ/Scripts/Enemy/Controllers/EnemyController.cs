@@ -8,9 +8,10 @@ public class EnemyController : MonoBehaviour
     public event Action<Vector2> OnMoveEvent;
     public event Action<Vector2> OnLookEvent;
     public event Action<EnemyAttackSO> OnAttackEvent;
+    public List<GameObject> dropItems;
 
     private float _timeSinceLastAttack = float.MaxValue;   
-    protected EnemyStatHandler stats { get; private set; }
+    protected EnemyStatHandler stats { get; private set; }  
 
 
     // 플레이어 위치 - 임시로 여기에 할당 - GameManager에서 데이터 받아올것
@@ -28,6 +29,15 @@ public class EnemyController : MonoBehaviour
         // 플레이어 위치 캐싱
         //ClosestTarget = closerTarget;//임시
         ClosestTarget = GameManagerTemp.Instance.Player;//임시***
+        GetComponent<EnemyHealthSystem>().OnDeath += DoropItem;
+    }
+
+    private void DoropItem()
+    {
+        Instantiate(dropItems[0], transform.position, Quaternion.identity);
+        int num = UnityEngine.Random.Range(0, 4);
+        if (num == 0) Instantiate(dropItems[1], transform.position + new Vector3(0f, 0.7f, 0f), Quaternion.identity);        
+        
     }
 
     // 타겟 까지와의 거리

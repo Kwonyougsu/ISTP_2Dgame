@@ -179,6 +179,7 @@ MonoBehaviour:
     maxHealth: 4
     speed: 3
     size: 1
+    isChase: 0
     target:
       serializedVersion: 2
       m_Bits: 64
@@ -195,6 +196,9 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 383f72e92a3c09243b03c02be5a61674, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
+  dropItems:
+  - {fileID: 7741359114682043601, guid: 6417ed7d9cc355949924bb085fbf8f3f, type: 3}
+  - {fileID: 9164824688635848529, guid: a3ce15bd20eb2b648a47476d7eec3aba, type: 3}
   closerTarget: {fileID: 0}
   followRange: 100
 --- !u!114 &7176376503041828398

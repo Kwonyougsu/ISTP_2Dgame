@@ -6,12 +6,13 @@ public class MainMenuButton : MonoBehaviour
     [SerializeField] private GameObject mainMenu;
     [SerializeField] private GameObject optionMenu; 
     [SerializeField] private GameObject storeMenu;
-    
-    public void StartMainScene()
-    {
-        // 게임 씬 변경하기
-        SceneManager.LoadScene("MainScene");
-    }
+    [SerializeField] private GameObject characterselectMenu;
+
+    //public void StartMainScene()
+    //{
+    //    // 게임 씬 변경하기
+    //    SceneManager.LoadScene("MainScene");
+    //}
 
     public void ShowOptionMenu()
     {
@@ -28,5 +29,10 @@ public class MainMenuButton : MonoBehaviour
     public void GameExit()
     {
         Application.Quit();
+    }
+    public void ShowCharacterselectMenu()
+    {
+        mainMenu.SetActive(false);
+        characterselectMenu.SetActive(true);
     }
 }

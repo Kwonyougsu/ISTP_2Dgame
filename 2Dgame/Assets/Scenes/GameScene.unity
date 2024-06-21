@@ -2272,6 +2272,56 @@ CanvasRenderer:
   m_PrefabAsset: {fileID: 0}
   m_GameObject: {fileID: 812936995}
   m_CullTransparentMesh: 1
+--- !u!1 &860614283
+GameObject:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  serializedVersion: 6
+  m_Component:
+  - component: {fileID: 860614285}
+  - component: {fileID: 860614284}
+  m_Layer: 0
+  m_Name: GameManager
+  m_TagString: Untagged
+  m_Icon: {fileID: 0}
+  m_NavMeshLayer: 0
+  m_StaticEditorFlags: 0
+  m_IsActive: 1
+--- !u!114 &860614284
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 860614283}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: af2a2bce0cdeae445999890d0387f497, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  itemData: {fileID: 11400000, guid: bcc6d9806e8c93d40bd5a7de3c43448b, type: 2}
+  Lv: 0
+  maxExp: 0
+  curExp: 0
+  playerGold: 0
+  stageGold: 0
+--- !u!4 &860614285
+Transform:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 860614283}
+  serializedVersion: 2
+  m_LocalRotation: {x: 0, y: 0, z: 0, w: 1}
+  m_LocalPosition: {x: 78.96572, y: 524.7803, z: -4.8422694}
+  m_LocalScale: {x: 1, y: 1, z: 1}
+  m_ConstrainProportionsScale: 0
+  m_Children: []
+  m_Father: {fileID: 0}
+  m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
 --- !u!1 &936229861
 GameObject:
   m_ObjectHideFlags: 0
@@ -2858,16 +2908,18 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 59ead8a91f5a4ad4ab5e25a86cb4b947, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  itemData: {fileID: 11400000, guid: bcc6d9806e8c93d40bd5a7de3c43448b, type: 2}
   slots: {fileID: 6623612643307915620}
   itemInfoPos: {fileID: 565786342}
+  itemData: {fileID: 11400000, guid: bcc6d9806e8c93d40bd5a7de3c43448b, type: 2}
   itemName: {fileID: 0}
   itemIcon: {fileID: 0}
   itemDescription: {fileID: 0}
   itemPrice: {fileID: 0}
   itemInfo: {fileID: 0}
-  curIndex: 0
   itemStack: []
+  playerGoldTxt: {fileID: 0}
+  storeMenu: {fileID: 0}
+  playerGold: {fileID: 0}
 --- !u!1 &1157525318
 GameObject:
   m_ObjectHideFlags: 0
@@ -2923,6 +2975,7 @@ MonoBehaviour:
   mainMenu: {fileID: 1157525318}
   optionMenu: {fileID: 1305455212}
   storeMenu: {fileID: 1152473594}
+  characterselectMenu: {fileID: 0}
 --- !u!1 &1159004167
 GameObject:
   m_ObjectHideFlags: 0
@@ -4865,3 +4918,4 @@ SceneRoots:
   - {fileID: 519420032}
   - {fileID: 591353826}
   - {fileID: 1291484823}
+  - {fileID: 860614285}

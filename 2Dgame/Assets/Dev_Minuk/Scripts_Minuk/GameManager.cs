@@ -55,17 +55,16 @@ public class GameManager : MonoBehaviour
 
     [Header("Player")]
     public int Lv;
-    public int maxExp;
-    public int curExp;
+    public float maxExp;
+    public float curExp;
     public int playerGold;
     public int stageGold;
-    public float expPer;
 
     public void StageDataReset() // 게임 시작과 종료시 호출
     {
         Lv = 0;
         maxExp = 100;
-        curExp = 20;
+        curExp = 0;
         if(stageGold > 0) // 혹시나 stageGlod에 -값이 들어갈까봐 (그럴일 없긴함)
         {
             playerGold += stageGold;

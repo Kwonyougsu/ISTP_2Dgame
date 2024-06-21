@@ -13,23 +13,18 @@ public class UIManager : MonoBehaviour
     public Transform exp;
     public Transform gold;
 
-    public int curValue;
-    public int maxValue;
-
     private void Awake()
     {
         exp = this.transform.GetChild(0).transform;
         gold = this.transform.GetChild(1).transform;
-        // ExpBar = exp.GetChild(1).GetComponent<Image>();
+        ExpBar = exp.GetChild(1).GetComponent<Image>();
         LvTxt = exp.GetChild(2).GetComponent<TextMeshProUGUI>();
         stageGoldTxt = gold.GetChild(1).GetComponent<TextMeshProUGUI>();
     }
 
     private void Update()
     {
-        curValue = GameManager.Instance.curExp;
-        maxValue = GameManager.Instance.maxExp;
-        ExpBar.fillAmount = curValue / maxValue;
+        ExpBar.fillAmount = GetPercentage();
         LvTxt.text = $"Lv : {GameManager.Instance.Lv}";
         stageGoldTxt.text = $"{GameManager.Instance.stageGold} G";
     }

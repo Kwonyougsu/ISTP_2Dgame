@@ -12,6 +12,7 @@ public class PlayerAttack : MonoBehaviour
     public float detectionRange = 50f;
     public Sprite[] characer;
     private int playerid;
+    private GameObject closeAttackInstance;
 
     private void Awake()
     {
@@ -29,7 +30,8 @@ public class PlayerAttack : MonoBehaviour
         {
             characterRenderer.sprite = characer[playerid];
         }
-        StartCoroutine(Attack(PlayerGameManager.Instance.PlayerId));  
+        StartCoroutine(Attack(PlayerGameManager.Instance.PlayerId));
+
     }
 
     IEnumerator Attack(int id)
@@ -47,7 +49,6 @@ public class PlayerAttack : MonoBehaviour
                 Detected();
                 yield return new WaitForSeconds(0.5f);
             }
-            
             yield return new WaitForSeconds(0.5f);//공격 주기 / 아이템으로 값 줄이면 주기 단축가능
         }
     }
@@ -55,24 +56,29 @@ public class PlayerAttack : MonoBehaviour
     #region 근거리 공격
     private void closeAttack()
     {
-        GameObject Attack = Instantiate(AttackPrefab[0]);
+        if (closeAttackInstance == null)
+        {
+            closeAttackInstance = Instantiate(AttackPrefab[0]);
+            closeAttackInstance.SetActive(false); 
+        }
 
+        closeAttackInstance.SetActive(true);
         //오른쪽 1 => false, 왼쪽 -1 =>true
         if (!characterRenderer.flipX)
         {
-            Attack.transform.position = new Vector3(player.transform.position.x + 1.5f, player.transform.position.y);
+            closeAttackInstance.transform.position = new Vector3(player.transform.position.x + 1.5f, player.transform.position.y);
         }
         else 
         {
-            Attack.transform.position = new Vector3(player.transform.position.x - 1.5f, player.transform.position.y);
+            closeAttackInstance.transform.position = new Vector3(player.transform.position.x - 1.5f, player.transform.position.y);
         }
-        StartCoroutine(EndAttack(Attack, 0.05f)); //공격 유지시간
+        StartCoroutine(EndAttack(closeAttackInstance, 0.1f)); //공격 유지시간
     }
 
     IEnumerator EndAttack(GameObject Attack,float delay)
     {
         yield return new WaitForSeconds(delay);
-        Destroy(Attack);
+        Attack.SetActive(false);
     }
     #endregion
 

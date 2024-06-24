@@ -4,7 +4,7 @@ using UnityEngine;
 
 public class ObjectPool : MonoBehaviour
 {
-    public static ObjectPool Instance;
+    public static ObjectPool Instance;    
 
     [System.Serializable]
     public class Pool
@@ -57,7 +57,7 @@ public class ObjectPool : MonoBehaviour
         {
             if (!item.activeSelf)
             {
-                select = item;
+                select = item;                
                 select.SetActive(true);
                 break;
             }
@@ -66,6 +66,7 @@ public class ObjectPool : MonoBehaviour
         if (!select)
         {
             select = Instantiate(monster[index], monsterBox);
+            select.GetComponent<EnemyHealthSystem>().OnDeath += Spawner.Instance.OnEnemyDeath;
             monsterPools[index].Add(select);
         }
 

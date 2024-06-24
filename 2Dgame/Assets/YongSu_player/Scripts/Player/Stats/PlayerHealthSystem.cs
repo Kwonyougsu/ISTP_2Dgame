@@ -58,7 +58,7 @@ public class PlayerHealthSystem : MonoBehaviour
 
        // [최솟값을 0, 최댓값을 MaxHealth로 하는 구문]
        CurrentHealth = Mathf.Clamp(CurrentHealth, 0, MaxHealth);
-       Debug.Log("맞았다 내 체력 " + CurrentHealth);
+       //Debug.Log("맞았다 내 체력 " + CurrentHealth);
         
         if (CurrentHealth <= 0f)
         {

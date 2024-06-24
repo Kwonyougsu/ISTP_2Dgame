@@ -1,0 +1,34 @@
+
+coinfx.png
+size: 128,128
+format: RGBA8888
+filter: Linear,Linear
+repeat: none
+coin1
+  rotate: false
+  xy: 2, 82
+  size: 38, 38
+  orig: 38, 38
+  offset: 0, 0
+  index: -1
+coin2
+  rotate: false
+  xy: 2, 42
+  size: 38, 38
+  orig: 38, 38
+  offset: 0, 0
+  index: -1
+coin3
+  rotate: false
+  xy: 42, 82
+  size: 38, 38
+  orig: 38, 38
+  offset: 0, 0
+  index: -1
+coin4
+  rotate: false
+  xy: 2, 2
+  size: 38, 38
+  orig: 38, 38
+  offset: 0, 0
+  index: -1

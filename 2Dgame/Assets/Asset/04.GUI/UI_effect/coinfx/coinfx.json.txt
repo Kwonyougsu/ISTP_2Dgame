@@ -1,0 +1,52 @@
+{
+"skeleton": { "hash": "VqREi15Oy4A3vrrhv4QEt7A7ubg", "spine": "2.1.27", "width": 75, "height": 76 },
+"bones": [
+	{ "name": "all" },
+	{ "name": "coin", "parent": "all" }
+],
+"slots": [
+	{ "name": "1", "bone": "coin", "attachment": "1" }
+],
+"skins": {
+	"default": {},
+	"01": {
+		"1": {
+			"1": { "name": "coin1", "width": 75, "height": 76 },
+			"2": { "name": "coin2", "width": 75, "height": 76 },
+			"3": { "name": "coin3", "width": 75, "height": 76 },
+			"4": { "name": "coin4", "width": 75, "height": 76 }
+		}
+	}
+},
+"animations": {
+	"wait": {
+		"slots": {
+			"1": {
+				"attachment": [
+					{ "time": 0, "name": "1" },
+					{ "time": 0.0666, "name": "2" },
+					{ "time": 0.1333, "name": "3" },
+					{ "time": 0.2, "name": "4" },
+					{ "time": 0.2333, "name": "4" },
+					{ "time": 0.2666, "name": "1" }
+				]
+			}
+		},
+		"bones": {
+			"coin": {
+				"translate": [
+					{ "time": 0, "x": 0, "y": 31.99, "curve": "stepped" },
+					{ "time": 0.2666, "x": 0, "y": 31.99 }
+				],
+				"scale": [
+					{ "time": 0, "x": 1, "y": 1 },
+					{ "time": 0.0333, "x": 0.9, "y": 1 },
+					{ "time": 0.0666, "x": 1, "y": 1, "curve": "stepped" },
+					{ "time": 0.2333, "x": 1, "y": 1 },
+					{ "time": 0.2666, "x": 0.9, "y": 1 }
+				]
+			}
+		}
+	}
+}
+}

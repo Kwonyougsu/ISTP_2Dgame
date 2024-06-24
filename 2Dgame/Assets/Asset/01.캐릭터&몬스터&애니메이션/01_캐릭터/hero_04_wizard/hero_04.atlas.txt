@@ -1,0 +1,111 @@
+
+hero_04.png
+size: 256,256
+format: RGBA8888
+filter: Linear,Linear
+repeat: none
+01/back
+  rotate: true
+  xy: 241, 224
+  size: 29, 12
+  orig: 29, 12
+  offset: 0, 0
+  index: -1
+01/body1
+  rotate: false
+  xy: 208, 222
+  size: 31, 31
+  orig: 31, 31
+  offset: 0, 0
+  index: -1
+01/body2
+  rotate: false
+  xy: 150, 161
+  size: 26, 24
+  orig: 26, 24
+  offset: 0, 0
+  index: -1
+01/hair
+  rotate: false
+  xy: 2, 98
+  size: 84, 88
+  orig: 84, 88
+  offset: 0, 0
+  index: -1
+01/head
+  rotate: true
+  xy: 2, 7
+  size: 89, 75
+  orig: 89, 75
+  offset: 0, 0
+  index: -1
+01/l_arm1
+  rotate: false
+  xy: 120, 157
+  size: 28, 28
+  orig: 28, 28
+  offset: 0, 0
+  index: -1
+01/l_arm2
+  rotate: false
+  xy: 178, 161
+  size: 23, 24
+  orig: 23, 24
+  offset: 0, 0
+  index: -1
+01/l_arm3
+  rotate: false
+  xy: 2, 188
+  size: 118, 65
+  orig: 118, 65
+  offset: 0, 0
+  index: -1
+01/l_leg1
+  rotate: true
+  xy: 88, 101
+  size: 14, 26
+  orig: 14, 26
+  offset: 0, 0
+  index: -1
+01/l_leg2
+  rotate: true
+  xy: 161, 187
+  size: 17, 35
+  orig: 17, 35
+  offset: 0, 0
+  index: -1
+01/r_arm1
+  rotate: true
+  xy: 88, 151
+  size: 35, 30
+  orig: 35, 30
+  offset: 0, 0
+  index: -1
+01/r_arm2
+  rotate: true
+  xy: 88, 117
+  size: 32, 27
+  orig: 32, 27
+  offset: 0, 0
+  index: -1
+01/r_leg1
+  rotate: true
+  xy: 208, 204
+  size: 16, 29
+  orig: 16, 29
+  offset: 0, 0
+  index: -1
+01/r_leg2
+  rotate: true
+  xy: 122, 187
+  size: 17, 37
+  orig: 17, 37
+  offset: 0, 0
+  index: -1
+01/skirt
+  rotate: false
+  xy: 122, 206
+  size: 84, 47
+  orig: 84, 47
+  offset: 0, 0
+  index: -1

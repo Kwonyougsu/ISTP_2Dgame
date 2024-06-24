@@ -51,29 +51,44 @@ public class PlayerAttack : MonoBehaviour
         if (playerid == 2) // 계속 돌아가야하므로, Update
         {
             RotationAttack(GameManager.Instance.Lv + 1);
+            //StartCoroutine(Attack(GameManager.Instance.Lv+10));
         }
     }
 
     IEnumerator Attack(int id)
     {
-
         while (true)
         {
             if (id == 0)
             {
                 closeAttack(GameManager.Instance.Lv + 1);
                 yield return new WaitForSeconds(0.01f);
-                if (GameManager.Instance.Lv >= 2)
-                {
-                    Detected(GameManager.Instance.Lv + 1);
-                    yield return new WaitForSeconds(0.01f);
-                }
+                //if (GameManager.Instance.Lv >= 2)
+                //{
+                //    Detected(GameManager.Instance.Lv);
+                //    yield return new WaitForSeconds(0.01f);
+                //}
             }
             else if (id == 1) //원거리는 탐지 먼저 해야함
             {
                 Detected(GameManager.Instance.Lv + 1);
                 yield return new WaitForSeconds(0.01f);
+                //if (GameManager.Instance.Lv >= 2)
+                //{
+                //    closeAttack(GameManager.Instance.Lv);
+                //    yield return new WaitForSeconds(0.01f);
+                //}
             }
+            //else if(id >= 30)
+            //{
+            //    closeAttack(GameManager.Instance.Lv);
+            //    yield return new WaitForSeconds(0.01f);
+            //    if (id >= 50)
+            //    {
+            //        Detected(GameManager.Instance.Lv + 1);
+            //        yield return new WaitForSeconds(0.01f);
+            //    }
+            //}
             yield return new WaitForSeconds(1f - (GameManager.Instance.upgradeStatData.statLv[2] * 0.05f));
         }
     }

@@ -2252,7 +2252,6 @@ MonoBehaviour:
   stageGoldTxt: {fileID: 0}
   exp: {fileID: 0}
   gold: {fileID: 0}
-  spTxt: {fileID: 0}
 --- !u!114 &2006846325
 MonoBehaviour:
   m_ObjectHideFlags: 0

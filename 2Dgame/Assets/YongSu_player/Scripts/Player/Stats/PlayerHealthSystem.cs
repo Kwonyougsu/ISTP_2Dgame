@@ -23,13 +23,9 @@ public class PlayerHealthSystem : MonoBehaviour
 
     public GameObject endpanel;
     public GameObject endpanelbg;
-
-    private Animator _animator;
-
     private void Awake()
     {
         statsHandler = GetComponent<PlayerStatsHandler>();
-        _animator = GetComponent<Animator>();
     }
 
     private void Start()
@@ -82,7 +78,6 @@ public class PlayerHealthSystem : MonoBehaviour
         {
             OnDamage?.Invoke();
             isAttacked = true;
-            _animator.SetTrigger("Player_hit");
         }
 
 

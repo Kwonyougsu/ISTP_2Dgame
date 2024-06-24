@@ -7,7 +7,6 @@ public class EnemyMovement : MonoBehaviour
     private EnemyController _controller;
     private Rigidbody2D _movementRigidbody;
     private EnemyStatHandler stats;
-    private Animator _animator;
     private Vector2 _movementDirection = Vector2.zero;
     private Vector2 knockback = Vector2.zero;
     private float knockbackDuration = 0.0f;
@@ -17,7 +16,6 @@ public class EnemyMovement : MonoBehaviour
         _controller = GetComponent<EnemyController>();
         _movementRigidbody = GetComponent<Rigidbody2D>();        
         stats = GetComponent<EnemyStatHandler>();
-        _animator = GetComponent<Animator>();
     }
 
     private void Start()
@@ -58,8 +56,6 @@ public class EnemyMovement : MonoBehaviour
         knockbackDuration = duration;
 
         knockback = -(other.position - transform.position).normalized * power;
-
-        _animator.SetTrigger("IsHit");
     }
     
 }

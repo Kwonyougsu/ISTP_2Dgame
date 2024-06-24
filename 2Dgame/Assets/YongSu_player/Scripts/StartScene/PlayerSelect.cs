@@ -6,6 +6,7 @@ public class PlayerSelect : MonoBehaviour
 {
     public Button closeButton;
     public Button rangedButton;
+    public Button RotationButton;
     public Button startButton;
   
 
@@ -13,6 +14,7 @@ public class PlayerSelect : MonoBehaviour
     {
         closeButton.onClick.AddListener(() => SelectButton(0));
         rangedButton.onClick.AddListener(() => SelectButton(1));
+        RotationButton.onClick.AddListener(() => SelectButton(2));
         startButton.onClick.AddListener(OnGameStartClick);
     }
 

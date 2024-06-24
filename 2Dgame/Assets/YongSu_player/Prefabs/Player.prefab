@@ -194,7 +194,7 @@ SpriteRenderer:
   m_SortingLayerID: 0
   m_SortingLayer: 0
   m_SortingOrder: 0
-  m_Sprite: {fileID: 21300000, guid: 94b4a8b59d4ff3342bf614da72ca0d41, type: 3}
+  m_Sprite: {fileID: 0}
   m_Color: {r: 1, g: 1, b: 1, a: 1}
   m_FlipX: 0
   m_FlipY: 0
@@ -202,7 +202,7 @@ SpriteRenderer:
   m_Size: {x: 7.36, y: 5.1}
   m_AdaptiveModeThreshold: 0.5
   m_SpriteTileMode: 0
-  m_WasSpriteAssigned: 1
+  m_WasSpriteAssigned: 0
   m_MaskInteraction: 0
   m_SpriteSortPoint: 0
 --- !u!50 &287290823929041776
@@ -360,11 +360,15 @@ MonoBehaviour:
   AttackPrefab:
   - {fileID: 824385591653717336, guid: 082205a7ed0bc81439bf23e2f0ece811, type: 3}
   - {fileID: 840133569805233725, guid: f49b9bd75f4e7274da20d72b2d9737a6, type: 3}
+  - {fileID: 9138396547979574677, guid: 1043f2952f0b8944bb8a5d75f63d03c9, type: 3}
+  RotationAttackPrefab:
+  - {fileID: 9138396547979574677, guid: 1043f2952f0b8944bb8a5d75f63d03c9, type: 3}
   RangedAttackspeed: 100
   detectionRange: 50
   characer:
   - {fileID: 21300000, guid: 7c7fbc259252fd44c83d9475e91ef24a, type: 3}
   - {fileID: 21300000, guid: 1b94369e07b443447ad04b5488091889, type: 3}
+  - {fileID: 865518988, guid: 34f87463b4fe8bc44b7ebb0d808f712b, type: 3}
 --- !u!114 &1494817602218133792
 MonoBehaviour:
   m_ObjectHideFlags: 0

@@ -20,7 +20,7 @@ public class ChooseItemUI : MonoBehaviour
 
     private void Update()
     {
-        coinTxt.text = $"°ñµå È¹µæ\nGold + 200";
+        coinTxt.text = $"°ñµå È¹µæ\nGold + {200 + (GameManager.Instance.upgradeStatData.statLv[3] * 0.1f * 200)}";
     }
 
 
@@ -41,7 +41,7 @@ public class ChooseItemUI : MonoBehaviour
     public void ChooseCoin()
     {
         Time.timeScale = 1f;
-        GameManager.Instance.stageGold += 200;
+        GameManager.Instance.stageGold += 200 + (GameManager.Instance.upgradeStatData.statLv[3] * 0.1f * 200);
         gameObject.SetActive(false);
     }
 }

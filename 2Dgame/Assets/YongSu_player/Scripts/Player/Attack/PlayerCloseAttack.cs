@@ -14,7 +14,7 @@ public class PlayerCloseAttack : MonoBehaviour
 
         if (attack.CompareTag("Enemy"))
         {
-            attack.GetComponent<EnemyHealthSystem>().ChangeHealth(-(damege + (5 * itemdata.itemstack[0])));
+            attack.GetComponent<EnemyHealthSystem>().ChangeHealth(-(damege + (5 * itemdata.itemstack[0]) + (5 * GameManager.Instance.upgradeStatData.statLv[0])));
             attack.GetComponent<EnemyMovement>().ApplyKnockback(transform, knockbackPower, duration);
         }
     }

@@ -16,7 +16,10 @@ public class PlayerStatsHandler : MonoBehaviour
     {        
         UpdateCharacterStat();
     }
-
+    private void Update()
+    {
+        moveSpeed();
+    }
     public void UpdateCharacterStat()
     {
         CurrentStat.statsChangeType = baseStats.statsChangeType;
@@ -35,6 +38,10 @@ public class PlayerStatsHandler : MonoBehaviour
     private void UpdateBasicStats(PlayerStats modifier)
     {
         CurrentStat.maxHealth = Mathf.Max(CurrentStat.maxHealth + (10 * itemData.itemstack[2]), MinMaxHealth);
-        CurrentStat.speed = Mathf.Max(CurrentStat.speed + (5 * itemData.itemstack[1]), MinSpeed);
+        CurrentStat.speed = Mathf.Max(CurrentStat.speed + ((5*0.2f) * itemData.itemstack[1]), MinSpeed);
+    }
+    void moveSpeed()
+    {
+        CurrentStat.speed = 5 + ((5 * 0.2f) * itemData.itemstack[1]) + (GameManager.Instance.upgradeStatData.statLv[1]*0.25f);
     }
 }

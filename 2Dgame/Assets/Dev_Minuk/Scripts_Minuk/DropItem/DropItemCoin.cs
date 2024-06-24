@@ -8,7 +8,7 @@ public class DropItemCoin : MonoBehaviour
     {
         if (collision.gameObject.CompareTag("Player"))
         {
-            GameManager.Instance.stageGold += 100;
+            GameManager.Instance.stageGold += 100 + (GameManager.Instance.upgradeStatData.statLv[3] * 0.1f * 100);
             Destroy(gameObject);
         }
     }

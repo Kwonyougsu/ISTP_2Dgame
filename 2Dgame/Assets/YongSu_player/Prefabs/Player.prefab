@@ -200,7 +200,11 @@ SpriteRenderer:
   m_FlipY: 0
   m_DrawMode: 0
 <<<<<<< HEAD
+<<<<<<< HEAD
   m_Size: {x: 0.17, y: 0.1}
+=======
+  m_Size: {x: 7.36, y: 5.1}
+>>>>>>> parent of eb7bbdb (update_hit anim)
 =======
   m_Size: {x: 7.36, y: 5.1}
 >>>>>>> parent of eb7bbdb (update_hit anim)
@@ -274,7 +278,11 @@ BoxCollider2D:
     pivot: {x: 0.5, y: 0.5}
     oldSize: {x: 1, y: 1.75}
 <<<<<<< HEAD
+<<<<<<< HEAD
     newSize: {x: 0.17, y: 0.1}
+=======
+    newSize: {x: 7.36, y: 5.1}
+>>>>>>> parent of eb7bbdb (update_hit anim)
 =======
     newSize: {x: 7.36, y: 5.1}
 >>>>>>> parent of eb7bbdb (update_hit anim)

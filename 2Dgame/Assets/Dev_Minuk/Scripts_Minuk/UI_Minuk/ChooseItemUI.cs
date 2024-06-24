@@ -11,7 +11,7 @@ public class ChooseItemUI : MonoBehaviour
     private void Awake()
     {
         chooseItemUI = this.gameObject;
-        // GameManager.Instance.chooseItemUI = chooseItemUI;
+        GameManager.Instance.chooseItemUI = chooseItemUI;
     }
     private void Start()
     {
@@ -20,14 +20,14 @@ public class ChooseItemUI : MonoBehaviour
 
     private void Update()
     {
-        // coinTxt.text = $"°ñµå È¹µæ\nGold + {200 + (GameManager.Instance.upgradeStatData.statLv[3] * 0.1 * 200)}";
+        coinTxt.text = $"°ñµå È¹µæ\nGold + 200";
     }
 
 
     public void ChooseSP()
     {
         Time.timeScale = 1f;
-        // GameManager.Instance.sp++;
+        GameManager.Instance.sp++;
         gameObject.SetActive(false);
     }
 

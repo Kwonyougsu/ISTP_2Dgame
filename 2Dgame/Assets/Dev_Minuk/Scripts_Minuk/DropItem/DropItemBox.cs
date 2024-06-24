@@ -11,6 +11,8 @@ public class DropItemBox : MonoBehaviour
             // 아이템 파괴
             Destroy(gameObject);
             // 드롭 아이템 선택 창 SetActive(true)
+            GameManager.Instance.chooseItemUI.SetActive(true);
+            Time.timeScale = 0f;
         }
     }
 }

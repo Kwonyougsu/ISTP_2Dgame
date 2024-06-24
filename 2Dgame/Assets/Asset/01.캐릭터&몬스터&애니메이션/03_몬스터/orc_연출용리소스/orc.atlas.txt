@@ -1,0 +1,90 @@
+
+orc.png
+size: 1024,1024
+format: RGBA8888
+filter: Linear,Linear
+repeat: none
+01/1/body1
+  rotate: false
+  xy: 2, 724
+  size: 249, 273
+  orig: 249, 273
+  offset: 0, 0
+  index: -1
+01/1/eye1
+  rotate: false
+  xy: 253, 729
+  size: 19, 22
+  orig: 19, 22
+  offset: 0, 0
+  index: -1
+01/1/head1
+  rotate: true
+  xy: 2, 470
+  size: 252, 243
+  orig: 252, 243
+  offset: 0, 0
+  index: -1
+01/1/l_arm1
+  rotate: false
+  xy: 253, 753
+  size: 212, 244
+  orig: 212, 244
+  offset: 0, 0
+  index: -1
+01/1/l_arm2
+  rotate: false
+  xy: 467, 758
+  size: 122, 239
+  orig: 122, 239
+  offset: 0, 0
+  index: -1
+01/1/mouth1
+  rotate: true
+  xy: 2, 67
+  size: 175, 125
+  orig: 175, 125
+  offset: 0, 0
+  index: -1
+01/1/r_arm1
+  rotate: false
+  xy: 591, 861
+  size: 127, 136
+  orig: 127, 136
+  offset: 0, 0
+  index: -1
+01/1/r_arm2
+  rotate: false
+  xy: 2, 244
+  size: 163, 224
+  orig: 163, 224
+  offset: 0, 0
+  index: -1
+01/1/tooth1
+  rotate: false
+  xy: 720, 926
+  size: 56, 71
+  orig: 56, 71
+  offset: 0, 0
+  index: -1
+01/1/water_1
+  rotate: true
+  xy: 167, 362
+  size: 106, 54
+  orig: 106, 54
+  offset: 0, 0
+  index: -1
+01/1/water_2
+  rotate: false
+  xy: 2, 2
+  size: 95, 63
+  orig: 95, 63
+  offset: 0, 0
+  index: -1
+01/1/water_3
+  rotate: false
+  xy: 591, 801
+  size: 85, 58
+  orig: 85, 58
+  offset: 0, 0
+  index: -1

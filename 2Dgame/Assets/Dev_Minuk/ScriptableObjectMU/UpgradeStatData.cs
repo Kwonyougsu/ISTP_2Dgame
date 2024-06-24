@@ -7,7 +7,7 @@ public class UpgradeStatData : ScriptableObject
 {
     [Header("Info")]
     public Sprite[] statIcon;
-    public int[] statLv;
+    public float[] statLv;
     public string[] statName;
     public string[] statDescription;
 }

@@ -2312,13 +2312,18 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: af2a2bce0cdeae445999890d0387f497, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
+  playerDirection: {fileID: 0}
+  player: {fileID: 0}
+  chooseItemUI: {fileID: 0}
   PlayerId: 0
   itemData: {fileID: 11400000, guid: bcc6d9806e8c93d40bd5a7de3c43448b, type: 2}
+  upgradeStatData: {fileID: 11400000, guid: 40df27d72b81fae47a0e2c6bf3af7cd6, type: 2}
   Lv: 0
   maxExp: 0
   curExp: 0
   playerGold: 0
   stageGold: 0
+  sp: 0
 --- !u!1 &696410514
 GameObject:
   m_ObjectHideFlags: 0

@@ -9,6 +9,8 @@ public class GameManager : MonoBehaviour
     public TopDownMovement playerDirection;
     public Transform player;
 
+    public GameObject chooseItemUI;
+
     public Transform Player
     {
         get { return player; }
@@ -52,13 +54,15 @@ public class GameManager : MonoBehaviour
 
     [Header("Need Connection")]
     public ItemData itemData;
+    public UpgradeStatData upgradeStatData;
 
     [Header("Player")]
     public int Lv;
     public float maxExp;
     public float curExp;
-    public int playerGold;
-    public int stageGold;
+    public float playerGold;
+    public float stageGold;
+    public int sp;
 
     public void StageDataReset() // 게임 시작과 종료시 호출
     {
@@ -70,11 +74,19 @@ public class GameManager : MonoBehaviour
             playerGold += stageGold;
         }
         stageGold = 0;
+        sp = 0;
+        for (int i = 0; i < upgradeStatData.statLv.Length; i++)
+        {
+            upgradeStatData.statLv[i] = 0;
+        }
     }
     public void LvUp()
     {
         if(curExp >= maxExp) curExp -= maxExp; // exp아이템을 한번에 먹었을 때 정상적으로 동작하지 않을 것 같아서
         Lv++;
+        GameManager.Instance.maxExp += 20f;
+        chooseItemUI.SetActive(true);
+        Time.timeScale = 0f;
     }
     public void SetCharacterId(int id)
     {

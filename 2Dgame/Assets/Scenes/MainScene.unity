@@ -19536,6 +19536,14 @@ PrefabInstance:
       propertyPath: endpanelbg
       value: 
       objectReference: {fileID: 971926807}
+    - target: {fileID: 3175418515792787703, guid: 66f4d701f9a63614ba672f1f431196f8, type: 3}
+      propertyPath: m_Sprite
+      value: 
+      objectReference: {fileID: 0}
+    - target: {fileID: 3175418515792787703, guid: 66f4d701f9a63614ba672f1f431196f8, type: 3}
+      propertyPath: m_WasSpriteAssigned
+      value: 0
+      objectReference: {fileID: 0}
     - target: {fileID: 7076376311626898382, guid: 66f4d701f9a63614ba672f1f431196f8, type: 3}
       propertyPath: m_Name
       value: Player

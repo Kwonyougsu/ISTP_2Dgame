@@ -1,10 +1,14 @@
 using System.Collections;
-using Unity.VisualScripting;
 using UnityEngine;
+using static UnityEngine.GraphicsBuffer;
+using UnityEngine.UIElements;
+using System.Collections.Generic;
+using Unity.VisualScripting.Antlr3.Runtime.Collections;
 
 public class PlayerAttack : MonoBehaviour
 {
     public GameObject[] AttackPrefab;
+    public GameObject[] RotationAttackPrefab;
     private SpriteRenderer characterRenderer;
     private GameObject player;
 
@@ -14,6 +18,11 @@ public class PlayerAttack : MonoBehaviour
     private int playerid;
     private GameObject closeAttackInstance;
 
+    int objSize;
+    float circleR;
+    float deg;
+    float objSpeed;
+
     private void Awake()
     {
         characterRenderer = GetComponent<SpriteRenderer>();
@@ -21,12 +30,17 @@ public class PlayerAttack : MonoBehaviour
     }
     private void Start()
     {
+        objSize = 1;
         playerid = GameManager.Instance.PlayerId;
         if (playerid == 0)
         {
             characterRenderer.sprite = characer[playerid];
         }
-        if (playerid == 1)
+        else if (playerid == 1)
+        {
+            characterRenderer.sprite = characer[playerid];
+        }
+        else if (playerid == 2)
         {
             characterRenderer.sprite = characer[playerid];
         }
@@ -48,6 +62,10 @@ public class PlayerAttack : MonoBehaviour
             {
                 Detected();
                 yield return new WaitForSeconds(0.5f);
+            }
+            else if(id == 2)
+            {
+                RotationAttack();
             }
             yield return new WaitForSeconds(0.5f);//공격 주기 / 아이템으로 값 줄이면 주기 단축가능
         }
@@ -121,5 +139,27 @@ public class PlayerAttack : MonoBehaviour
     }
     #endregion
 
+    #region 회전 공격
+    public void RotationAttack()
+    {
+        deg += Time.deltaTime * objSpeed;
+        if (deg < 360)
+        {
+            for (int i = 0; i < objSize; i++)
+            {
+                var rad = Mathf.Deg2Rad * (deg + (i * (360 / objSize)));
+                var x = circleR * Mathf.Sin(rad);
+                var y = circleR * Mathf.Cos(rad);
+                RotationAttackPrefab[i].transform.position = transform.position + new Vector3(x, y);
+                RotationAttackPrefab[i].transform.rotation = Quaternion.Euler(0, 0, (deg + (i * (360 / objSize))) * -1);
+            }
+
+        }
+        else
+        {
+            deg = 0;
+        }
+    }
+    #endregion
 }
 

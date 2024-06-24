@@ -1,10 +1,5 @@
 using System.Collections;
 using UnityEngine;
-using static UnityEngine.GraphicsBuffer;
-using UnityEngine.UIElements;
-using System.Collections.Generic;
-using Unity.VisualScripting.Antlr3.Runtime.Collections;
-using UnityEditor.UIElements;
 
 public class PlayerAttack : MonoBehaviour
 {
@@ -20,7 +15,7 @@ public class PlayerAttack : MonoBehaviour
     private GameObject closeAttackInstance;
     private GameObject RotationAttackInstance;
     public GameObject[] mutipleRotationAttackInstance;
-
+ 
     int objSize;
     float circleR;
     float deg;
@@ -33,7 +28,7 @@ public class PlayerAttack : MonoBehaviour
     }
     private void Start()
     {
-        objSize = 2;
+        objSize = 3;
         circleR = 5;
         objSpeed = 5;
         mutipleRotationAttackInstance = new GameObject[objSize];
@@ -69,14 +64,14 @@ public class PlayerAttack : MonoBehaviour
             if (id == 0)
             {
                 closeAttack();
-                yield return new WaitForSeconds(0.5f);
+                yield return new WaitForSeconds(0.01f);
             }
             else if (id == 1) //원거리는 탐지 먼저 해야함
             {
                 Detected();
-                yield return new WaitForSeconds(0.5f);
+                yield return new WaitForSeconds(0.01f);
             }
-            yield return new WaitForSeconds(0.5f);
+            yield return new WaitForSeconds(1f - (GameManager.Instance.upgradeStatData.statLv[2] * 0.05f));
         }
     }
 
@@ -160,7 +155,7 @@ public class PlayerAttack : MonoBehaviour
                 RotationAttackInstance = Instantiate(RotationAttackPrefab[0]);
             }
 
-            deg += Time.deltaTime * objSpeed * 10;
+            deg += Time.deltaTime * (objSpeed + GameManager.Instance.upgradeStatData.statLv[2] * 2f) * 10;
             if (deg < 360)
             {
                 var rad = Mathf.Deg2Rad * (deg);

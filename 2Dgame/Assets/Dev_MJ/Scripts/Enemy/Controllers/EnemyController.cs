@@ -18,11 +18,14 @@ public class EnemyController : MonoBehaviour
     public Transform closerTarget;
     protected Transform ClosestTarget { get; private set; }
 
+    private SpriteRenderer spriteRenderer;
+
     protected virtual void Awake()
     {
         // ½ºÅÝ Ä³½Ì
         stats = GetComponent<EnemyStatHandler>();
         closerTarget = GameManager.Instance.player;
+        spriteRenderer = GetComponentInChildren<SpriteRenderer>();
     }
 
     protected virtual void Start()
@@ -49,12 +52,20 @@ public class EnemyController : MonoBehaviour
 
     // Å¸°ÙÀÇ ¹æÇâ (Å¸°Ù À§Ä¡ - º»ÀÎ À§Ä¡)
     protected Vector2 DirectionToTarget()
-    {
+    {        
         return (ClosestTarget.position - transform.position).normalized;
     }
 
     public void CallMoveEvent(Vector2 direction)
     {
+        if (ClosestTarget.position.x < transform.position.x)
+        {
+            spriteRenderer.flipX = true;
+        }
+        else
+        {
+            spriteRenderer.flipX = false;
+        }
         OnMoveEvent?.Invoke(direction);
     }
     public void CallLookEvent(Vector2 direction)

@@ -67,10 +67,12 @@ public class PlayerAttack : MonoBehaviour
         if (!characterRenderer.flipX)
         {
             closeAttackInstance.transform.position = new Vector3(player.transform.position.x + 1.5f, player.transform.position.y);
+            closeAttackInstance.GetComponent<SpriteRenderer>().flipY = false;
         }
-        else 
+        else
         {
             closeAttackInstance.transform.position = new Vector3(player.transform.position.x - 1.5f, player.transform.position.y);
+            closeAttackInstance.GetComponent<SpriteRenderer>().flipY = true;
         }
         StartCoroutine(EndAttack(closeAttackInstance, 0.1f)); //공격 유지시간
     }

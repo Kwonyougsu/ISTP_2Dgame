@@ -1,3 +1,4 @@
+using System;
 using UnityEngine;
 using UnityEngine.InputSystem;
 using UnityEngine.UIElements;
@@ -5,6 +6,7 @@ using UnityEngine.UIElements;
 public class PlayerInputController : TopDownController
 {
     private Camera camera;
+    public event Action<Vector2> OnMoveEvent;
     protected override void Awake()
     {
         //mainCamera태그의 카메라를 가져옴
@@ -13,6 +15,7 @@ public class PlayerInputController : TopDownController
     public void OnMove(InputValue value)
     {
         Vector2 moveInput = value.Get<Vector2>().normalized;
+        OnMoveEvent?.Invoke(moveInput);
         CallMoveEvent(moveInput);
     }
     public void OnLook(InputValue value)

@@ -20,7 +20,7 @@ public class EnemyDestroyOnDeath : MonoBehaviour
 
         // 피격시 이미지 효과, 애니메이션
 
-        // 2초뒤에 파괴 - 투명해지는 효과 후 파괴를 위해
-        Destroy(gameObject);
+       gameObject.SetActive(false);
+        
     }
 }

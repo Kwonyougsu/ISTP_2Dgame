@@ -11,12 +11,12 @@ public class EnemyController : MonoBehaviour
     public List<GameObject> dropItems;
 
     private float _timeSinceLastAttack = float.MaxValue;   
-    protected EnemyStatHandler stats { get; private set; }  
+    protected EnemyStatHandler stats { get; private set; }
 
 
     // 플레이어 위치 - 임시로 여기에 할당 - GameManager에서 데이터 받아올것
-    public Transform closerTarget;
-    protected Transform ClosestTarget { get; private set; }
+    //public Transform closerTarget;
+    public Transform ClosestTarget { get; private set; }
 
     //private SpriteRenderer spriteRenderer;
 
@@ -24,7 +24,7 @@ public class EnemyController : MonoBehaviour
     {
         // 스텟 캐싱
         stats = GetComponent<EnemyStatHandler>();
-        closerTarget = GameManager.Instance.player;
+        //closerTarget = GameManager.Instance.player;
         //spriteRenderer = GetComponentInChildren<SpriteRenderer>();
     }
 

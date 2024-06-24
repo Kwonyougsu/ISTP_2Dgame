@@ -13,10 +13,14 @@ public class ObjectPool : MonoBehaviour
         public GameObject prefab;     
         public int size;
         public Transform box;
-    }
+    }    
 
     public List<Pool> Pools;
     public Dictionary<string, Queue<GameObject>> PoolDictionary;
+
+    public GameObject[] monster;
+    public Transform monsterBox;
+    public List<GameObject>[] monsterPools;
 
     private void Awake()
     {
@@ -34,6 +38,38 @@ public class ObjectPool : MonoBehaviour
             }        
             PoolDictionary.Add(pool.tag, objectPool);
         }
+
+        monsterPools = new List<GameObject>[monster.Length];
+
+        for (int i = 0; i < monsterPools.Length; i++)
+        {
+            monsterPools[i] = new List<GameObject>();
+        }
+
+
+    }
+
+    public GameObject Get(int index)
+    {
+        GameObject select = null;
+
+        foreach (GameObject item in monsterPools[index])
+        {
+            if (!item.activeSelf)
+            {
+                select = item;
+                select.SetActive(true);
+                break;
+            }
+        }
+
+        if (!select)
+        {
+            select = Instantiate(monster[index], monsterBox);
+            monsterPools[index].Add(select);
+        }
+
+        return select;
     }
 
     public GameObject SpawnFromPool(string tag)

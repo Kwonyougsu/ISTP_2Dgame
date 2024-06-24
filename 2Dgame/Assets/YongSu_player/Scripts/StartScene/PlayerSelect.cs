@@ -8,7 +8,7 @@ public class PlayerSelect : MonoBehaviour
     public Button rangedButton;
     public Button RotationButton;
     public Button startButton;
-  
+  //test
 
     void Start()
     {
@@ -27,6 +27,6 @@ public class PlayerSelect : MonoBehaviour
     public void OnGameStartClick()
     {
         GameManager.Instance.StageDataReset();
-        SceneManager.LoadScene("MainScene_yong"); // 변경할 씬 이름
+        SceneManager.LoadScene("MainScene"); // 변경할 씬 이름
     }
 }

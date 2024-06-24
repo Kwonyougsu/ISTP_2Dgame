@@ -13,10 +13,10 @@ MonoBehaviour:
   m_Name: UpgradeStat
   m_EditorClassIdentifier: 
   statIcon:
-  - {fileID: 10907, guid: 0000000000000000f000000000000000, type: 0}
-  - {fileID: 10901, guid: 0000000000000000f000000000000000, type: 0}
-  - {fileID: 10915, guid: 0000000000000000f000000000000000, type: 0}
-  - {fileID: 10911, guid: 0000000000000000f000000000000000, type: 0}
+  - {fileID: 21300000, guid: b295665a067ffea4e97174154c62d83f, type: 3}
+  - {fileID: 21300000, guid: 1f0df38db1cec6048907b38bd6fda258, type: 3}
+  - {fileID: 21300000, guid: 476740f41fbbe6d4f90d371386083df4, type: 3}
+  - {fileID: 21300000, guid: 8661111723731c3449c892b735fcfd15, type: 3}
   statLv:
   - 0
   - 0

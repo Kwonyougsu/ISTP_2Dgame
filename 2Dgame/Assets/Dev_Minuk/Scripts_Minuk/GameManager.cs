@@ -10,6 +10,7 @@ public class GameManager : MonoBehaviour
     public Transform player;
 
     public GameObject chooseItemUI;
+    public GameObject sPUI;
 
     public Transform Player
     {

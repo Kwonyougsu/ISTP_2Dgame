@@ -29,7 +29,7 @@ public class UIManager : MonoBehaviour
         ExpBar.fillAmount = GetPercentage();
         LvTxt.text = $"Lv : {GameManager.Instance.Lv}";
         stageGoldTxt.text = $"{GameManager.Instance.stageGold} G";
-        //spTxt.text = $"SP {GameManager.Instance.sp}";
+        spTxt.text = $"SP {GameManager.Instance.sp}";
     }
 
     private float GetPercentage()

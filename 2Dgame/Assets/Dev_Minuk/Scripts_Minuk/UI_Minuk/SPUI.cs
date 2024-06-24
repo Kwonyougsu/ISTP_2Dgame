@@ -16,6 +16,7 @@ public class SPUI : MonoBehaviour
 
     private void Awake()
     {
+        GameManager.Instance.sPUI = this.gameObject;
         upgradeStatData = GameManager.Instance.upgradeStatData;
         for (int i = 0; i < upgradeStatData.statName.Length; i++)
         {
@@ -47,6 +48,7 @@ public class SPUI : MonoBehaviour
             Time.timeScale = 1.0f;
             GameManager.Instance.sp--;
             upgradeStatData.statLv[0]++;
+            Time.timeScale = 0f;
         }
     }
 
@@ -57,6 +59,7 @@ public class SPUI : MonoBehaviour
             Time.timeScale = 1.0f;
             GameManager.Instance.sp--;
             upgradeStatData.statLv[1]++;
+            Time.timeScale = 0f;
         }
     }
 
@@ -67,6 +70,7 @@ public class SPUI : MonoBehaviour
             Time.timeScale = 1.0f;
             GameManager.Instance.sp--;
             upgradeStatData.statLv[2]++;
+            Time.timeScale = 0f;
         }
     }
 
@@ -77,6 +81,7 @@ public class SPUI : MonoBehaviour
             Time.timeScale = 1.0f;
             GameManager.Instance.sp--;
             upgradeStatData.statLv[3]++;
+            Time.timeScale = 0f;
         }
     }
     

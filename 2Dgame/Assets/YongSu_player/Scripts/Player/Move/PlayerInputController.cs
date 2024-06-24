@@ -1,4 +1,5 @@
 using System;
+using Unity.VisualScripting;
 using UnityEngine;
 using UnityEngine.InputSystem;
 
@@ -23,6 +24,18 @@ public class PlayerInputController : TopDownController
         Vector2 worldPos = camera.ScreenToWorldPoint(newAim);
         newAim = (worldPos - (Vector2)transform.position).normalized;
         CallLookEvent(newAim);
+    }
+
+    public void OnStatInfo()
+    {
+        if (Time.timeScale == 1f)
+        {
+            GameManager.Instance.sPUI.SetActive(true);
+            Time.timeScale = 0f;
+            return;
+        }
+        Time.timeScale = 1f;
+        GameManager.Instance.sPUI.SetActive(false);
     }
 }
 

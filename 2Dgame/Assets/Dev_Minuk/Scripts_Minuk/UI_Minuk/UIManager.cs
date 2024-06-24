@@ -7,9 +7,6 @@ using UnityEngine.UI;
 
 public class UIManager : MonoBehaviour
 {
-    public static UIManager Instance;
-
-
     public Image ExpBar;
     public TextMeshProUGUI LvTxt;
     public TextMeshProUGUI stageGoldTxt;

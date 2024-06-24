@@ -20,7 +20,6 @@ public class SPUI : MonoBehaviour
         for (int i = 0; i < upgradeStatData.statName.Length; i++)
         {
             icon[i].sprite = upgradeStatData.statIcon[i];
-            statLvTxt[i].text = $"Lv.{upgradeStatData.statLv[i]}";
             statNameTxt[i].text = upgradeStatData.statName[i];
             statDescriptionTxt[i].text = upgradeStatData.statDescription[i];
         }
@@ -29,7 +28,7 @@ public class SPUI : MonoBehaviour
     private void Update()
     {
         spTxt.text = $"SP {GameManager.Instance.sp}";
-        for (int i = 0; i < upgradeStatData.statName.Length; i++)
+        for (int i = 0; i < upgradeStatData.statLv.Length; i++)
         {
             statLvTxt[i].text = $"Lv.{upgradeStatData.statLv[i]}";
         }

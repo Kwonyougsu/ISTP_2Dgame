@@ -17,22 +17,46 @@ public class Spawner : MonoBehaviour
     private int monsterRange = 1;
     private bool isBoos = false;
 
+    private Transform playerPos;
+    private Vector3[] vector3s = new Vector3[10];
+
+
     private void Awake()
     {
         if (Instance == null) Instance = this;
         spawnPoint = GetComponentsInChildren<Transform>();
     }
 
-    private void Update()
+    private void Start()
     {
+        playerPos = GameManager.Instance.player;
+
+        for (int i = 1; i < spawnPoint.Length; i++)
+        {           
+            Vector3 distans = spawnPoint[i].position - playerPos.position;
+            spawnPoint[i].position = playerPos.position + distans;
+            vector3s[i-1] = distans;  
+        }
+
+    }
+
+    private void Update()
+    {     
+        UpdatePosition();
         timer += Time.deltaTime;
         
-
-
         if (timer > 1f)
         {
             timer = 0;
             Spawn();
+        }
+    }
+
+    public void UpdatePosition()
+    {
+        for (int i = 0; i < vector3s.Length; i++)
+        {
+            spawnPoint[i+1].position = playerPos.position + vector3s[i];
         }
     }
 
@@ -64,8 +88,6 @@ public class Spawner : MonoBehaviour
             totalMonsterCount += 5;
             if (totalMonsterCount >= 20) totalMonsterCount = 20;
         }
-
-
     }
 
     public void OnEnemyDeath()

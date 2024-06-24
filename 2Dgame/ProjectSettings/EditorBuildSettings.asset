@@ -8,4 +8,10 @@ EditorBuildSettings:
   - enabled: 1
     path: Assets/Scenes/MainScene.unity
     guid: 2cda990e2423bbf4892e6590ba056729
+  - enabled: 1
+    path: Assets/YongSu_player/Scene/GameScene_yong.unity
+    guid: 7b70b34ffa44e814fb452f39f3c5128e
+  - enabled: 1
+    path: Assets/YongSu_player/Scene/MainScene_yong.unity
+    guid: 2846544aa7181bf4e8361cc6fac01a0c
   m_configObjects: {}

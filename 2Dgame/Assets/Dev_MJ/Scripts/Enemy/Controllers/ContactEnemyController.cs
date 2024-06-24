@@ -57,7 +57,7 @@ public class ContactEnemyController : EnemyController
     // 적과 닿았을 때 처리 (근거리 공격)
     private void OnCollisionEnter2D(Collision2D collision)
     {
-        Debug.Log($"ContactEnemyController.cs - OnTriggerEnter2D()");
+        //Debug.Log($"ContactEnemyController.cs - OnTriggerEnter2D()");
         GameObject receiver = collision.gameObject;
 
         if (1 << receiver.layer != layerPlayer) return;
@@ -77,7 +77,7 @@ public class ContactEnemyController : EnemyController
   
     private void OnCollisionStay2D(Collision2D collision)
     {
-        Debug.Log($"ContactEnemyController.cs - OnCollisionStay2D()");
+        //Debug.Log($"ContactEnemyController.cs - OnCollisionStay2D()");
         if (!isCollidingWithTarget) isCollidingWithTarget = true;
         if (curDelay > 0f) return;
 
@@ -96,7 +96,7 @@ public class ContactEnemyController : EnemyController
 
     private void OnCollisionExit2D(Collision2D collision)
     {
-        Debug.Log($"ContactEnemyController.cs - OnTriggerExit2D()");
+        //Debug.Log($"ContactEnemyController.cs - OnTriggerExit2D()");
         GameObject receiver = collision.gameObject;
         isCollidingWithTarget = false;
         stats.CurrentStat.isChase = true;

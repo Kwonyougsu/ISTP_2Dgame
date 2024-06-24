@@ -128,63 +128,6 @@ RectTransform:
   m_CorrespondingSourceObject: {fileID: 1207050581283427574, guid: 4643b7c335130ed4cab300684c43cd62, type: 3}
   m_PrefabInstance: {fileID: 5223713488840536109}
   m_PrefabAsset: {fileID: 0}
---- !u!1 &212919545
-GameObject:
-  m_ObjectHideFlags: 0
-  m_CorrespondingSourceObject: {fileID: 0}
-  m_PrefabInstance: {fileID: 0}
-  m_PrefabAsset: {fileID: 0}
-  serializedVersion: 6
-  m_Component:
-  - component: {fileID: 212919547}
-  - component: {fileID: 212919546}
-  m_Layer: 0
-  m_Name: GameManager
-  m_TagString: Untagged
-  m_Icon: {fileID: 0}
-  m_NavMeshLayer: 0
-  m_StaticEditorFlags: 0
-  m_IsActive: 1
---- !u!114 &212919546
-MonoBehaviour:
-  m_ObjectHideFlags: 0
-  m_CorrespondingSourceObject: {fileID: 0}
-  m_PrefabInstance: {fileID: 0}
-  m_PrefabAsset: {fileID: 0}
-  m_GameObject: {fileID: 212919545}
-  m_Enabled: 1
-  m_EditorHideFlags: 0
-  m_Script: {fileID: 11500000, guid: af2a2bce0cdeae445999890d0387f497, type: 3}
-  m_Name: 
-  m_EditorClassIdentifier: 
-  playerDirection: {fileID: 0}
-  player: {fileID: 0}
-  chooseItemUI: {fileID: 0}
-  sPUI: {fileID: 0}
-  PlayerId: 0
-  itemData: {fileID: 11400000, guid: bcc6d9806e8c93d40bd5a7de3c43448b, type: 2}
-  upgradeStatData: {fileID: 11400000, guid: 40df27d72b81fae47a0e2c6bf3af7cd6, type: 2}
-  Lv: 0
-  maxExp: 0
-  curExp: 0
-  playerGold: 0
-  stageGold: 0
-  sp: 0
---- !u!4 &212919547
-Transform:
-  m_ObjectHideFlags: 0
-  m_CorrespondingSourceObject: {fileID: 0}
-  m_PrefabInstance: {fileID: 0}
-  m_PrefabAsset: {fileID: 0}
-  m_GameObject: {fileID: 212919545}
-  serializedVersion: 2
-  m_LocalRotation: {x: 0, y: 0, z: 0, w: 1}
-  m_LocalPosition: {x: 0, y: 0, z: 0}
-  m_LocalScale: {x: 1, y: 1, z: 1}
-  m_ConstrainProportionsScale: 0
-  m_Children: []
-  m_Father: {fileID: 0}
-  m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
 --- !u!1 &231461010
 GameObject:
   m_ObjectHideFlags: 0
@@ -10394,6 +10337,63 @@ Tilemap:
     e31: 0
     e32: 0
     e33: 1
+--- !u!1 &1425793550
+GameObject:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  serializedVersion: 6
+  m_Component:
+  - component: {fileID: 1425793552}
+  - component: {fileID: 1425793551}
+  m_Layer: 0
+  m_Name: GameManager
+  m_TagString: Untagged
+  m_Icon: {fileID: 0}
+  m_NavMeshLayer: 0
+  m_StaticEditorFlags: 0
+  m_IsActive: 1
+--- !u!114 &1425793551
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 1425793550}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: af2a2bce0cdeae445999890d0387f497, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  playerDirection: {fileID: 0}
+  player: {fileID: 0}
+  chooseItemUI: {fileID: 0}
+  sPUI: {fileID: 0}
+  PlayerId: 0
+  itemData: {fileID: 11400000, guid: bcc6d9806e8c93d40bd5a7de3c43448b, type: 2}
+  upgradeStatData: {fileID: 11400000, guid: 40df27d72b81fae47a0e2c6bf3af7cd6, type: 2}
+  Lv: 0
+  maxExp: 0
+  curExp: 0
+  playerGold: 0
+  stageGold: 0
+  sp: 0
+--- !u!4 &1425793552
+Transform:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 1425793550}
+  serializedVersion: 2
+  m_LocalRotation: {x: 0, y: 0, z: 0, w: 1}
+  m_LocalPosition: {x: 0, y: 0, z: 0}
+  m_LocalScale: {x: 1, y: 1, z: 1}
+  m_ConstrainProportionsScale: 0
+  m_Children: []
+  m_Father: {fileID: 0}
+  m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
 --- !u!1 &1504666943
 GameObject:
   m_ObjectHideFlags: 0
@@ -20202,4 +20202,4 @@ SceneRoots:
   - {fileID: 3089768796004699758}
   - {fileID: 994063848}
   - {fileID: 5913622586554278023}
-  - {fileID: 212919547}
+  - {fileID: 1425793552}

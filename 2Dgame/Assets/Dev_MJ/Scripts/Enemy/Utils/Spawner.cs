@@ -9,10 +9,13 @@ public class Spawner : MonoBehaviour
 
     public Transform[] spawnPoint;
     public int curMonsterCount = 0;
-    public int totalMonsterCount = 0;
+    public int totalMonsterCount = 2;
+    public int killCount = 0;
 
     private float timer;
-    private int level;
+    public int level = 1;
+    private int monsterRange = 1;
+    private bool isBoos = false;
 
     private void Awake()
     {
@@ -37,13 +40,48 @@ public class Spawner : MonoBehaviour
     {
         if (curMonsterCount >= totalMonsterCount) return;
 
-        GameObject enemy =  ObjectPool.Instance.Get(0);
+        GameObject enemy =  ObjectPool.Instance.Get(Random.Range(0, monsterRange));
         enemy.transform.position = spawnPoint[Random.Range(1, spawnPoint.Length)].position;
         curMonsterCount++;
     }
 
+    private void ProcessLevelConditions()
+    {
+        if (level % 2 == 0)
+        {
+            totalMonsterCount++;
+            if (totalMonsterCount >= 20) totalMonsterCount = 20;
+        }
+
+        if (level % 3 == 0)
+        {
+            monsterRange++;
+            if (monsterRange > ObjectPool.Instance.monsterPools.Length) monsterRange--;
+        }
+
+        if (level % 5 == 0)
+        {
+            totalMonsterCount += 5;
+            if (totalMonsterCount >= 20) totalMonsterCount = 20;
+        }
+
+
+    }
+
     public void OnEnemyDeath()
     {
-        curMonsterCount--;        
+        curMonsterCount--;
+        killCount++;
+        LevelSystem();
+    }
+
+    private void LevelSystem()
+    {
+        if (killCount >= 3)
+        {
+            level++;
+            killCount = 0;
+            ProcessLevelConditions();
+        }
     }
 }

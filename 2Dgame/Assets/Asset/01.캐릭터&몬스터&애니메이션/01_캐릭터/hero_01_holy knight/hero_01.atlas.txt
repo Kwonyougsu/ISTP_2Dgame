@@ -1,0 +1,174 @@
+
+hero_01.png
+size: 1024,1024
+format: RGBA8888
+filter: Linear,Linear
+repeat: none
+01/body1
+  rotate: false
+  xy: 212, 119
+  size: 43, 42
+  orig: 43, 42
+  offset: 0, 0
+  index: -1
+01/body2
+  rotate: false
+  xy: 422, 406
+  size: 27, 36
+  orig: 27, 36
+  offset: 0, 0
+  index: -1
+01/hair
+  rotate: false
+  xy: 212, 163
+  size: 84, 106
+  orig: 84, 106
+  offset: 0, 0
+  index: -1
+01/head
+  rotate: false
+  xy: 632, 922
+  size: 91, 100
+  orig: 91, 100
+  offset: 0, 0
+  index: -1
+01/l_arm1
+  rotate: false
+  xy: 507, 484
+  size: 26, 36
+  orig: 26, 36
+  offset: 0, 0
+  index: -1
+01/l_arm2
+  rotate: false
+  xy: 797, 994
+  size: 26, 28
+  orig: 26, 28
+  offset: 0, 0
+  index: -1
+01/l_arm3
+  rotate: false
+  xy: 422, 444
+  size: 83, 76
+  orig: 83, 76
+  offset: 0, 0
+  index: -1
+01/l_leg1
+  rotate: false
+  xy: 212, 85
+  size: 22, 32
+  orig: 22, 32
+  offset: 0, 0
+  index: -1
+01/l_leg2
+  rotate: false
+  xy: 686, 886
+  size: 22, 34
+  orig: 22, 34
+  offset: 0, 0
+  index: -1
+01/r_arm1
+  rotate: false
+  xy: 298, 231
+  size: 36, 38
+  orig: 36, 38
+  offset: 0, 0
+  index: -1
+01/r_arm2
+  rotate: false
+  xy: 725, 951
+  size: 28, 28
+  orig: 28, 28
+  offset: 0, 0
+  index: -1
+01/r_arm3
+  rotate: false
+  xy: 632, 859
+  size: 52, 61
+  orig: 52, 61
+  offset: 0, 0
+  index: -1
+01/r_leg1
+  rotate: false
+  xy: 632, 821
+  size: 26, 36
+  orig: 26, 36
+  offset: 0, 0
+  index: -1
+01/r_leg2
+  rotate: true
+  xy: 2, 2
+  size: 16, 38
+  orig: 16, 38
+  offset: 0, 0
+  index: -1
+01/skirt
+  rotate: false
+  xy: 725, 981
+  size: 70, 41
+  orig: 70, 41
+  offset: 0, 0
+  index: -1
+01/touch_hero_01_fx_1
+  rotate: false
+  xy: 2, 773
+  size: 208, 249
+  orig: 208, 249
+  offset: 0, 0
+  index: -1
+01/touch_hero_01_fx_2
+  rotate: false
+  xy: 2, 522
+  size: 208, 249
+  orig: 208, 249
+  offset: 0, 0
+  index: -1
+01/touch_hero_01_fx_3
+  rotate: false
+  xy: 212, 773
+  size: 208, 249
+  orig: 208, 249
+  offset: 0, 0
+  index: -1
+01/touch_hero_01_fx_4
+  rotate: false
+  xy: 2, 271
+  size: 208, 249
+  orig: 208, 249
+  offset: 0, 0
+  index: -1
+01/touch_hero_01_fx_5
+  rotate: false
+  xy: 212, 522
+  size: 208, 249
+  orig: 208, 249
+  offset: 0, 0
+  index: -1
+01/touch_hero_01_fx_6
+  rotate: false
+  xy: 422, 773
+  size: 208, 249
+  orig: 208, 249
+  offset: 0, 0
+  index: -1
+01/touch_hero_01_fx_7
+  rotate: false
+  xy: 2, 20
+  size: 208, 249
+  orig: 208, 249
+  offset: 0, 0
+  index: -1
+01/touch_hero_01_fx_8
+  rotate: false
+  xy: 212, 271
+  size: 208, 249
+  orig: 208, 249
+  offset: 0, 0
+  index: -1
+01/touch_hero_01_fx_9
+  rotate: false
+  xy: 422, 522
+  size: 208, 249
+  orig: 208, 249
+  offset: 0, 0
+  index: -1

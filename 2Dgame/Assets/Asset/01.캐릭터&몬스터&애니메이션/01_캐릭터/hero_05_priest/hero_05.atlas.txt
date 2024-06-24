@@ -1,0 +1,125 @@
+
+hero_05.png
+size: 1024,1024
+format: RGBA8888
+filter: Linear,Linear
+repeat: none
+01/b_hair
+  rotate: false
+  xy: 376, 878
+  size: 104, 75
+  orig: 104, 75
+  offset: 0, 0
+  index: -1
+01/body1
+  rotate: false
+  xy: 189, 525
+  size: 34, 29
+  orig: 34, 29
+  offset: 0, 0
+  index: -1
+01/body2
+  rotate: false
+  xy: 284, 608
+  size: 23, 21
+  orig: 23, 21
+  offset: 0, 0
+  index: -1
+01/f_hair
+  rotate: false
+  xy: 376, 832
+  size: 14, 44
+  orig: 14, 44
+  offset: 0, 0
+  index: -1
+01/hand
+  rotate: false
+  xy: 312, 646
+  size: 24, 20
+  orig: 24, 20
+  offset: 0, 0
+  index: -1
+01/head
+  rotate: false
+  xy: 189, 556
+  size: 93, 110
+  orig: 93, 110
+  offset: 0, 0
+  index: -1
+01/l_arm1
+  rotate: false
+  xy: 482, 921
+  size: 22, 32
+  orig: 22, 32
+  offset: 0, 0
+  index: -1
+01/l_leg1
+  rotate: false
+  xy: 189, 488
+  size: 14, 35
+  orig: 14, 35
+  offset: 0, 0
+  index: -1
+01/l_leg2
+  rotate: true
+  xy: 225, 540
+  size: 14, 34
+  orig: 14, 34
+  offset: 0, 0
+  index: -1
+01/r_arm1
+  rotate: false
+  xy: 284, 631
+  size: 26, 35
+  orig: 26, 35
+  offset: 0, 0
+  index: -1
+01/r_leg1
+  rotate: false
+  xy: 2, 2
+  size: 18, 36
+  orig: 18, 36
+  offset: 0, 0
+  index: -1
+01/r_leg2
+  rotate: false
+  xy: 69, 53
+  size: 15, 39
+  orig: 15, 39
+  offset: 0, 0
+  index: -1
+01/skirt
+  rotate: false
+  xy: 2, 40
+  size: 65, 52
+  orig: 65, 52
+  offset: 0, 0
+  index: -1
+fx/touch_hero_05_fx_fire_1
+  rotate: false
+  xy: 2, 668
+  size: 185, 285
+  orig: 185, 285
+  offset: 0, 0
+  index: -1
+fx/touch_hero_05_fx_fire_2
+  rotate: false
+  xy: 2, 381
+  size: 185, 285
+  orig: 185, 285
+  offset: 0, 0
+  index: -1
+fx/touch_hero_05_fx_fire_3
+  rotate: false
+  xy: 189, 668
+  size: 185, 285
+  orig: 185, 285
+  offset: 0, 0
+  index: -1
+fx/touch_hero_05_fx_fire_4
+  rotate: false
+  xy: 2, 94
+  size: 185, 285
+  orig: 185, 285
+  offset: 0, 0
+  index: -1

@@ -31,6 +31,11 @@ public class EnemyHealthSystem : MonoBehaviour
         statsHandler = GetComponent<EnemyStatHandler>();
     }
 
+    private void OnEnable()
+    {
+        CurrentHealth = MaxHealth;
+    }
+
     private void Start()
     {       
         CurrentHealth = MaxHealth;

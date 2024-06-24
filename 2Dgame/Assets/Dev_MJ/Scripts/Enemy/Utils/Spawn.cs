@@ -9,6 +9,8 @@ public class Spawn : MonoBehaviour
     [SerializeField] private int currentSpawnCount = 0;
     [SerializeField] private int waveSpawnCount = 0;
     [SerializeField] private int waveSpawnPosCount = 0;
+    [SerializeField] private int deathCount = 0;
+
     public float spawnInterval = .5f;
     public List<GameObject> enemyPrefebs = new List<GameObject>();
     [SerializeField] private Transform spawnPositionsRoot;
@@ -133,5 +135,6 @@ public class Spawn : MonoBehaviour
     private void OnEnemyDeath()
     {
         currentSpawnCount--;
+        deathCount++;
     }
 }

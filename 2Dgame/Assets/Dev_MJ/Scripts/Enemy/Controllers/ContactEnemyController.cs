@@ -11,7 +11,7 @@ public class ContactEnemyController : EnemyController
 
 
     // 캐릭터 위치에따라 이미지가 뒤집혀야한다
-    //[SerializeField] private SpriteRenderer characterRenderer;//나중에 이미지 추가할것**
+    [SerializeField] private SpriteRenderer characterRenderer;//나중에 이미지 추가할것**
 
 
     protected override void Start()
@@ -50,14 +50,14 @@ public class ContactEnemyController : EnemyController
     private void Rotate(Vector2 direction)
     {        
         float rotZ = Mathf.Atan2(direction.y, direction.x) * Mathf.Rad2Deg;
-        //characterRenderer.flipX = Mathf.Abs(rotZ) > 90f;//나중에 이미지 추가할것**
+        characterRenderer.flipX = Mathf.Abs(rotZ) > 90f;//나중에 이미지 추가할것**
     }
 
 
     // 적과 닿았을 때 처리 (근거리 공격)
     private void OnCollisionEnter2D(Collision2D collision)
     {
-        Debug.Log($"ContactEnemyController.cs - OnTriggerEnter2D(), {Time.deltaTime}");
+        //Debug.Log($"ContactEnemyController.cs - OnTriggerEnter2D()");
         GameObject receiver = collision.gameObject;
 
         if (1 << receiver.layer != layerPlayer) return;
@@ -77,7 +77,7 @@ public class ContactEnemyController : EnemyController
   
     private void OnCollisionStay2D(Collision2D collision)
     {
-        Debug.Log($"ContactEnemyController.cs - OnCollisionStay2D(), {Time.deltaTime}");
+        //Debug.Log($"ContactEnemyController.cs - OnCollisionStay2D()");
         if (!isCollidingWithTarget) isCollidingWithTarget = true;
         if (curDelay > 0f) return;
 
@@ -96,7 +96,7 @@ public class ContactEnemyController : EnemyController
 
     private void OnCollisionExit2D(Collision2D collision)
     {
-        Debug.Log($"ContactEnemyController.cs - OnTriggerExit2D(), {Time.deltaTime}");
+        //Debug.Log($"ContactEnemyController.cs - OnTriggerExit2D()");
         GameObject receiver = collision.gameObject;
         isCollidingWithTarget = false;
         stats.CurrentStat.isChase = true;

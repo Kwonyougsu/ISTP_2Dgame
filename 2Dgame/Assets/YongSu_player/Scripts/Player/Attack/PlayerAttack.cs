@@ -16,7 +16,6 @@ public class PlayerAttack : MonoBehaviour
     private GameObject RotationAttackInstance;
     public GameObject[] mutipleRotationAttackInstance;
  
-    int objSize;
     float circleR;
     float deg;
     float objSpeed;
@@ -28,10 +27,8 @@ public class PlayerAttack : MonoBehaviour
     }
     private void Start()
     {
-        objSize = 3;
-        circleR = 5;
-        objSpeed = 5;
-        mutipleRotationAttackInstance = new GameObject[objSize];
+        circleR = 5f;
+        objSpeed = 5f;
         playerid = GameManager.Instance.PlayerId;
         if (playerid == 0)
         {
@@ -52,7 +49,7 @@ public class PlayerAttack : MonoBehaviour
     {
         if (playerid == 2) // 계속 돌아가야하므로, Update
         {
-            RotationAttack();
+            RotationAttack(GameManager.Instance.Lv+1);
         }
     }
 
@@ -146,9 +143,12 @@ public class PlayerAttack : MonoBehaviour
     #endregion
 
     #region 회전 공격
-    public void RotationAttack()
+    public void RotationAttack(int objsizeLv)
     {
-        if (objSize >= 1)
+        deg = deg % 360;
+        if(objsizeLv >= 3) objsizeLv = 3;
+
+        if (objsizeLv > 0 && objsizeLv < 2)
         {
             if (RotationAttackInstance == null)
             {
@@ -156,24 +156,33 @@ public class PlayerAttack : MonoBehaviour
             }
 
             deg += Time.deltaTime * (objSpeed + GameManager.Instance.upgradeStatData.statLv[2] * 2f) * 10;
-            if (deg < 360)
-            {
-                var rad = Mathf.Deg2Rad * (deg);
-                var x = circleR * Mathf.Sin(rad);
-                var y = circleR * Mathf.Cos(rad);
-                RotationAttackInstance.transform.position = transform.position + new Vector3(x, y);
-                RotationAttackInstance.transform.rotation = Quaternion.Euler(0, 0, deg * -1); //가운데를 바라보게 각도 조절
-            }
-            else
-            {
-                deg = 0;
-            }
+
+            var rad = Mathf.Deg2Rad * (deg);
+            var x = circleR * Mathf.Sin(rad);
+            var y = circleR * Mathf.Cos(rad);
+            RotationAttackInstance.transform.position = transform.position + new Vector3(x, y);
+            RotationAttackInstance.transform.rotation = Quaternion.Euler(0, 0, deg * -1); // 가운데를 바라보게 각도 조절
+            Debug.Log(RotationAttackInstance.transform.position);
         }
-
-        if (objSize >= 2)
+        else if (objsizeLv >= 2)
         {
+            if (RotationAttackInstance != null)
+            {
+                Destroy(RotationAttackInstance);
+            }
 
-            for (int i = 0; i < objSize; i++)
+            if (mutipleRotationAttackInstance != null && mutipleRotationAttackInstance.Length == objsizeLv-1)
+            {
+                for (int i = 0; i < mutipleRotationAttackInstance.Length; i++)
+                Destroy(mutipleRotationAttackInstance[i]);
+            }
+
+            if (mutipleRotationAttackInstance == null || mutipleRotationAttackInstance.Length != objsizeLv)
+            {
+                mutipleRotationAttackInstance = new GameObject[objsizeLv];
+            }
+
+            for (int i = 0; i < objsizeLv; i++)
             {
                 if (mutipleRotationAttackInstance[i] == null)
                 {
@@ -181,22 +190,16 @@ public class PlayerAttack : MonoBehaviour
                 }
             }
 
-            if (deg < 360)
-            {
-                for (int i = 0; i < objSize; i++)
-                {
-                    var rad = Mathf.Deg2Rad * (deg + (i * (360 / objSize)));
-                    var x = circleR * Mathf.Sin(rad);
-                    var y = circleR * Mathf.Cos(rad);
-                    Debug.Log(objSize);
-                    mutipleRotationAttackInstance[i].transform.position = transform.position + new Vector3(x, y);
-                    mutipleRotationAttackInstance[i].transform.rotation = Quaternion.Euler(0, 0, (deg + (i * (360 / objSize))) * -1);
-                }
+            deg += Time.deltaTime * (objSpeed + GameManager.Instance.upgradeStatData.statLv[2] * 2f) * 10;
 
-            }
-            else
+            for (int i = 0; i < objsizeLv; i++)
             {
-                deg = 0;
+                var rad = Mathf.Deg2Rad * (deg + (i * (360 / objsizeLv)));
+                var x = circleR * Mathf.Sin(rad);
+                var y = circleR * Mathf.Cos(rad);
+                mutipleRotationAttackInstance[i].transform.position = transform.position + new Vector3(x, y);
+                mutipleRotationAttackInstance[i].transform.rotation = Quaternion.Euler(0, 0, (deg + (i * (360 / objsizeLv))) * -1);
+                Debug.Log(mutipleRotationAttackInstance[i].transform.position);
             }
         }
     }

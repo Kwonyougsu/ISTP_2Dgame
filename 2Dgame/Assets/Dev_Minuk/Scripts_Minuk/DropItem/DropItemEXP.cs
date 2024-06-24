@@ -8,7 +8,7 @@ public class DropItemEXP : MonoBehaviour
     {
         if(collision.gameObject.CompareTag("Player"))
         {
-            GameManager.Instance.curExp += 10;
+            GameManager.Instance.curExp += 100;
             if (GameManager.Instance.curExp >= GameManager.Instance.maxExp)
             {
                 GameManager.Instance.LvUp();

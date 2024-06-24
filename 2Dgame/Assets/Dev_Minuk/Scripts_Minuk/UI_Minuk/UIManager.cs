@@ -15,6 +15,7 @@ public class UIManager : MonoBehaviour
     public TextMeshProUGUI stageGoldTxt;
     public Transform exp;
     public Transform gold;
+    public TextMeshProUGUI spTxt;
 
     private void Awake()
     {
@@ -23,6 +24,7 @@ public class UIManager : MonoBehaviour
         ExpBar = exp.GetChild(1).GetComponent<Image>();
         LvTxt = exp.GetChild(2).GetComponent<TextMeshProUGUI>();
         stageGoldTxt = gold.GetChild(1).GetComponent<TextMeshProUGUI>();
+        spTxt = this.transform.GetChild(3).GetComponent<TextMeshProUGUI>();
     }
 
     private void Update()
@@ -30,6 +32,7 @@ public class UIManager : MonoBehaviour
         ExpBar.fillAmount = GetPercentage();
         LvTxt.text = $"Lv : {GameManager.Instance.Lv}";
         stageGoldTxt.text = $"{GameManager.Instance.stageGold} G";
+        spTxt.text = $"SP {GameManager.Instance.sp}";
     }
 
     private float GetPercentage()

@@ -6,7 +6,6 @@ using UnityEngine.UI;
 
 public class SPUI : MonoBehaviour
 {
-    [Header("Need Connection")]
     public UpgradeStatData upgradeStatData;
 
     public Image[] icon;
@@ -17,6 +16,7 @@ public class SPUI : MonoBehaviour
 
     private void Awake()
     {
+        upgradeStatData = GameManager.Instance.upgradeStatData;
         for (int i = 0; i < upgradeStatData.statName.Length; i++)
         {
             icon[i].sprite = upgradeStatData.statIcon[i];
@@ -28,7 +28,7 @@ public class SPUI : MonoBehaviour
 
     private void Update()
     {
-        // spTxt.text = $"SP {GameManager.Instance.sp}";
+        spTxt.text = $"SP {GameManager.Instance.sp}";
         for (int i = 0; i < upgradeStatData.statName.Length; i++)
         {
             statLvTxt[i].text = $"Lv.{upgradeStatData.statLv[i]}";
@@ -37,10 +37,10 @@ public class SPUI : MonoBehaviour
 
     private void Start()
     {
-        //gameObject.SetActive(false);
+        gameObject.SetActive(false);
     }
 
-    /*
+    
     public void UpgradeAtk()
     {
         if(GameManager.Instance.sp > 0)
@@ -48,7 +48,6 @@ public class SPUI : MonoBehaviour
             Time.timeScale = 1.0f;
             GameManager.Instance.sp--;
             upgradeStatData.statLv[0]++;
-            gameObject.SetActive(false);
         }
     }
 
@@ -59,7 +58,6 @@ public class SPUI : MonoBehaviour
             Time.timeScale = 1.0f;
             GameManager.Instance.sp--;
             upgradeStatData.statLv[1]++;
-            gameObject.SetActive(false);
         }
     }
 
@@ -70,7 +68,6 @@ public class SPUI : MonoBehaviour
             Time.timeScale = 1.0f;
             GameManager.Instance.sp--;
             upgradeStatData.statLv[2]++;
-            gameObject.SetActive(false);
         }
     }
 
@@ -81,8 +78,7 @@ public class SPUI : MonoBehaviour
             Time.timeScale = 1.0f;
             GameManager.Instance.sp--;
             upgradeStatData.statLv[3]++;
-            gameObject.SetActive(false);
         }
     }
-    */
+    
 }

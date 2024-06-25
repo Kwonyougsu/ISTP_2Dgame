@@ -133,7 +133,7 @@ public class Spawner : MonoBehaviour
             if (bounusHP >= 20) bounusHP = 20;
         }
 
-        if (level % 15 == 0)
+        if (level % 20 == 0)
         {
             BossSpawn();
         }        

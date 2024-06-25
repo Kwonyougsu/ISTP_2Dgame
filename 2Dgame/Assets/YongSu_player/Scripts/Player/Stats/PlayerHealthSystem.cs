@@ -4,7 +4,7 @@ using UnityEngine.UI;
 
 public class PlayerHealthSystem : MonoBehaviour
 {
-    [SerializeField] private float healthChangeDelay = .5f;
+    [SerializeField] private float healthChangeDelay = 0.5f;
     [SerializeField] private Image healthBar;
 
     private PlayerStatsHandler statsHandler;
@@ -18,10 +18,20 @@ public class PlayerHealthSystem : MonoBehaviour
     public GameObject endpanel;
     public GameObject endpanelbg;
     private SpriteRenderer spriteRenderer;
+
+    private RectTransform healthBarRectTransform;
+    private Vector3 hpBarWorldPos = new Vector3(0, -1, 0);
+
     private void Awake()
     {
         statsHandler = GetComponent<PlayerStatsHandler>();
         spriteRenderer = GetComponent<SpriteRenderer>();
+        healthBarRectTransform = healthBar.GetComponent<RectTransform>();
+    }
+
+    private void Update()
+    {
+        UpdateHealthBarPosition();
     }
 
     private void Start()
@@ -64,6 +74,17 @@ public class PlayerHealthSystem : MonoBehaviour
             healthBar.fillAmount = CurrentHealth / MaxHealth;
         }
     }
+
+    private void UpdateHealthBarPosition()
+    {
+        if (healthBarRectTransform != null)
+        {
+            // 플레이어 위치를 기준으로 healthBar의 위치 업데이트
+            Vector3 worldPosition = transform.position + hpBarWorldPos;
+            healthBarRectTransform.position = worldPosition;
+        }
+    }
+
     public void Heal(float value)
     {
         CurrentHealth += value;

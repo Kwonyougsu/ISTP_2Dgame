@@ -143,20 +143,16 @@ public class GameManager : MonoBehaviour
     }
     public void LvUp()
     {
-        Invoke("LateLvUp", 0.5f);
-    }
-    void LateLvUp()
-    {
         if (curExp >= maxExp) curExp -= maxExp; // exp아이템을 한번에 먹었을 때 정상적으로 동작하지 않을 것 같아서
-        Lv++;
         GameManager.Instance.maxExp += 20f;
+        Lv++;
         chooseItemUI.SetActive(true);
         while (true)
         {
             int ran = Random.Range(0, items.childCount);
             int ran1 = Random.Range(0, items.childCount);
             int ran2 = Random.Range(0, items.childCount);
-            if(ran !=  ran1 && ran1 != ran2 && ran != ran2)
+            if (ran != ran1 && ran1 != ran2 && ran != ran2)
             {
                 items.GetChild(ran).gameObject.SetActive(true);
                 items.GetChild(ran1).gameObject.SetActive(true);
@@ -164,7 +160,6 @@ public class GameManager : MonoBehaviour
                 break;
             }
         }
-
         Time.timeScale = 0f;
     }
     public void SetCharacterId(int id)

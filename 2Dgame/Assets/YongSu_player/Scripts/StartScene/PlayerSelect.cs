@@ -30,6 +30,6 @@ public class PlayerSelect : MonoBehaviour
     {
         GameManager.Instance.StageDataReset();
         if(clip) SoundManager.PlayBGM(clip);
-        SceneManager.LoadScene("MainScene"); // 변경할 씬 이름
+        SceneManager.LoadScene("MainScene_UI"); // 변경할 씬 이름
     }
 }

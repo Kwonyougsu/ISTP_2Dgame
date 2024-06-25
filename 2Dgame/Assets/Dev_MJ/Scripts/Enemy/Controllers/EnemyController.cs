@@ -39,9 +39,25 @@ public class EnemyController : MonoBehaviour
     private void DoropItem()
     {
         Instantiate(dropItems[0], transform.position, Quaternion.identity);
-        int num = UnityEngine.Random.Range(0, 4);
-        if (num == 0) Instantiate(dropItems[1], transform.position + new Vector3(0f, 0.7f, 0f), Quaternion.identity);        
-        
+        int num = UnityEngine.Random.Range(0, 10);
+        switch (GameManager.Instance.itemData.itemstack[3])
+        {
+            case 0:
+                if (num <= 1) Instantiate(dropItems[1], transform.position + new Vector3(0f, 0.7f, 0f), Quaternion.identity);
+                break;
+
+            case 1:
+                if (num <= 2) Instantiate(dropItems[1], transform.position + new Vector3(0f, 0.7f, 0f), Quaternion.identity);
+                break;
+
+            case 2:
+                if (num <= 3) Instantiate(dropItems[1], transform.position + new Vector3(0f, 0.7f, 0f), Quaternion.identity);
+                break;
+
+            case 3:
+                if (num <= 4) Instantiate(dropItems[1], transform.position + new Vector3(0f, 0.7f, 0f), Quaternion.identity);
+                break;
+        }
     }
 
     // 타겟 까지와의 거리

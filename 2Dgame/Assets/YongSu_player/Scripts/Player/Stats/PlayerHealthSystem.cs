@@ -65,27 +65,27 @@ public class PlayerHealthSystem : MonoBehaviour
             Debug.Log("죽었다 내 체력" + CurrentHealth);
             endpanel.SetActive(true);
             endpanelbg.SetActive(true);
-            CallDeath();
+            //CallDeath();
             Time.timeScale = 0f;
             return true;
         }
         
-        if (change >= 0)
-        {
-            OnHeal?.Invoke();
-        }
-        else
-        {
-            OnDamage?.Invoke();
-            isAttacked = true;
-        }
+        //if (change >= 0)
+        //{
+        //    OnHeal?.Invoke();
+        //}
+        //else
+        //{
+        //    OnDamage?.Invoke();
+        //    isAttacked = true;
+        //}
 
 
         return true;
     }
 
-    private void CallDeath()
-    {
-        OnDeath?.Invoke();
-    }
+    //private void CallDeath()
+    //{
+    //    OnDeath?.Invoke();
+    //}
 }

@@ -1,9 +1,11 @@
 using System;
 using UnityEngine;
+using UnityEngine.UI;
 
 public class PlayerHealthSystem : MonoBehaviour
 {
     [SerializeField] private float healthChangeDelay = .5f;
+    [SerializeField] private Image healthBar;
 
     private PlayerStatsHandler statsHandler;
     private float timeSinceLastChange = float.MaxValue;
@@ -23,14 +25,17 @@ public class PlayerHealthSystem : MonoBehaviour
 
     public GameObject endpanel;
     public GameObject endpanelbg;
+    private SpriteRenderer spriteRenderer;
     private void Awake()
     {
         statsHandler = GetComponent<PlayerStatsHandler>();
+        spriteRenderer = GetComponent<SpriteRenderer>();
     }
 
     private void Start()
     {
         CurrentHealth = statsHandler.CurrentStat.maxHealth;
+        UpdateHealthBar();
     }
 
     private void Update()
@@ -58,8 +63,12 @@ public class PlayerHealthSystem : MonoBehaviour
 
        // [최솟값을 0, 최댓값을 MaxHealth로 하는 구문]
        CurrentHealth = Mathf.Clamp(CurrentHealth, 0, MaxHealth);
-       //Debug.Log("맞았다 내 체력 " + CurrentHealth);
-        
+        timeSinceLastChange = 0f;
+        spriteRenderer.color = Color.red;
+        Invoke(nameof(ResetSpriteColor), 0.5f);
+        UpdateHealthBar();
+        //Debug.Log("맞았다 내 체력 " + CurrentHealth);
+
         if (CurrentHealth <= 0f)
         {
             Debug.Log("죽었다 내 체력" + CurrentHealth);
@@ -87,5 +96,18 @@ public class PlayerHealthSystem : MonoBehaviour
     private void CallDeath()
     {
         OnDeath?.Invoke();
+    }
+
+    private void ResetSpriteColor()
+    {
+        spriteRenderer.color = Color.white;
+    }
+
+    private void UpdateHealthBar()
+    {
+        if (healthBar != null)
+        {
+            healthBar.fillAmount = CurrentHealth / MaxHealth;
+        }
     }
 }

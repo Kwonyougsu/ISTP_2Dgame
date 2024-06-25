@@ -15,12 +15,12 @@ public class PlayerSelect : MonoBehaviour
         rangedButton.onClick.AddListener(() => SelectButton(1));
         RotationButton.onClick.AddListener(() => SelectButton(2));
         startButton.onClick.AddListener(OnGameStartClick);
-        startButton.enabled = false;
+        startButton.interactable = false;
     }
 
     void SelectButton(int playerid)
     {
-        startButton.enabled = true;
+        startButton.interactable = true;
         GameManager.Instance.SetCharacterId(playerid);
         Debug.Log("Selected Button: " + playerid);
     }
@@ -29,6 +29,5 @@ public class PlayerSelect : MonoBehaviour
     {
         GameManager.Instance.StageDataReset();
         SceneManager.LoadScene("MainScene"); // 변경할 씬 이름
-
     }
 }

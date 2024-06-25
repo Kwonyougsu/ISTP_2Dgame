@@ -8,8 +8,6 @@ public class EnemyAnimationController : MonoBehaviour
     private Animator animator;
     private EnemyController controller;
     private EnemyHealthSystem healthSystem;
-
-
     private static readonly int IsMoving = Animator.StringToHash("IsMoving");
     private static readonly int IsHit = Animator.StringToHash("IsHit");
     private readonly float magnituteThreshold = 0.5f;
@@ -32,13 +30,11 @@ public class EnemyAnimationController : MonoBehaviour
 
     private void Move(Vector2 obj)
     {
-        //animator.SetBool(IsHit, false);
         animator.SetBool(IsMoving, obj.magnitude > magnituteThreshold);
     }
 
     private void Hit()
     {   
-        //animator.SetBool(IsMoving, false);
         animator.SetBool(IsHit, true);
     }
 

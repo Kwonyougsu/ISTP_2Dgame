@@ -6,10 +6,13 @@ using UnityEngine.SceneManagement;
 
 public class MainSceneButton : MonoBehaviour
 {
+    public AudioClip restartClip;
+    public AudioClip GameSceneclip;
 
     public void RestartButton()
     {
         Time.timeScale = 1f;
+        if(restartClip) SoundManager.PlayBGM(restartClip);
         GameManager.Instance.StageDataReset();
         SceneManager.LoadScene("MainScene");
     }
@@ -18,6 +21,7 @@ public class MainSceneButton : MonoBehaviour
     {
         ObjectPool.Instance.CleanPool();
         Time.timeScale = 1f;
+        if (GameSceneclip)  SoundManager.PlayBGM(GameSceneclip);
         GameManager.Instance.StageDataReset();
         SceneManager.LoadScene("GameScene");
     }

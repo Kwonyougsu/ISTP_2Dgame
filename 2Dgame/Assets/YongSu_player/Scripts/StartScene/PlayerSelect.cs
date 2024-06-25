@@ -9,6 +9,7 @@ public class PlayerSelect : MonoBehaviour
     public Button RotationButton;
     public Button startButton;
 
+    public AudioClip clip;
     void Start()
     {
         closeButton.onClick.AddListener(() => SelectButton(0));
@@ -28,6 +29,7 @@ public class PlayerSelect : MonoBehaviour
     public void OnGameStartClick()
     {
         GameManager.Instance.StageDataReset();
+        if(clip) SoundManager.PlayBGM(clip);
         SceneManager.LoadScene("MainScene"); // 변경할 씬 이름
     }
 }

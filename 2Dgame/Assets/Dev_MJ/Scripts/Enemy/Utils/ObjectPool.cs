@@ -77,6 +77,13 @@ public class ObjectPool : MonoBehaviour
         {
             Destroy(child.gameObject);
         }
+
+        monsterPools = new List<GameObject>[monster.Length];
+
+        for (int i = 0; i < monsterPools.Length; i++)
+        {
+            monsterPools[i] = new List<GameObject>();
+        }
     }
 
     public GameObject SpawnFromPool(string tag)

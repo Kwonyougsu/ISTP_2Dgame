@@ -11,6 +11,7 @@ public class MainSceneButton : MonoBehaviour
 
     public void RestartButton()
     {
+        ObjectPool.Instance.CleanPool();
         Time.timeScale = 1f;
         if(restartClip) SoundManager.PlayBGM(restartClip);
         GameManager.Instance.StageDataReset();

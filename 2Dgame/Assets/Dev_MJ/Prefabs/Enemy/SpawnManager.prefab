@@ -243,7 +243,7 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   spawnPoint: []
   curMonsterCount: 0
-  totalMonsterCount: 2
+  totalMonsterCount: 3
   killCount: 0
   level: 2
 --- !u!1 &4305659055623621738

@@ -232,7 +232,7 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   baseStats:
-    maxHealth: 7
+    maxHealth: 2
     speed: 3.7
     size: 1
     isChase: 0

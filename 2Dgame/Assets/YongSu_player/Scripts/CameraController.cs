@@ -5,7 +5,7 @@ public class CameraController : MonoBehaviour
     public float cameraSpeed = 30.0f;
 
     public GameObject player;
-
+    //123
     private void Update()
     {
         Vector3 dir = player.transform.position - this.transform.position;

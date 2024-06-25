@@ -9,7 +9,7 @@ public class ChooseItemUI : MonoBehaviour
     public TextMeshProUGUI coinTxt;
 
     GameObject chooseItemUI;
-    private PlayerHealthSystem playerHealthSystem;
+    public PlayerHealthSystem playerHealthSystem;
     public Transform items;
 
     private void Awake()
@@ -22,6 +22,9 @@ public class ChooseItemUI : MonoBehaviour
         }
         GameManager.Instance.items = items;
 
+        GameManager.Instance.CloseAttack = items.GetChild(1).gameObject;
+        GameManager.Instance.RangedAttack = items.GetChild(2).gameObject;
+        GameManager.Instance.RotaionAttack = items.GetChild(3).gameObject;
     }
     private void Start()
     {

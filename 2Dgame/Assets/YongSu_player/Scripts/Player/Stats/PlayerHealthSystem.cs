@@ -56,7 +56,6 @@ public class PlayerHealthSystem : MonoBehaviour
             Debug.Log("�׾��� �� ü��" + CurrentHealth);
             endpanel.SetActive(true);
             endpanelbg.SetActive(true);
-            //CallDeath();
             Time.timeScale = 0f;
             return true;
         }

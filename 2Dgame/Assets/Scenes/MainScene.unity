@@ -2566,6 +2566,14 @@ PrefabInstance:
       propertyPath: m_Name
       value: Player
       objectReference: {fileID: 0}
+    - target: {fileID: 9044780861199744814, guid: 66f4d701f9a63614ba672f1f431196f8, type: 3}
+      propertyPath: detectionRange
+      value: 5
+      objectReference: {fileID: 0}
+    - target: {fileID: 9044780861199744814, guid: 66f4d701f9a63614ba672f1f431196f8, type: 3}
+      propertyPath: RangedAttackspeed
+      value: 20
+      objectReference: {fileID: 0}
     - target: {fileID: 9062134976355736407, guid: 66f4d701f9a63614ba672f1f431196f8, type: 3}
       propertyPath: m_LocalPosition.x
       value: 0

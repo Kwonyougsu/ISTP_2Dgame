@@ -1,4 +1,5 @@
 using System.Collections;
+using Unity.VisualScripting;
 using UnityEngine;
 
 public class PlayerAttack : MonoBehaviour
@@ -8,8 +9,8 @@ public class PlayerAttack : MonoBehaviour
     private SpriteRenderer characterRenderer;
     private GameObject player;
 
-    public float RangedAttackspeed = 50f;
-    public float detectionRange = 50f;
+    public float RangedAttackspeed;
+    public float detectionRange;
     public Sprite[] characer;
     private int playerid;
     private GameObject closeAttackInstance;
@@ -17,6 +18,8 @@ public class PlayerAttack : MonoBehaviour
     public GameObject[] mutipleRotationAttackInstance;
     public GameObject[] mutiplecloseAttackInstance;
 
+    float closeAttacktime;
+    float rangedAttacktime;
     float circleR;
     float deg;
     float objSpeed;
@@ -31,6 +34,8 @@ public class PlayerAttack : MonoBehaviour
         circleR = 5f;
         objSpeed = 5f;
         playerid = GameManager.Instance.PlayerId;
+        closeAttacktime = 0f;
+        rangedAttacktime = 0f;
         if (playerid == 0)
         {
             characterRenderer.sprite = characer[playerid];
@@ -52,13 +57,23 @@ public class PlayerAttack : MonoBehaviour
             RotationAttack(GameManager.Instance.RotationWeaponCount);
             if (GameManager.Instance.CloseWeapon)
             {
-                closeAttack(GameManager.Instance.CloseWeaponCount);
+                if(closeAttacktime >= 1f - (GameManager.Instance.upgradeStatData.statLv[2] * 0.05f))
+                {
+                    closeAttack(GameManager.Instance.CloseWeaponCount);
+                    closeAttacktime = 0f;
+                }
             }
 
             if (GameManager.Instance.RangedWeapon)
             {
-                Detected(GameManager.Instance.RangedWeaponCount);
+                if (rangedAttacktime >= 1f - (GameManager.Instance.upgradeStatData.statLv[2] * 0.05f))
+                {
+                    Detected(GameManager.Instance.RangedWeaponCount);
+                    rangedAttacktime = 0f;
+                }
             }
+            closeAttacktime += Time.deltaTime;
+            rangedAttacktime += Time.deltaTime;
         }
 
         if (playerid == 0)

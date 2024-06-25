@@ -44,7 +44,7 @@ public class Spawner : MonoBehaviour
         timer += Time.deltaTime;
         waveTimer += Time.deltaTime;
 
-        if (waveTimer > 30f)
+        if (waveTimer > 40f)
         {
             waveTimer = 0;
             WaveSpawn();
@@ -129,9 +129,9 @@ public class Spawner : MonoBehaviour
             if (totalMonsterCount >= 30) totalMonsterCount = 30;
         }
 
-        if (level % 7 == 0)
+        if (level % 10 == 0)
         {
-            bounusHP += 11;
+            bounusHP += 6;
             if (bounusHP >= 30) bounusHP = 110;
         }
 

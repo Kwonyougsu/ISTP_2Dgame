@@ -1786,6 +1786,7 @@ MonoBehaviour:
   musicVol: 0.3
   sFXVol: 0.2
   sFXPitch: 0.1
+  musicAudioSource: {fileID: 0}
   musicClip: {fileID: 8300000, guid: 47f45ef7b5767674393cc401fc325705, type: 3}
 --- !u!82 &790648601
 AudioSource:
@@ -3088,6 +3089,7 @@ GameObject:
   m_Component:
   - component: {fileID: 1305455213}
   - component: {fileID: 1305455214}
+  - component: {fileID: 1305455215}
   m_Layer: 5
   m_Name: OptionMenu
   m_TagString: Untagged
@@ -3133,6 +3135,22 @@ MonoBehaviour:
   mainMenu: {fileID: 1157525318}
   optionMenu: {fileID: 1305455212}
   MainText: {fileID: 777712393}
+--- !u!114 &1305455215
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 1305455212}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 277ff2b21a82b0d40a24ae2f5cfef500, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  bGMVol: 0.3
+  sFXVol: 0.2
+  bGMSlider: {fileID: 1941764009}
+  sFXSlider: {fileID: 2146200305}
 --- !u!1 &1354448841
 GameObject:
   m_ObjectHideFlags: 0
@@ -4067,7 +4085,19 @@ MonoBehaviour:
   m_Value: 0
   m_OnValueChanged:
     m_PersistentCalls:
-      m_Calls: []
+      m_Calls:
+      - m_Target: {fileID: 1305455215}
+        m_TargetAssemblyTypeName: SoundOption, Assembly-CSharp
+        m_MethodName: BGMVol
+        m_Mode: 1
+        m_Arguments:
+          m_ObjectArgument: {fileID: 0}
+          m_ObjectArgumentAssemblyTypeName: UnityEngine.Object, UnityEngine
+          m_IntArgument: 0
+          m_FloatArgument: 0
+          m_StringArgument: 
+          m_BoolArgument: 0
+        m_CallState: 2
 --- !u!224 &1949713746 stripped
 RectTransform:
   m_CorrespondingSourceObject: {fileID: 5287974931837568656, guid: c06f0b87139ac4f44afb0781d49c47a4, type: 3}
@@ -4438,7 +4468,19 @@ MonoBehaviour:
   m_Value: 0
   m_OnValueChanged:
     m_PersistentCalls:
-      m_Calls: []
+      m_Calls:
+      - m_Target: {fileID: 1305455215}
+        m_TargetAssemblyTypeName: SoundOption, Assembly-CSharp
+        m_MethodName: SFXVol
+        m_Mode: 1
+        m_Arguments:
+          m_ObjectArgument: {fileID: 0}
+          m_ObjectArgumentAssemblyTypeName: UnityEngine.Object, UnityEngine
+          m_IntArgument: 0
+          m_FloatArgument: 0
+          m_StringArgument: 
+          m_BoolArgument: 0
+        m_CallState: 2
 --- !u!224 &17050804549510067
 RectTransform:
   m_ObjectHideFlags: 0

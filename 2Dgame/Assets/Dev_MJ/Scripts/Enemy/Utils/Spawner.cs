@@ -130,13 +130,19 @@ public class Spawner : MonoBehaviour
         if (level % 10 == 0)
         {
             bounusHP += 2;
-            if (bounusHP >= 20) bounusHP = 20;
+            if (bounusHP >= 200) bounusHP = 200;
         }
 
         if (level % 20 == 0)
         {
             BossSpawn();
-        }        
+        }
+
+        if (level % 30 == 0)
+        {
+            bounusHP += 20;
+            if (bounusHP >= 200) bounusHP = 200;
+        }
     }
 
     public void OnEnemyDeath()

@@ -23,7 +23,7 @@ public class EnemyHealthSystem : MonoBehaviour
     public event Action OnDeath;
     public event Action OnInvincibilityEnd;
 
-    public float CurrentHealth { get; private set; }
+    public float CurrentHealth { get; set; }
     public float MaxHealth => statsHandler.CurrentStat.maxHealth;
 
     private void Awake()
@@ -33,14 +33,18 @@ public class EnemyHealthSystem : MonoBehaviour
 
     private void OnEnable()
     {
+        Debug.Log($"OnEnable: {CurrentHealth}");
         CurrentHealth = MaxHealth;
+        Debug.Log($"OnEnable: {CurrentHealth}");
     }
 
-    private void Start()
-    {       
-        CurrentHealth = MaxHealth;
+    //private void Start()
+    //{
+    //    Debug.Log($"Start: {CurrentHealth}");
+    //    CurrentHealth = MaxHealth;
+    //    Debug.Log($"Start: {CurrentHealth}");
 
-    }
+    //}
 
     private void Update()
    {      
@@ -59,7 +63,7 @@ public class EnemyHealthSystem : MonoBehaviour
     // 공격을 받았을 때
     public bool ChangeHealth(float change)
     {
-
+        Debug.Log($"맞기전: {CurrentHealth}");
         if (change < 0)
         {            
             if (timeSinceLastChange < healthChangeDelay)
@@ -79,8 +83,10 @@ public class EnemyHealthSystem : MonoBehaviour
             //Debug.Log("맞았다" );
             // 피격 이펙트 사운드가 있다면 재생
             //if (DamageClip) SoundManager.PlayClip(DamageClip);
+            Debug.Log($"맞은 후: {CurrentHealth}");
+
         }
-        
+
         if (CurrentHealth <= 0f)
         {
             CallDeath();
@@ -95,6 +101,12 @@ public class EnemyHealthSystem : MonoBehaviour
     private void CallDeath()
     {
         OnDeath?.Invoke();
+    }
+
+    private void OnDisable()
+    {
+        //CurrentHealth = MaxHealth;
+        
     }
 
 }

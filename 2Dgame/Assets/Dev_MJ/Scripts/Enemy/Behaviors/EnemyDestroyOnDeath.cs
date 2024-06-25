@@ -14,13 +14,13 @@ public class EnemyDestroyOnDeath : MonoBehaviour
         healthSystem.OnDeath += OnDeath;
     }
 
-    void OnDeath()
+    private void OnDeath()
     {       
         rigidbody.velocity = Vector3.zero;
 
         // 피격시 이미지 효과, 애니메이션
 
-       gameObject.SetActive(false);
+        gameObject.SetActive(false);
         
     }
 }

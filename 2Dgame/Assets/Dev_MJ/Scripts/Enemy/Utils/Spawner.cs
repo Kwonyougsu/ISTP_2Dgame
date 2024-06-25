@@ -1,5 +1,6 @@
 using System.Collections;
 using System.Collections.Generic;
+using Unity.VisualScripting;
 using UnityEngine;
 
 public class Spawner : MonoBehaviour
@@ -13,9 +14,12 @@ public class Spawner : MonoBehaviour
     public int killCount = 0;
 
     private float timer;
+    private float waveTimer;
     public int level = 1;
     private int monsterRange = 1;
     private bool isBoos = false;
+    private bool isWave = false;
+    private int bounusHP = 0;
 
     private Transform playerPos;
     private Vector3[] vector3s = new Vector3[10];
@@ -44,7 +48,15 @@ public class Spawner : MonoBehaviour
     {     
         UpdatePosition();
         timer += Time.deltaTime;
-        
+        waveTimer += Time.deltaTime;
+
+        if (waveTimer > 35f)
+        {
+            waveTimer = 0;
+            WaveSpawn();
+        }
+
+
         if (timer > 1f)
         {
             timer = 0;
@@ -62,17 +74,40 @@ public class Spawner : MonoBehaviour
 
     private void Spawn()
     {
-        if (curMonsterCount >= totalMonsterCount) return;
+        if (curMonsterCount >= totalMonsterCount || isWave) return;
 
         GameObject enemy =  ObjectPool.Instance.Get(Random.Range(0, monsterRange));
         enemy.transform.position = spawnPoint[Random.Range(1, spawnPoint.Length)].position;
+        enemy.GetComponent<EnemyHealthSystem>().CurrentHealth += 5;
+        //Debug.Log($"Ã¼·Á : {enemy.GetComponent<EnemyHealthSystem>().CurrentHealth}");
         curMonsterCount++;
+    }
+
+    private void WaveSpawn()
+    {
+        isWave = true;
+        GameObject[] wave = new GameObject[10];
+        for (int i = 0; i < 10; i++)
+        {
+            GameObject enemy =  ObjectPool.Instance.Get(2);
+            enemy.transform.position = spawnPoint[Random.Range(1, spawnPoint.Length)].position;
+            enemy.GetComponent<EnemyStatHandler>().CurrentStat.isChase = false;
+            wave[i] = enemy;
+            curMonsterCount++;
+        }
+
+        for(int i = 0; i < 10; i++)
+        {            
+            wave[i].GetComponent<EnemyStatHandler>().CurrentStat.isChase = true;            
+        }
+        isWave = false;
     }
 
     private void ProcessLevelConditions()
     {
         if (level % 2 == 0)
         {
+            //bounusHP += 5;
             totalMonsterCount++;
             if (totalMonsterCount >= 20) totalMonsterCount = 20;
         }
@@ -85,8 +120,14 @@ public class Spawner : MonoBehaviour
 
         if (level % 5 == 0)
         {
-            totalMonsterCount += 5;
+            totalMonsterCount += 5;         
             if (totalMonsterCount >= 20) totalMonsterCount = 20;
+        }
+
+        if (level % 10 == 0)
+        {
+            //bounusHP += 5;
+            if (bounusHP >= 20) bounusHP = 20;
         }
     }
 
@@ -99,7 +140,7 @@ public class Spawner : MonoBehaviour
 
     private void LevelSystem()
     {
-        if (killCount >= 3)
+        if (killCount >= 2)
         {
             level++;
             killCount = 0;

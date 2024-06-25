@@ -13,7 +13,6 @@ public class ContactEnemyController : EnemyController
     // 캐릭터 위치에따라 이미지가 뒤집혀야한다
     [SerializeField] private SpriteRenderer characterRenderer;//나중에 이미지 추가할것**
 
-
     protected override void Start()
     {
         base.Start();

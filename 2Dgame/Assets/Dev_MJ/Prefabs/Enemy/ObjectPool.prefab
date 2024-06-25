@@ -80,4 +80,5 @@ MonoBehaviour:
   monster:
   - {fileID: 8044073140487878006, guid: f7773f4529bf76d4f8db6fa81e3994e1, type: 3}
   - {fileID: 8044073140487878006, guid: 5de9b8754a356e041b8e8140096f79a6, type: 3}
+  - {fileID: 8044073140487878006, guid: 0986478dd6a08884ea1315e1e5bf960b, type: 3}
   monsterBox: {fileID: 3284331535941764417}

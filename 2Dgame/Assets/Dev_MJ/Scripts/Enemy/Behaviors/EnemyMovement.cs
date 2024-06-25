@@ -25,6 +25,8 @@ public class EnemyMovement : MonoBehaviour
 
     private void FixedUpdate()
     {
+        if (!stats.CurrentStat.isChase) return;
+
         ApplyMovement(_movementDirection);
       
         if (knockbackDuration > 0.0f)

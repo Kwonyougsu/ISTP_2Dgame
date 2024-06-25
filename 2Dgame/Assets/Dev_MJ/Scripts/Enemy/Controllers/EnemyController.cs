@@ -74,14 +74,6 @@ public class EnemyController : MonoBehaviour
 
     public void CallMoveEvent(Vector2 direction)
     {
-        //if (ClosestTarget.position.x < transform.position.x)
-        //{
-        //    spriteRenderer.flipX = true;
-        //}
-        //else
-        //{
-        //    spriteRenderer.flipX = false;
-        //}
         OnMoveEvent?.Invoke(direction);
     }
     public void CallLookEvent(Vector2 direction)

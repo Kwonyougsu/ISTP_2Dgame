@@ -28,15 +28,5 @@ public class EnemyStatHandler : MonoBehaviour
         CurrentStat.target = baseStats.target;
         baseStats.isChase = true;
         CurrentStat.isChase = baseStats.isChase;
-        //UpdateSize();
-        //Debug.Log(CurrentStat.isChase);
     }
-
-    //private void UpdateSize()
-    //{
-    //    CurrentStat.size = baseStats.size;
-    //    transform.localScale = new Vector3(CurrentStat.size, CurrentStat.size, 1f);
-    //    //transform.localScale = new Vector3(2f,1f,1f);
-    //}
-
 }

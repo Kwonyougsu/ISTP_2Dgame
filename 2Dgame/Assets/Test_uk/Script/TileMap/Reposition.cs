@@ -39,7 +39,7 @@ public class Reposition : MonoBehaviour
             case "Enemy":
                 if (collider2D.enabled)
                 {
-                    transform.Translate(playerDir * 20 + new Vector3(Random.Range(-3f, -3f), Random.Range(-3f, -3f), 0));
+                    transform.Translate(playerDir * 35 + new Vector3(Random.Range(-3f, -3f), Random.Range(-3f, -3f), 0));
                 }
                 break;
         }

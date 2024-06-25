@@ -10,6 +10,7 @@ public class GameManager : MonoBehaviour
     public Transform player;
 
     public GameObject chooseItemUI;
+    public Transform items;
     public GameObject sPUI;
 
     public Transform Player
@@ -53,6 +54,26 @@ public class GameManager : MonoBehaviour
         stageGold = 0;
     }
 
+    private void Update()
+    {
+        if (CloseWeaponCount == 2 && !CloseWeaponMax)
+        {
+            Destroy(items.GetChild(1).gameObject);
+            CloseWeaponMax = true;
+        }
+        if (RangedWeaponCount == 3 && !RangedWeaponMax)
+        {
+            Destroy(items.GetChild(2).gameObject);
+            RangedWeaponMax = true;
+        }
+
+        if (RotationWeaponCount == 3 && !RotationWeaponMax)
+        {
+            Destroy(items.GetChild(3).gameObject);
+            RotationWeaponMax = true;
+        }
+    }
+
     [Header("Need Connection")]
     public ItemData itemData;
     public UpgradeStatData upgradeStatData;
@@ -65,12 +86,30 @@ public class GameManager : MonoBehaviour
     public float stageGold;
     public int sp;
 
+    [Header("WeaponLevel")]
+    public bool CloseWeapon;
+    public bool RangedWeapon;
+    public bool RotationWeapon;
+    public int CloseWeaponCount;
+    public int RangedWeaponCount;
+    public int RotationWeaponCount;
+    public bool CloseWeaponMax = false;
+    public bool RangedWeaponMax = false;
+    public bool RotationWeaponMax = false;
+
     public void StageDataReset() // 게임 시작과 종료시 호출
     {
         Lv = 0;
         maxExp = 100;
         curExp = 0;
-        if(stageGold > 0) // 혹시나 stageGlod에 -값이 들어갈까봐 (그럴일 없긴함)
+        CloseWeapon = false;
+        RangedWeapon = false;
+        RotationWeapon = false;
+        CloseWeaponCount = 0;
+        RangedWeaponCount = 0;
+        RotationWeaponCount = 0;
+
+        if (stageGold > 0) // 혹시나 stageGlod에 -값이 들어갈까봐 (그럴일 없긴함)
         {
             playerGold += stageGold;
         }
@@ -79,6 +118,22 @@ public class GameManager : MonoBehaviour
         for (int i = 0; i < upgradeStatData.statLv.Length; i++)
         {
             upgradeStatData.statLv[i] = 0;
+        }
+
+        if(PlayerId == 0)
+        {
+            CloseWeapon = true;
+            CloseWeaponCount = 1;
+        }
+        else if (PlayerId == 1)
+        {
+            RangedWeapon = true;
+            RangedWeaponCount = 1;
+        }
+        else if (PlayerId == 2)
+        {
+            RotationWeapon = true;
+            RotationWeaponCount = 1;
         }
     }
     public void LvUp()
@@ -91,6 +146,20 @@ public class GameManager : MonoBehaviour
         Lv++;
         GameManager.Instance.maxExp += 20f;
         chooseItemUI.SetActive(true);
+        while (true)
+        {
+            int ran = Random.Range(0, items.childCount);
+            int ran1 = Random.Range(0, items.childCount);
+            int ran2 = Random.Range(0, items.childCount);
+            if(ran !=  ran1 && ran1 != ran2 && ran != ran2)
+            {
+                items.GetChild(ran).gameObject.SetActive(true);
+                items.GetChild(ran1).gameObject.SetActive(true);
+                items.GetChild(ran2).gameObject.SetActive(true);
+                break;
+            }
+        }
+
         Time.timeScale = 0f;
     }
     public void SetCharacterId(int id)

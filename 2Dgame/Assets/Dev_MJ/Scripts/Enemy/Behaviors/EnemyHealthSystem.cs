@@ -24,27 +24,18 @@ public class EnemyHealthSystem : MonoBehaviour
     public event Action OnInvincibilityEnd;
 
     public float CurrentHealth { get; set; }
-    public float MaxHealth => statsHandler.CurrentStat.maxHealth;
+    public float MaxHealth{ get; set; }
+
+    private void OnEnable()
+    {   
+        CurrentHealth = MaxHealth;
+    }
 
     private void Awake()
     {
         statsHandler = GetComponent<EnemyStatHandler>();
+        MaxHealth = statsHandler.CurrentStat.maxHealth;
     }
-
-    private void OnEnable()
-    {
-        Debug.Log($"OnEnable: {CurrentHealth}");
-        CurrentHealth = MaxHealth;
-        Debug.Log($"OnEnable: {CurrentHealth}");
-    }
-
-    //private void Start()
-    //{
-    //    Debug.Log($"Start: {CurrentHealth}");
-    //    CurrentHealth = MaxHealth;
-    //    Debug.Log($"Start: {CurrentHealth}");
-
-    //}
 
     private void Update()
    {      
@@ -63,7 +54,8 @@ public class EnemyHealthSystem : MonoBehaviour
     // 공격을 받았을 때
     public bool ChangeHealth(float change)
     {
-        Debug.Log($"맞기전: {CurrentHealth}");
+        //Debug.Log($"ChangeHealth - CurrentHealth: {CurrentHealth}");
+        //Debug.Log(change);
         if (change < 0)
         {            
             if (timeSinceLastChange < healthChangeDelay)
@@ -73,26 +65,15 @@ public class EnemyHealthSystem : MonoBehaviour
             timeSinceLastChange = 0f;
 
             CurrentHealth += change;
-            // [최솟값을 0, 최댓값을 MaxHealth로 하는 구문]
             CurrentHealth = Mathf.Clamp(CurrentHealth, 0, MaxHealth);
-
-            //Debug.Log($"몬스터 체력 CurrentHealth: {CurrentHealth}, MaxHealth: {MaxHealth}");
-
             OnDamage?.Invoke();
             isAttacked = true;
-            //Debug.Log("맞았다" );
-            // 피격 이펙트 사운드가 있다면 재생
-            //if (DamageClip) SoundManager.PlayClip(DamageClip);
-            Debug.Log($"맞은 후: {CurrentHealth}");
-
         }
 
         if (CurrentHealth <= 0f)
         {
             CallDeath();
-            //Debug.Log("몬스터 죽었다");
             return true;
-
         }              
       
         return true;
@@ -105,8 +86,7 @@ public class EnemyHealthSystem : MonoBehaviour
 
     private void OnDisable()
     {
-        //CurrentHealth = MaxHealth;
-        
+        MaxHealth = statsHandler.CurrentStat.maxHealth;
     }
 
 }

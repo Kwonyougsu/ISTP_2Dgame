@@ -1,12 +1,8 @@
-using System.Collections;
-using System.Collections.Generic;
-using Unity.VisualScripting;
 using UnityEngine;
 
 public class Spawner : MonoBehaviour
 {
     public static Spawner Instance;
-
 
     public Transform[] spawnPoint;
     public int curMonsterCount = 0;
@@ -17,10 +13,9 @@ public class Spawner : MonoBehaviour
     private float waveTimer;
     public int level = 1;
     private int monsterRange = 1;
-    private bool isBoos = false;
+    private bool isBoss = false;
     private bool isWave = false;
     private int bounusHP = 0;
-
     private Transform playerPos;
     private Vector3[] vector3s = new Vector3[10];
 
@@ -41,7 +36,6 @@ public class Spawner : MonoBehaviour
             spawnPoint[i].position = playerPos.position + distans;
             vector3s[i-1] = distans;  
         }
-
     }
 
     private void Update()
@@ -50,7 +44,7 @@ public class Spawner : MonoBehaviour
         timer += Time.deltaTime;
         waveTimer += Time.deltaTime;
 
-        if (waveTimer > 35f)
+        if (waveTimer > 30f)
         {
             waveTimer = 0;
             WaveSpawn();
@@ -71,26 +65,28 @@ public class Spawner : MonoBehaviour
             spawnPoint[i+1].position = playerPos.position + vector3s[i];
         }
     }
-
     private void Spawn()
     {
-        if (curMonsterCount >= totalMonsterCount || isWave) return;
+        if (curMonsterCount >= totalMonsterCount || isWave || isBoss) return;
 
         GameObject enemy =  ObjectPool.Instance.Get(Random.Range(0, monsterRange));
         enemy.transform.position = spawnPoint[Random.Range(1, spawnPoint.Length)].position;
-        enemy.GetComponent<EnemyHealthSystem>().CurrentHealth += 5;
-        //Debug.Log($"Ã¼·Á : {enemy.GetComponent<EnemyHealthSystem>().CurrentHealth}");
+        enemy.GetComponent<EnemyHealthSystem>().MaxHealth += bounusHP;
+        enemy.GetComponent<EnemyHealthSystem>().CurrentHealth = enemy.GetComponent<EnemyHealthSystem>().MaxHealth;      
         curMonsterCount++;
     }
 
     private void WaveSpawn()
     {
+        if (isBoss) return;
+
         isWave = true;
         GameObject[] wave = new GameObject[10];
+        int num = Random.Range(1, spawnPoint.Length);
         for (int i = 0; i < 10; i++)
         {
             GameObject enemy =  ObjectPool.Instance.Get(2);
-            enemy.transform.position = spawnPoint[Random.Range(1, spawnPoint.Length)].position;
+            enemy.transform.position = spawnPoint[num].position;
             enemy.GetComponent<EnemyStatHandler>().CurrentStat.isChase = false;
             wave[i] = enemy;
             curMonsterCount++;
@@ -103,32 +99,46 @@ public class Spawner : MonoBehaviour
         isWave = false;
     }
 
+    private void BossSpawn()
+    {
+        isBoss = true;
+        GameObject enemy = ObjectPool.Instance.Get(3);
+        enemy.transform.position = spawnPoint[Random.Range(1, spawnPoint.Length)].position;
+        enemy.GetComponent<EnemyHealthSystem>().MaxHealth += bounusHP;
+        enemy.GetComponent<EnemyHealthSystem>().CurrentHealth = enemy.GetComponent<EnemyHealthSystem>().MaxHealth;
+        curMonsterCount++;
+    }
+
     private void ProcessLevelConditions()
     {
         if (level % 2 == 0)
         {
-            //bounusHP += 5;
-            totalMonsterCount++;
-            if (totalMonsterCount >= 20) totalMonsterCount = 20;
+            totalMonsterCount += 2;
+            if (totalMonsterCount >= 30) totalMonsterCount = 30;
         }
 
         if (level % 3 == 0)
-        {
+        {            
             monsterRange++;
-            if (monsterRange > ObjectPool.Instance.monsterPools.Length) monsterRange--;
+            if (monsterRange >= ObjectPool.Instance.monsterPools.Length) monsterRange--;
         }
 
         if (level % 5 == 0)
         {
             totalMonsterCount += 5;         
-            if (totalMonsterCount >= 20) totalMonsterCount = 20;
+            if (totalMonsterCount >= 30) totalMonsterCount = 30;
         }
 
-        if (level % 10 == 0)
+        if (level % 7 == 0)
         {
-            //bounusHP += 5;
-            if (bounusHP >= 20) bounusHP = 20;
+            bounusHP += 11;
+            if (bounusHP >= 30) bounusHP = 110;
         }
+
+        if (level % 15 == 0)
+        {
+            BossSpawn();
+        }        
     }
 
     public void OnEnemyDeath()
@@ -136,6 +146,11 @@ public class Spawner : MonoBehaviour
         curMonsterCount--;
         killCount++;
         LevelSystem();
+    }
+
+    public void OnBossDeath()
+    {
+        isBoss = false;
     }
 
     private void LevelSystem()

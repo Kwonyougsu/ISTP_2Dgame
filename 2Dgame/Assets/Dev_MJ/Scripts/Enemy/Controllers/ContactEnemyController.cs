@@ -68,8 +68,6 @@ public class ContactEnemyController : EnemyController
         receiver.GetComponent<PlayerHealthSystem>().PlayerChangeHealth(stats.CurrentStat.attackSO.power);
         //Debug.Log("몬스터 데미지 " + stats.CurrentStat.attackSO.power);
         if (!stats.CurrentStat.attackSO.isOnKnockBack) return;
-        //receiver.GetComponent<TopDownMovement>().ApplyKnockback(transform, stats.CurrentStat.attackSO.knockbackPower, stats.CurrentStat.attackSO.knockbackTime);
-
         stats.CurrentStat.isChase = false;
     }
 

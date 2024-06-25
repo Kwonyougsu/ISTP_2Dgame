@@ -245,7 +245,7 @@ MonoBehaviour:
   curMonsterCount: 0
   totalMonsterCount: 2
   killCount: 0
-  level: 1
+  level: 2
 --- !u!1 &4305659055623621738
 GameObject:
   m_ObjectHideFlags: 0

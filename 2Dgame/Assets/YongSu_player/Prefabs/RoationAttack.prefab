@@ -130,6 +130,7 @@ MonoBehaviour:
   knockbackPower: 0.3
   duration: 0
   itemdata: {fileID: 11400000, guid: bcc6d9806e8c93d40bd5a7de3c43448b, type: 2}
+  clip: {fileID: 8300000, guid: 8b23b175a78d6b5458322e3a6c9905d0, type: 3}
 --- !u!58 &-8059840992127684542
 CircleCollider2D:
   m_ObjectHideFlags: 0

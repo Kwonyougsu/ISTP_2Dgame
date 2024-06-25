@@ -35,15 +35,15 @@ public class PlayerHealthSystem : MonoBehaviour
 
     private void Update()
     {
-        if (isAttacked && timeSinceLastChange < healthChangeDelay)
-        {
-            timeSinceLastChange += Time.deltaTime;
-            if (timeSinceLastChange >= healthChangeDelay)
-            {
-                OnInvincibilityEnd?.Invoke();
-                isAttacked = false;
-            }
-        }
+        //if (isAttacked && timeSinceLastChange < healthChangeDelay)
+        //{
+        //    timeSinceLastChange += Time.deltaTime;
+        //    if (timeSinceLastChange >= healthChangeDelay)
+        //    {
+        //        OnInvincibilityEnd?.Invoke();
+        //        isAttacked = false;
+        //    }
+        //}
     }
 
     public bool PlayerChangeHealth(float change)

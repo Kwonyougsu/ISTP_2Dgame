@@ -8,7 +8,6 @@ public class PlayerSelect : MonoBehaviour
     public Button rangedButton;
     public Button RotationButton;
     public Button startButton;
-    public Button ClolseButton;
 
     void Start()
     {

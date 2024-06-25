@@ -47,7 +47,7 @@ public class ChooseItemUI : MonoBehaviour
     {
         Time.timeScale = 1f;
         float healvalue = playerHealthSystem.MaxHealth / 2;
-        //playerHealthSystem.Heal(healvalue);
+        playerHealthSystem.Heal(healvalue);
         Activefalse();
         gameObject.SetActive(false);
     }

@@ -25,8 +25,9 @@ public class EnemyStatHandler : MonoBehaviour
         //기본 능력치 세팅        
         CurrentStat.maxHealth = baseStats.maxHealth;
         CurrentStat.speed = baseStats.speed;
-        CurrentStat.target = baseStats.target;
         baseStats.isChase = true;
+        CurrentStat.target = baseStats.target;        
+        CurrentStat.isBoss = baseStats.isBoss;
         CurrentStat.isChase = baseStats.isChase;
     }
 }

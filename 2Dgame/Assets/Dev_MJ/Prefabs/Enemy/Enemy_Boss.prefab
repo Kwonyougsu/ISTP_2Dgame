@@ -236,6 +236,7 @@ MonoBehaviour:
     speed: 2
     size: 1
     isChase: 0
+    isBoss: 0
     target:
       serializedVersion: 2
       m_Bits: 64
@@ -253,8 +254,7 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   dropItems:
-  - {fileID: 7741359114682043601, guid: 6417ed7d9cc355949924bb085fbf8f3f, type: 3}
-  - {fileID: 9164824688635848529, guid: a3ce15bd20eb2b648a47476d7eec3aba, type: 3}
+  - {fileID: 1859162087350690643, guid: 9037494a24e797841a46010b10b1180e, type: 3}
   followRange: 100
   characterRenderer: {fileID: 3041535759066857556}
 --- !u!114 &7176376503041828398

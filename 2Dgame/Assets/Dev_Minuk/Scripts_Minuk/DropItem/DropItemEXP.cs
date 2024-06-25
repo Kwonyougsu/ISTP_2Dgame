@@ -13,7 +13,7 @@ public class DropItemEXP : MonoBehaviour
         if(collision.gameObject.CompareTag("Player"))
         {
             if(getExpClip) SoundManager.PlayClip(getExpClip);
-            GameManager.Instance.curExp += 10;
+            GameManager.Instance.curExp += 100;
             if (GameManager.Instance.curExp >= GameManager.Instance.maxExp)
             {
                 if (lvUpClip) SoundManager.PlayClip(lvUpClip);

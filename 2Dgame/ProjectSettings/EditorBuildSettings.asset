@@ -5,13 +5,19 @@ EditorBuildSettings:
   m_ObjectHideFlags: 0
   serializedVersion: 2
   m_Scenes:
+  - enabled: 0
+    path: Assets/Scenes/MainScene1.unity
+    guid: 537d4b6515f971a45874a412c0d8fe05
+  - enabled: 0
+    path: Assets/YongSu_player/Scene/GameScene_yong.unity
+    guid: dd4e1588c0448794a867855331edb432
+  - enabled: 0
+    path: Assets/YongSu_player/Scene/MainScene_yong.unity
+    guid: b48d6b65e6d27ec448f1245d5097ebde
+  - enabled: 1
+    path: Assets/Scenes/GameScene.unity
+    guid: 938bd239b61ad5444ab446d53b7f0a5b
   - enabled: 1
     path: Assets/Scenes/MainScene.unity
-    guid: 2cda990e2423bbf4892e6590ba056729
-  - enabled: 1
-    path: Assets/YongSu_player/Scene/GameScene_yong.unity
-    guid: 7b70b34ffa44e814fb452f39f3c5128e
-  - enabled: 1
-    path: Assets/YongSu_player/Scene/MainScene_yong.unity
-    guid: 2846544aa7181bf4e8361cc6fac01a0c
+    guid: e71b619346176474da24ffc525bec3ac
   m_configObjects: {}

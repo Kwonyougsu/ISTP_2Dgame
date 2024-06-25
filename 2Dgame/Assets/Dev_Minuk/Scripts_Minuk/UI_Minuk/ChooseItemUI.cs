@@ -31,7 +31,7 @@ public class ChooseItemUI : MonoBehaviour
 
     private void Update()
     {
-        coinTxt.text = $"��� ȹ��\nGold + {200 + (GameManager.Instance.upgradeStatData.statLv[3] * 0.1f * 200)}";
+        coinTxt.text = $"골드 획득\nGold + {200 + (GameManager.Instance.upgradeStatData.statLv[3] * 0.1f * 200)}";
     }
 
 

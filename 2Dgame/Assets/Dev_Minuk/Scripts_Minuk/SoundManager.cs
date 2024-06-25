@@ -27,7 +27,7 @@ public class SoundManager : MonoBehaviour
         PlayBGM(musicClip);
     }
 
-    private void PlayBGM(AudioClip musicClip)
+    public static void PlayBGM(AudioClip musicClip)
     {
         instance.musicAudioSource.Stop();
         instance.musicAudioSource.clip = musicClip;

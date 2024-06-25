@@ -8,10 +8,12 @@ public class ChooseItemUI : MonoBehaviour
     public TextMeshProUGUI coinTxt;
 
     GameObject chooseItemUI;
+    private PlayerHealthSystem playerHealthSystem;
     private void Awake()
     {
         chooseItemUI = this.gameObject;
         GameManager.Instance.chooseItemUI = chooseItemUI;
+        playerHealthSystem = FindObjectOfType<PlayerHealthSystem>();
     }
     private void Start()
     {
@@ -34,7 +36,8 @@ public class ChooseItemUI : MonoBehaviour
     public void ChooseHp()
     {
         Time.timeScale = 1f;
-        // 플레이어 체력 50% 회복
+        float healvalue = playerHealthSystem.MaxHealth / 2;
+        playerHealthSystem.Heal(healvalue);
         gameObject.SetActive(false);
     }
 

@@ -17,6 +17,8 @@ public class GameManager : MonoBehaviour
     public GameObject RangedAttack;
     public GameObject RotaionAttack;
 
+    public Timer timer;
+
 
     public Transform Player
     {

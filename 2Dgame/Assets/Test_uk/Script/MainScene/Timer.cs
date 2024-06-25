@@ -6,8 +6,12 @@ using UnityEngine;
 public class Timer : MonoBehaviour
 {
     public TextMeshProUGUI time;
-    private float currentTime = 0f;
+    public float currentTime = 0f;
 
+    private void Awake()
+    {
+        GameManager.Instance.timer = this;
+    }
     void Update()
     {
         currentTime += Time.deltaTime;

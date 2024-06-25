@@ -1,4 +1,3 @@
-using System.Collections;
 using System.Collections.Generic;
 using UnityEngine;
 
@@ -45,8 +44,6 @@ public class ObjectPool : MonoBehaviour
         {
             monsterPools[i] = new List<GameObject>();
         }
-
-
     }
 
     public GameObject Get(int index)
@@ -67,10 +64,19 @@ public class ObjectPool : MonoBehaviour
         {
             select = Instantiate(monster[index], monsterBox);
             select.GetComponent<EnemyHealthSystem>().OnDeath += Spawner.Instance.OnEnemyDeath;
+            if (index == 3) select.GetComponent<EnemyHealthSystem>().OnDeath += Spawner.Instance.OnBossDeath;
             monsterPools[index].Add(select);
         }
 
         return select;
+    }
+
+    public void CleanPool()
+    {
+        foreach (Transform child in monsterBox)
+        {
+            Destroy(child.gameObject);
+        }
     }
 
     public GameObject SpawnFromPool(string tag)

@@ -16,6 +16,7 @@ public class MainSceneButton : MonoBehaviour
 
     public void GameSceneButton()
     {
+        Time.timeScale = 1f;
         GameManager.Instance.StageDataReset();
         SceneManager.LoadScene("GameScene");
     }

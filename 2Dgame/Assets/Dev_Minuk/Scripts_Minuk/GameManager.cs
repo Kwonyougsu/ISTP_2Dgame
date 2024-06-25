@@ -13,6 +13,11 @@ public class GameManager : MonoBehaviour
     public Transform items;
     public GameObject sPUI;
 
+    public GameObject CloseAttack;
+    public GameObject RangedAttack;
+    public GameObject RotaionAttack;
+
+
     public Transform Player
     {
         get { return player; }
@@ -58,18 +63,18 @@ public class GameManager : MonoBehaviour
     {
         if (CloseWeaponCount == 2 && !CloseWeaponMax)
         {
-            Destroy(items.GetChild(1).gameObject);
+            Destroy(CloseAttack);
             CloseWeaponMax = true;
         }
         if (RangedWeaponCount == 3 && !RangedWeaponMax)
         {
-            Destroy(items.GetChild(2).gameObject);
+            Destroy(RangedAttack);
             RangedWeaponMax = true;
         }
 
         if (RotationWeaponCount == 3 && !RotationWeaponMax)
         {
-            Destroy(items.GetChild(3).gameObject);
+            Destroy(RotaionAttack);
             RotationWeaponMax = true;
         }
     }

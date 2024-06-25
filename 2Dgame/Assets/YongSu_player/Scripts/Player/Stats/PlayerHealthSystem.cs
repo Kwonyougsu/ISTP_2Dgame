@@ -11,7 +11,7 @@ public class PlayerHealthSystem : MonoBehaviour
     private float timeSinceLastChange = float.MaxValue;
     private bool isAttacked = false;
 
-    // Ã¼·ÂÀÌ º¯ÇßÀ» ¶§ ÇÒ Çàµ¿µéÀ» Á¤ÀÇÇÏ°í Àû¿ë °¡´É
+    // Ã¼ï¿½ï¿½ï¿½ï¿½ ï¿½ï¿½ï¿½ï¿½ï¿½ï¿½ ï¿½ï¿½ ï¿½ï¿½ ï¿½àµ¿ï¿½ï¿½ï¿½ï¿½ ï¿½ï¿½ï¿½ï¿½ï¿½Ï°ï¿½ ï¿½ï¿½ï¿½ï¿½ ï¿½ï¿½ï¿½ï¿½
     public event Action OnDamage;
     public event Action OnHeal;
     public event Action OnDeath;
@@ -19,8 +19,8 @@ public class PlayerHealthSystem : MonoBehaviour
 
     public float CurrentHealth { get; private set; }
 
-    // get¸¸ ±¸ÇöµÈ °ÍÃ³·³ ÇÁ·ÎÆÛÆ¼¸¦ »ç¿ëÇÏ´Â °Í
-    // ÀÌ·¸°Ô ÇÏ¸é µ¥ÀÌÅÍÀÇ º¹Á¦º»ÀÌ ¿©±âÀú±â µ¹¾Æ´Ù´Ï´Ù°¡ ½ÌÅ©°¡ ±úÁö´Â ¹®Á¦¸¦ ¸·À» ¼ö ÀÖ¾î¿ä!
+    // getï¿½ï¿½ ï¿½ï¿½ï¿½ï¿½ï¿½ï¿½ ï¿½ï¿½Ã³ï¿½ï¿½ ï¿½ï¿½ï¿½ï¿½ï¿½ï¿½Æ¼ï¿½ï¿½ ï¿½ï¿½ï¿½ï¿½Ï´ï¿½ ï¿½ï¿½
+    // ï¿½Ì·ï¿½ï¿½ï¿½ ï¿½Ï¸ï¿½ ï¿½ï¿½ï¿½ï¿½ï¿½ï¿½ï¿½ï¿½ ï¿½ï¿½ï¿½ï¿½ï¿½ï¿½ï¿½ï¿½ ï¿½ï¿½ï¿½ï¿½ï¿½ï¿½ï¿½ï¿½ ï¿½ï¿½ï¿½Æ´Ù´Ï´Ù°ï¿½ ï¿½ï¿½Å©ï¿½ï¿½ ï¿½ï¿½ï¿½ï¿½ï¿½ï¿½ ï¿½ï¿½ï¿½ï¿½ï¿½ï¿½ ï¿½ï¿½ï¿½ï¿½ ï¿½ï¿½ ï¿½Ö¾ï¿½ï¿½!
     public float MaxHealth => statsHandler.CurrentStat.maxHealth;
 
     public GameObject endpanel;
@@ -40,15 +40,15 @@ public class PlayerHealthSystem : MonoBehaviour
 
     private void Update()
     {
-        if (isAttacked && timeSinceLastChange < healthChangeDelay)
-        {
-            timeSinceLastChange += Time.deltaTime;
-            if (timeSinceLastChange >= healthChangeDelay)
-            {
-                OnInvincibilityEnd?.Invoke();
-                isAttacked = false;
-            }
-        }
+        //if (isAttacked && timeSinceLastChange < healthChangeDelay)
+        //{
+        //    timeSinceLastChange += Time.deltaTime;
+        //    if (timeSinceLastChange >= healthChangeDelay)
+        //    {
+        //        OnInvincibilityEnd?.Invoke();
+        //        isAttacked = false;
+        //    }
+        //}
     }
 
     public bool PlayerChangeHealth(float change)
@@ -61,33 +61,33 @@ public class PlayerHealthSystem : MonoBehaviour
 
        CurrentHealth -= change;
 
-       // [ÃÖ¼Ú°ªÀ» 0, ÃÖ´ñ°ªÀ» MaxHealth·Î ÇÏ´Â ±¸¹®]
+       // [ï¿½Ö¼Ú°ï¿½ï¿½ï¿½ 0, ï¿½Ö´ï¿½ï¿½ï¿½ MaxHealthï¿½ï¿½ ï¿½Ï´ï¿½ ï¿½ï¿½ï¿½ï¿½]
        CurrentHealth = Mathf.Clamp(CurrentHealth, 0, MaxHealth);
         timeSinceLastChange = 0f;
         spriteRenderer.color = Color.red;
         Invoke(nameof(ResetSpriteColor), 0.5f);
         UpdateHealthBar();
-        //Debug.Log("¸Â¾Ò´Ù ³» Ã¼·Â " + CurrentHealth);
+        //Debug.Log("ï¿½Â¾Ò´ï¿½ ï¿½ï¿½ Ã¼ï¿½ï¿½ " + CurrentHealth);
 
         if (CurrentHealth <= 0f)
         {
-            Debug.Log("Á×¾ú´Ù ³» Ã¼·Â" + CurrentHealth);
+            Debug.Log("ï¿½×¾ï¿½ï¿½ï¿½ ï¿½ï¿½ Ã¼ï¿½ï¿½" + CurrentHealth);
             endpanel.SetActive(true);
             endpanelbg.SetActive(true);
-            CallDeath();
+            //CallDeath();
             Time.timeScale = 0f;
             return true;
         }
         
-        if (change >= 0)
-        {
-            OnHeal?.Invoke();
-        }
-        else
-        {
-            OnDamage?.Invoke();
-            isAttacked = true;
-        }
+        //if (change >= 0)
+        //{
+        //    OnHeal?.Invoke();
+        //}
+        //else
+        //{
+        //    OnDamage?.Invoke();
+        //    isAttacked = true;
+        //}
 
 
         return true;

@@ -10,7 +10,7 @@ public class PlayerStatsHandler : MonoBehaviour
     public List<PlayerStats> statsModifiers = new List<PlayerStats>();
     public ItemData itemData;
     private readonly float MinSpeed = 5f;
-    private readonly int MinMaxHealth = 10;
+    private readonly int MinMaxHealth = 5;
 
     private void Awake()
     {        

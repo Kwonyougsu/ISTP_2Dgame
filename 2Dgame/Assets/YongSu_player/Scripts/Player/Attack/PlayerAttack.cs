@@ -44,14 +44,37 @@ public class PlayerAttack : MonoBehaviour
             characterRenderer.sprite = characer[playerid];
         }
         StartCoroutine(Attack(GameManager.Instance.PlayerId));
-        //StartCoroutine(Attack());
     }
     private void Update()
     {
         if (playerid == 2) // 계속 돌아가야하므로, Update
         {
-            RotationAttack(GameManager.Instance.Lv + 1);
-            //StartCoroutine(Attack(GameManager.Instance.Lv+10));
+            RotationAttack(GameManager.Instance.RotationWeaponCount);
+            if (GameManager.Instance.CloseWeapon)
+            {
+                closeAttack(GameManager.Instance.CloseWeaponCount);
+            }
+
+            if (GameManager.Instance.RangedWeapon)
+            {
+                Detected(GameManager.Instance.RangedWeaponCount);
+            }
+        }
+
+        if (playerid == 0)
+        {
+            if (GameManager.Instance.RotationWeapon)
+            {
+                RotationAttack(GameManager.Instance.RotationWeaponCount);
+            }
+        }
+
+        if (playerid == 1)
+        {
+            if (GameManager.Instance.RotationWeapon)
+            {
+                RotationAttack(GameManager.Instance.RotationWeaponCount);
+            }
         }
     }
 
@@ -61,34 +84,24 @@ public class PlayerAttack : MonoBehaviour
         {
             if (id == 0)
             {
-                closeAttack(GameManager.Instance.Lv + 1);
+                closeAttack(GameManager.Instance.CloseWeaponCount);
                 yield return new WaitForSeconds(0.01f);
-                //if (GameManager.Instance.Lv >= 2)
-                //{
-                //    Detected(GameManager.Instance.Lv);
-                //    yield return new WaitForSeconds(0.01f);
-                //}
+                if (GameManager.Instance.RangedWeapon)
+                {
+                    Detected(GameManager.Instance.RangedWeaponCount);
+                    yield return new WaitForSeconds(0.01f);
+                }
             }
             else if (id == 1) //원거리는 탐지 먼저 해야함
             {
-                Detected(GameManager.Instance.Lv + 1);
+                Detected(GameManager.Instance.RangedWeaponCount);
                 yield return new WaitForSeconds(0.01f);
-                //if (GameManager.Instance.Lv >= 2)
-                //{
-                //    closeAttack(GameManager.Instance.Lv);
-                //    yield return new WaitForSeconds(0.01f);
-                //}
+                if (GameManager.Instance.CloseWeapon)
+                {
+                    closeAttack(GameManager.Instance.CloseWeaponCount);
+                    yield return new WaitForSeconds(0.01f);
+                }
             }
-            //else if(id >= 30)
-            //{
-            //    closeAttack(GameManager.Instance.Lv);
-            //    yield return new WaitForSeconds(0.01f);
-            //    if (id >= 50)
-            //    {
-            //        Detected(GameManager.Instance.Lv + 1);
-            //        yield return new WaitForSeconds(0.01f);
-            //    }
-            //}
             yield return new WaitForSeconds(1f - (GameManager.Instance.upgradeStatData.statLv[2] * 0.05f));
         }
     }
@@ -98,7 +111,7 @@ public class PlayerAttack : MonoBehaviour
     {
         if (CountLv >= 2) CountLv = 2;
 
-        if (CountLv >= 0 && CountLv < 2)
+        if (CountLv > 0 && CountLv < 2)
         {
             if (closeAttackInstance == null)
             {
@@ -179,7 +192,9 @@ public class PlayerAttack : MonoBehaviour
 
     private void Detected(int CountLv) // 원거리 적 감지
     {
-        if (CountLv >= 0 && CountLv < 2)
+        if (CountLv >= 3) CountLv = 3;
+
+        if (CountLv > 0 && CountLv < 2)
         {
             Collider2D hitCollider = Physics2D.OverlapCircle(player.transform.position, detectionRange);
             if (hitCollider.CompareTag("Enemy"))

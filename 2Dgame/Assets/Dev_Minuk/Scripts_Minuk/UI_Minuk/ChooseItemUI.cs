@@ -16,7 +16,6 @@ public class ChooseItemUI : MonoBehaviour
     {
         chooseItemUI = this.gameObject;
         GameManager.Instance.chooseItemUI = chooseItemUI;
-        playerHealthSystem = GetComponent<PlayerHealthSystem>();
         for(int i =0; i < items.childCount; i++)
         {
             items.GetChild(i).gameObject.SetActive(false);

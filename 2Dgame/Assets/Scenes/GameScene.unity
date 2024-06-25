@@ -1471,6 +1471,9 @@ MonoBehaviour:
   chooseItemUI: {fileID: 0}
   items: {fileID: 0}
   sPUI: {fileID: 0}
+  CloseAttack: {fileID: 0}
+  RangedAttack: {fileID: 0}
+  RotaionAttack: {fileID: 0}
   PlayerId: 0
   itemData: {fileID: 11400000, guid: bcc6d9806e8c93d40bd5a7de3c43448b, type: 2}
   upgradeStatData: {fileID: 11400000, guid: 40df27d72b81fae47a0e2c6bf3af7cd6, type: 2}

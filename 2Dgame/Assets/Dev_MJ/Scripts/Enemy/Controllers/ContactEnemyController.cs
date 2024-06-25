@@ -3,15 +3,11 @@
 public class ContactEnemyController : EnemyController
 {
     [SerializeField][Range(0f, 100f)] private float followRange;
-    // 플레이어 태그, 레이어 뭘로 탐지할지 정할것
-    //[SerializeField] private string targetTag = "Player";
+    [SerializeField] private SpriteRenderer characterRenderer;
+
     private bool isCollidingWithTarget;
     private int layerPlayer;
     private float curDelay;
-
-
-    // 캐릭터 위치에따라 이미지가 뒤집혀야한다
-    [SerializeField] private SpriteRenderer characterRenderer;//나중에 이미지 추가할것**
 
     protected override void Start()
     {
@@ -49,24 +45,15 @@ public class ContactEnemyController : EnemyController
     private void Rotate(Vector2 direction)
     {        
         float rotZ = Mathf.Atan2(direction.y, direction.x) * Mathf.Rad2Deg;
-        characterRenderer.flipX = Mathf.Abs(rotZ) > 90f;//나중에 이미지 추가할것**
+        characterRenderer.flipX = Mathf.Abs(rotZ) > 90f;
     }
 
-
-    // 적과 닿았을 때 처리 (근거리 공격)
     private void OnCollisionEnter2D(Collision2D collision)
     {
-        //Debug.Log($"ContactEnemyController.cs - OnTriggerEnter2D()");
         GameObject receiver = collision.gameObject;
-
         if (1 << receiver.layer != layerPlayer) return;
-
         isCollidingWithTarget = true;
-
-        //Debug.Log($"플레이어 근접 공격 성공");
-        // 플레이어 체력 감소
         receiver.GetComponent<PlayerHealthSystem>().PlayerChangeHealth(stats.CurrentStat.attackSO.power);
-        //Debug.Log("몬스터 데미지 " + stats.CurrentStat.attackSO.power);
         if (!stats.CurrentStat.attackSO.isOnKnockBack) return;
         stats.CurrentStat.isChase = false;
     }
@@ -74,26 +61,18 @@ public class ContactEnemyController : EnemyController
   
     private void OnCollisionStay2D(Collision2D collision)
     {
-        //Debug.Log($"ContactEnemyController.cs - OnCollisionStay2D()");
         if (!isCollidingWithTarget) isCollidingWithTarget = true;
         if (curDelay > 0f) return;
-
         GameObject receiver = collision.gameObject;
-
         if (1 << receiver.layer != layerPlayer) return;
-
         receiver.GetComponent<PlayerHealthSystem>().PlayerChangeHealth(stats.CurrentStat.attackSO.power);
-
         if (!stats.CurrentStat.attackSO.isOnKnockBack) return;
         receiver.GetComponent<TopDownMovement>().ApplyKnockback(transform, stats.CurrentStat.attackSO.knockbackPower, stats.CurrentStat.attackSO.knockbackTime);
-
         curDelay = stats.CurrentStat.attackSO.delay;
-
     }
 
     private void OnCollisionExit2D(Collision2D collision)
     {
-        //Debug.Log($"ContactEnemyController.cs - OnTriggerExit2D()");
         GameObject receiver = collision.gameObject;
         isCollidingWithTarget = false;
         stats.CurrentStat.isChase = true;

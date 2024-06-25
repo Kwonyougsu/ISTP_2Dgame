@@ -54,7 +54,6 @@ public class EnemyMovement : MonoBehaviour
     public void ApplyKnockback(Transform other, float power, float duration)
     {
         knockbackDuration = duration;
-
         knockback = -(other.position - transform.position).normalized * power;
     }
     

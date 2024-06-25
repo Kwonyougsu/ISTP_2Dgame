@@ -3,22 +3,20 @@ using UnityEngine;
 public class Spawner : MonoBehaviour
 {
     public static Spawner Instance;
-
     public Transform[] spawnPoint;
     public int curMonsterCount = 0;
     public int totalMonsterCount = 2;
     public int killCount = 0;
+    public int level = 1;
 
     private float timer;
     private float waveTimer;
-    public int level = 1;
     private int monsterRange = 1;
     private bool isBoss = false;
     private bool isWave = false;
     private int bounusHP = 0;
     private Transform playerPos;
     private Vector3[] vector3s = new Vector3[10];
-
 
     private void Awake()
     {
@@ -44,12 +42,11 @@ public class Spawner : MonoBehaviour
         timer += Time.deltaTime;
         waveTimer += Time.deltaTime;
 
-        if (waveTimer > 40f)
+        if (waveTimer > 30f)
         {
             waveTimer = 0;
             WaveSpawn();
         }
-
 
         if (timer > 1f)
         {
@@ -65,6 +62,7 @@ public class Spawner : MonoBehaviour
             spawnPoint[i+1].position = playerPos.position + vector3s[i];
         }
     }
+
     private void Spawn()
     {
         if (curMonsterCount >= totalMonsterCount || isWave || isBoss) return;
@@ -131,8 +129,8 @@ public class Spawner : MonoBehaviour
 
         if (level % 10 == 0)
         {
-            bounusHP += 6;
-            if (bounusHP >= 30) bounusHP = 110;
+            bounusHP += 2;
+            if (bounusHP >= 20) bounusHP = 20;
         }
 
         if (level % 15 == 0)

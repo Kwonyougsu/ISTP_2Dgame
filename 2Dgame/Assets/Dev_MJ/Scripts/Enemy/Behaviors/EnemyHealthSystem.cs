@@ -1,22 +1,13 @@
 using System;
-using System.Collections;
-using System.Collections.Generic;
 using UnityEngine;
 
 public class EnemyHealthSystem : MonoBehaviour
 {
-    // 피격당했을때 재생할 사운드
     [SerializeField] private AudioClip DamageClip;
-
-    // 무적시간을 위한 필드 (체력 변화까지의 딜레이)
     [SerializeField] private float healthChangeDelay = 0.5f;     
 
     private float timeSinceLastChange = float.MaxValue;
-
-    // enemy 능력치 캐싱
     private EnemyStatHandler statsHandler;
-
-    // 공격을 받았을때
     private bool isAttacked = false;
 
     public event Action OnDamage;
@@ -51,11 +42,8 @@ public class EnemyHealthSystem : MonoBehaviour
         }
     }
 
-    // 공격을 받았을 때
     public bool ChangeHealth(float change)
     {
-        //Debug.Log($"ChangeHealth - CurrentHealth: {CurrentHealth}");
-        //Debug.Log(change);
         if (change < 0)
         {            
             if (timeSinceLastChange < healthChangeDelay)

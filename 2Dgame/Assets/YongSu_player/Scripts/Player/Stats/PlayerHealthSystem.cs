@@ -1,15 +1,17 @@
 using System;
 using UnityEngine;
+using UnityEngine.UI;
 
 public class PlayerHealthSystem : MonoBehaviour
 {
     [SerializeField] private float healthChangeDelay = .5f;
+    [SerializeField] private Image healthBar;
 
     private PlayerStatsHandler statsHandler;
     private float timeSinceLastChange = float.MaxValue;
     private bool isAttacked = false;
 
-    // Ã¼·ÂÀÌ º¯ÇßÀ» ¶§ ÇÒ Çàµ¿µéÀ» Á¤ÀÇÇÏ°í Àû¿ë °¡´É
+    // Ã¼ï¿½ï¿½ï¿½ï¿½ ï¿½ï¿½ï¿½ï¿½ï¿½ï¿½ ï¿½ï¿½ ï¿½ï¿½ ï¿½àµ¿ï¿½ï¿½ï¿½ï¿½ ï¿½ï¿½ï¿½ï¿½ï¿½Ï°ï¿½ ï¿½ï¿½ï¿½ï¿½ ï¿½ï¿½ï¿½ï¿½
     public event Action OnDamage;
     public event Action OnHeal;
     public event Action OnDeath;
@@ -17,20 +19,23 @@ public class PlayerHealthSystem : MonoBehaviour
 
     public float CurrentHealth { get; private set; }
 
-    // get¸¸ ±¸ÇöµÈ °ÍÃ³·³ ÇÁ·ÎÆÛÆ¼¸¦ »ç¿ëÇÏ´Â °Í
-    // ÀÌ·¸°Ô ÇÏ¸é µ¥ÀÌÅÍÀÇ º¹Á¦º»ÀÌ ¿©±âÀú±â µ¹¾Æ´Ù´Ï´Ù°¡ ½ÌÅ©°¡ ±úÁö´Â ¹®Á¦¸¦ ¸·À» ¼ö ÀÖ¾î¿ä!
+    // getï¿½ï¿½ ï¿½ï¿½ï¿½ï¿½ï¿½ï¿½ ï¿½ï¿½Ã³ï¿½ï¿½ ï¿½ï¿½ï¿½ï¿½ï¿½ï¿½Æ¼ï¿½ï¿½ ï¿½ï¿½ï¿½ï¿½Ï´ï¿½ ï¿½ï¿½
+    // ï¿½Ì·ï¿½ï¿½ï¿½ ï¿½Ï¸ï¿½ ï¿½ï¿½ï¿½ï¿½ï¿½ï¿½ï¿½ï¿½ ï¿½ï¿½ï¿½ï¿½ï¿½ï¿½ï¿½ï¿½ ï¿½ï¿½ï¿½ï¿½ï¿½ï¿½ï¿½ï¿½ ï¿½ï¿½ï¿½Æ´Ù´Ï´Ù°ï¿½ ï¿½ï¿½Å©ï¿½ï¿½ ï¿½ï¿½ï¿½ï¿½ï¿½ï¿½ ï¿½ï¿½ï¿½ï¿½ï¿½ï¿½ ï¿½ï¿½ï¿½ï¿½ ï¿½ï¿½ ï¿½Ö¾ï¿½ï¿½!
     public float MaxHealth => statsHandler.CurrentStat.maxHealth;
 
     public GameObject endpanel;
     public GameObject endpanelbg;
+    private SpriteRenderer spriteRenderer;
     private void Awake()
     {
         statsHandler = GetComponent<PlayerStatsHandler>();
+        spriteRenderer = GetComponent<SpriteRenderer>();
     }
 
     private void Start()
     {
         CurrentHealth = statsHandler.CurrentStat.maxHealth;
+        UpdateHealthBar();
     }
 
     private void Update()
@@ -56,13 +61,17 @@ public class PlayerHealthSystem : MonoBehaviour
 
        CurrentHealth -= change;
 
-       // [ÃÖ¼Ú°ªÀ» 0, ÃÖ´ñ°ªÀ» MaxHealth·Î ÇÏ´Â ±¸¹®]
+       // [ï¿½Ö¼Ú°ï¿½ï¿½ï¿½ 0, ï¿½Ö´ï¿½ï¿½ï¿½ MaxHealthï¿½ï¿½ ï¿½Ï´ï¿½ ï¿½ï¿½ï¿½ï¿½]
        CurrentHealth = Mathf.Clamp(CurrentHealth, 0, MaxHealth);
-       //Debug.Log("¸Â¾Ò´Ù ³» Ã¼·Â " + CurrentHealth);
-        
+        timeSinceLastChange = 0f;
+        spriteRenderer.color = Color.red;
+        Invoke(nameof(ResetSpriteColor), 0.5f);
+        UpdateHealthBar();
+        //Debug.Log("ï¿½Â¾Ò´ï¿½ ï¿½ï¿½ Ã¼ï¿½ï¿½ " + CurrentHealth);
+
         if (CurrentHealth <= 0f)
         {
-            Debug.Log("Á×¾ú´Ù ³» Ã¼·Â" + CurrentHealth);
+            Debug.Log("ï¿½×¾ï¿½ï¿½ï¿½ ï¿½ï¿½ Ã¼ï¿½ï¿½" + CurrentHealth);
             endpanel.SetActive(true);
             endpanelbg.SetActive(true);
             //CallDeath();
@@ -84,8 +93,21 @@ public class PlayerHealthSystem : MonoBehaviour
         return true;
     }
 
-    //private void CallDeath()
-    //{
-    //    OnDeath?.Invoke();
-    //}
+    private void CallDeath()
+    {
+        OnDeath?.Invoke();
+    }
+
+    private void ResetSpriteColor()
+    {
+        spriteRenderer.color = Color.white;
+    }
+
+    private void UpdateHealthBar()
+    {
+        if (healthBar != null)
+        {
+            healthBar.fillAmount = CurrentHealth / MaxHealth;
+        }
+    }
 }

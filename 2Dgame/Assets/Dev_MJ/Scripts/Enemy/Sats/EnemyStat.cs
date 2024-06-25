@@ -8,6 +8,7 @@ public class EnemyStat
     [Range(1f, 20f)] public float speed;
     [Range(1f, 10f)] public float size;
     public bool isChase;
+    public bool isBoss;
     public LayerMask target;
 
     public EnemyAttackSO attackSO;

@@ -28,6 +28,12 @@ public class EnemyController : MonoBehaviour
 
     private void DoropItem()
     {
+        if (stats.CurrentStat.isBoss)
+        {
+            Instantiate(dropItems[0], transform.position, Quaternion.identity);
+            return;
+        }
+
         Instantiate(dropItems[0], transform.position, Quaternion.identity);
         int num = UnityEngine.Random.Range(0, 10);
         switch (GameManager.Instance.itemData.itemstack[3])

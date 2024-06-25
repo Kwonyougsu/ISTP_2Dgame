@@ -64,7 +64,11 @@ public class ObjectPool : MonoBehaviour
         {
             select = Instantiate(monster[index], monsterBox);
             select.GetComponent<EnemyHealthSystem>().OnDeath += Spawner.Instance.OnEnemyDeath;
-            if (index == 3) select.GetComponent<EnemyHealthSystem>().OnDeath += Spawner.Instance.OnBossDeath;
+            if (index == 3)
+            {
+                select.GetComponent<EnemyHealthSystem>().OnDeath += Spawner.Instance.OnBossDeath;
+                select.GetComponent<EnemyStatHandler>().CurrentStat.isBoss = true;
+            } 
             monsterPools[index].Add(select);
         }
 

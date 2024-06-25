@@ -7,16 +7,17 @@ public class SoundManager : MonoBehaviour
 {
     public static SoundManager instance;
 
-    [SerializeField][Range(0f, 1f)] private float musicVol;
-    [SerializeField][Range(0f, 1f)] private float sFXVol;
+    [SerializeField][Range(0f, 1f)] public float musicVol;
+    [SerializeField][Range(0f, 1f)] public float sFXVol;
     [SerializeField][Range(0f, 1f)] private float sFXPitch;
 
-    private AudioSource musicAudioSource;
+    public AudioSource musicAudioSource;
     public AudioClip musicClip;
 
     private void Awake()
     {
-        instance = this;
+        if(instance == null) instance = this;
+        else Destroy(gameObject);
         musicAudioSource = GetComponent<AudioSource>();
         musicAudioSource.volume = musicVol;
         musicAudioSource.loop = true;

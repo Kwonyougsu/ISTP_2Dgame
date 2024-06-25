@@ -112,7 +112,7 @@ public class Spawner : MonoBehaviour
         if (level % 2 == 0)
         {
             totalMonsterCount += 2;
-            if (totalMonsterCount >= 30) totalMonsterCount = 30;
+            if (totalMonsterCount >= 40) totalMonsterCount = 40;
         }
 
         if (level % 3 == 0)
@@ -124,19 +124,25 @@ public class Spawner : MonoBehaviour
         if (level % 5 == 0)
         {
             totalMonsterCount += 5;         
-            if (totalMonsterCount >= 30) totalMonsterCount = 30;
+            if (totalMonsterCount >= 40) totalMonsterCount = 40;
         }
 
         if (level % 10 == 0)
         {
             bounusHP += 2;
-            if (bounusHP >= 20) bounusHP = 20;
+            if (bounusHP >= 200) bounusHP = 200;
         }
 
         if (level % 20 == 0)
         {
             BossSpawn();
-        }        
+        }
+
+        if (level % 30 == 0)
+        {
+            bounusHP += 20;
+            if (bounusHP >= 200) bounusHP = 200;
+        }
     }
 
     public void OnEnemyDeath()

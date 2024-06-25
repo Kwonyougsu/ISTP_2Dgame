@@ -8,7 +8,6 @@ public class PlayerSelect : MonoBehaviour
     public Button rangedButton;
     public Button RotationButton;
     public Button startButton;
-  //test
 
     void Start()
     {
@@ -16,10 +15,12 @@ public class PlayerSelect : MonoBehaviour
         rangedButton.onClick.AddListener(() => SelectButton(1));
         RotationButton.onClick.AddListener(() => SelectButton(2));
         startButton.onClick.AddListener(OnGameStartClick);
+        startButton.interactable = false;
     }
 
     void SelectButton(int playerid)
     {
+        startButton.interactable = true;
         GameManager.Instance.SetCharacterId(playerid);
         Debug.Log("Selected Button: " + playerid);
     }

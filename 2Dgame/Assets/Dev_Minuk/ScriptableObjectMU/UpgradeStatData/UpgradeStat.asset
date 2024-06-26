@@ -1,0 +1,34 @@
+%YAML 1.1
+%TAG !u! tag:unity3d.com,2011:
+--- !u!114 &11400000
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 0}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: f516f05ac6140cc4abb3e6f8ccc3d8db, type: 3}
+  m_Name: UpgradeStat
+  m_EditorClassIdentifier: 
+  statIcon:
+  - {fileID: 21300000, guid: b295665a067ffea4e97174154c62d83f, type: 3}
+  - {fileID: 21300000, guid: 1f0df38db1cec6048907b38bd6fda258, type: 3}
+  - {fileID: 21300000, guid: 476740f41fbbe6d4f90d371386083df4, type: 3}
+  - {fileID: 21300000, guid: 8661111723731c3449c892b735fcfd15, type: 3}
+  statLv:
+  - 0
+  - 0
+  - 0
+  - 0
+  statName:
+  - "\uACF5\uACA9\uB825"
+  - "\uC774\uB3D9\uC18D\uB3C4"
+  - "\uACF5\uACA9\uC18D\uB3C4"
+  - "\uD589\uC6B4"
+  statDescription:
+  - "\uB808\uBCA8\uB2F9 \uACF5\uACA9\uB825 5 \uC99D\uAC00"
+  - "\uB808\uBCA8\uB2F9 \uC774\uB3D9\uC18D\uB3C4 5% \uC99D\uAC00"
+  - "\uB808\uBCA8\uB2F9 \uACF5\uACA9\uC18D\uB3C4 5% \uC99D\uAC00"
+  - "\uB808\uBCA8\uB2F9 \uACE8\uB4DC \uD68D\uB4DD\uB7C9 10% \uC99D\uAC00"

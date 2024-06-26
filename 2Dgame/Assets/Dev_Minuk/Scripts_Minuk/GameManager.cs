@@ -142,6 +142,9 @@ public class GameManager : MonoBehaviour
             RotationWeapon = true;
             RotationWeaponCount = 1;
         }
+        CloseWeaponMax = false;
+        RangedWeaponMax = false;
+        RotationWeaponMax = false;
     }
     public void LvUp()
     {
